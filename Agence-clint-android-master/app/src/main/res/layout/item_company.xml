@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_bottom"
+        android:backgroundTint="@color/white"
+        android:elevation="@dimen/_3sdp"
+        android:layout_margin="@dimen/_8sdp"
+        android:padding="@dimen/_8sdp">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_logo_company"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:src="@drawable/backround_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="@dimen/_3sdp" />
+
+
+        <TextView
+            android:id="@+id/tv_name_company"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:fontFamily="@font/somar_bold"
+            android:text="اسم الشركة"
+            android:textAlignment="viewStart"
+            android:textColor="@color/text"
+            android:textSize="@dimen/_19ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_logo_company"
+            app:layout_constraintEnd_toStartOf="@+id/ratingBar"
+            app:layout_constraintStart_toEndOf="@+id/iv_logo_company"
+            app:layout_constraintTop_toTopOf="@+id/iv_logo_company" />
+
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:scaleX="1.0"
+            android:progressTint="#FEB702"
+            android:rating="2"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:scaleY="1.0"
+            android:stepSize="0.5"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_name_company"
+            app:layout_constraintEnd_toStartOf="@+id/tv_count_rat"
+            app:layout_constraintTop_toTopOf="@+id/tv_name_company" />
+
+
+        <TextView
+            android:id="@+id/tv_count_rat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:fontFamily="@font/somar_regular"
+            android:text="0"
+            android:textColor="@color/text"
+            android:textSize="@dimen/_18ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_logo_company"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_logo_company" />
+
+
+        <TextView
+            android:id="@+id/tvNameCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_bottom2"
+            android:fontFamily="@font/somar_regular"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:paddingVertical="@dimen/_2sdp"
+            android:textAlignment="center"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:textColor="@color/secondary"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintStart_toStartOf="@+id/iv_logo_company"
+            app:layout_constraintTop_toBottomOf="@+id/iv_logo_company" />
+
+
+        <TextView
+            android:id="@+id/tv_dic_company"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/somar_regular"
+            android:textColor="@color/grey_bold"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:textAlignment="viewStart"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameCategory" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_show"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_26sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:background="@drawable/shape_bottom"
+            android:fontFamily="@font/somar_bold"
+            android:text="@string/show"
+            android:textAllCaps="false"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dic_company" />
+
+
+        <ImageView
+            android:id="@+id/iv_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:src="@drawable/icon_not_favorite"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_show"
+            app:layout_constraintStart_toEndOf="@+id/btn_show"
+            app:layout_constraintTop_toTopOf="@+id/btn_show" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

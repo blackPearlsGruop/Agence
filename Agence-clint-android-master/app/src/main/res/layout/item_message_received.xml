@@ -1,0 +1,127 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/_10sdp"
+    android:layout_marginTop="@dimen/_4sdp"
+    android:layout_marginStart="@dimen/_60sdp"
+    android:layout_marginBottom="@dimen/_4sdp"
+    android:layoutDirection="rtl"
+    android:orientation="vertical">
+
+    <!-- Existing message layout -->
+
+    <LinearLayout
+        android:id="@+id/constraintLayoutText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/message_background_dark"
+        android:gravity="end"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/item_chat_tv_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_weight="1"
+            android:fontFamily="@font/somar_semi_bold"
+            android:inputType="textMultiLine"
+            android:paddingVertical="@dimen/_6sdp"
+            android:text="@string/available"
+            android:textColor="@color/text"
+            android:textSize="@dimen/_18sdp"
+            tools:ignore="TextViewEdits" />
+
+        <ImageView
+            android:id="@+id/item_chat_iv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|end"
+            android:layout_margin="@dimen/_4sdp"
+            android:src="@drawable/ic_check_single"
+            android:visibility="gone"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
+    <!-- Image layout -->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/constraintLayoutImage"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_200sdp"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/message_background_dark"
+        android:elevation="0dp"
+        android:layout_gravity="end"
+        android:orientation="horizontal"
+        app:cardCornerRadius="@dimen/_8sdp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout8">
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/image_3" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_gravity="center" />
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Audio player layout -->
+
+    <LinearLayout
+        android:id="@+id/audioPlayerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:background="@drawable/message_background_dark"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/_8sdp">
+
+        <!--        <ImageView-->
+        <!--            android:id="@+id/playPauseButton"-->
+        <!--            android:layout_width="@dimen/_24sdp"-->
+        <!--            android:layout_height="@dimen/_24sdp"-->
+        <!--            android:src="@drawable/ic_play" />-->
+
+        <!--        <SeekBar-->
+        <!--            android:id="@+id/audioSeekBar"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="@dimen/_8sdp"-->
+        <!--            android:layout_marginEnd="@dimen/_8sdp"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:max="100" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_timestamp"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="00:00"-->
+        <!--            android:textColor="@color/white" />-->
+
+        <com.yehia.wave.views.WavePlayerView
+            android:id="@+id/record_plays"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            app:btn_color="@color/colorPrimary"
+            app:seek_selector="@drawable/seekbar_bg2"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "51369050077",
+    "firebase_url": "https://appagence-4fa33-default-rtdb.firebaseio.com",
+    "project_id": "appagence-4fa33",
+    "storage_bucket": "appagence-4fa33.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51369050077:android:7a1d04dffbbc8e907d0034",
+        "android_client_info": {
+          "package_name": "com.ksa.agence"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwJzWN8i0QDb9xq7Eg5M09KKEqZ2W9ZKk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51369050077:android:9dc485a291762d247d0034",
+        "android_client_info": {
+          "package_name": "com.ksa.agenceCompany"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwJzWN8i0QDb9xq7Eg5M09KKEqZ2W9ZKk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

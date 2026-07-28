@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_bottom"
+        android:backgroundTint="@color/white"
+        android:elevation="@dimen/_3sdp"
+        android:layout_margin="@dimen/_8sdp"
+        android:padding="@dimen/_8sdp">
+
+
+        <ImageView
+            android:id="@+id/iv_logo_service"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_79sdp"
+            android:src="@drawable/logo_splash"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="@dimen/_3sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/somar_bold"
+            android:text="اسم الشركة"
+            android:textColor="@color/secondary"
+            android:textSize="@dimen/_16ssp"
+            android:layout_marginTop="@dimen/_8sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_logo_service" />
+
+
+        <TextView
+            android:id="@+id/tv_dic_category"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/somar_regular"
+            android:text="حسن استراتيجية الاتصال لديك وتطويرها لتحقيق اهدافك"
+            android:textAlignment="viewStart"
+            android:textColor="@color/grey_bold"
+            android:textSize="@dimen/_14ssp"
+            android:lines="4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_show"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_28sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:background="@drawable/shape_bottom"
+            android:fontFamily="@font/somar_bold"
+            android:text="@string/show"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dic_category" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

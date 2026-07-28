@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_16sdp"
+        android:layout_marginVertical="@dimen/_8sdp"
+        android:background="@drawable/shape_bottom"
+        android:backgroundTint="@color/white"
+        android:elevation="@dimen/_3sdp"
+        android:padding="@dimen/_8sdp">
+
+
+        <TextView
+            android:id="@+id/tvNameCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:fontFamily="@font/somar_bold"
+            android:text="خدمة تسويق لمدة شهر"
+            android:textColor="@color/secondary"
+            android:textSize="@dimen/_18ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tv_no_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:fontFamily="@font/somar_regular"
+            android:text="0000000"
+            android:textColor="@color/secondary"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvNameCategory"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvNameCategory" />
+
+        <View
+            android:id="@+id/view5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/_12ssp"
+            android:background="@color/grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameCategory" />
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_data_company"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/view5">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_logo_company"
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:src="@drawable/backround_image"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="@dimen/_3sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tv_name_company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:fontFamily="@font/somar_regular"
+                android:text="اسم الشركة"
+                android:textColor="@color/text"
+                android:textSize="@dimen/_18ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_logo_company"
+                app:layout_constraintStart_toEndOf="@+id/iv_logo_company"
+                app:layout_constraintTop_toTopOf="@+id/iv_logo_company" />
+
+
+            <TextView
+                android:id="@+id/tv_price_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_bottom2"
+                android:fontFamily="@font/somar_regular"
+                android:paddingHorizontal="@dimen/_16sdp"
+                android:paddingVertical="@dimen/_6sdp"
+                android:text="150 ر.س / ساعة"
+                android:textAlignment="center"
+                android:textColor="@color/secondary"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_name_company"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_name_company" />
+
+
+            <TextView
+                android:id="@+id/tv_address_company"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:drawableStart="@drawable/icon_location"
+                android:drawablePadding="@dimen/_4sdp"
+                android:fontFamily="@font/somar_regular"
+                android:text="الرياض , السعودية"
+                android:textAlignment="viewStart"
+                android:textColor="@color/grey_bold"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/iv_logo_company"
+                app:layout_constraintTop_toBottomOf="@+id/iv_logo_company" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_show"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:fontFamily="@font/somar_bold"
+            android:text="@string/show"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16ssp"
+            app:cornerRadius="@dimen/_4sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/view6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraint_data_company"
+            app:strokeColor="@color/primary" />
+
+
+
+        <ImageView
+            android:id="@+id/iv_chat_order"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:src="@drawable/icon_chat_order"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_show"
+            app:layout_constraintStart_toEndOf="@+id/view6"
+            app:layout_constraintTop_toTopOf="@+id/btn_show" />
+
+
+        <View
+            android:id="@+id/view6"
+            android:layout_width="@dimen/_16sdp"
+            android:layout_height="@dimen/_40sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_show"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_show" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_reorder"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/somar_bold"
+            android:text="@string/reorder"
+            android:textAllCaps="false"
+            android:textColor="@color/primary"
+            android:textSize="@dimen/_16ssp"
+            android:visibility="gone"
+            app:cornerRadius="@dimen/_4sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view6"
+            app:layout_constraintTop_toBottomOf="@+id/tv_address_company"
+            app:strokeColor="@color/primary"
+            app:strokeWidth="@dimen/_1sdp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

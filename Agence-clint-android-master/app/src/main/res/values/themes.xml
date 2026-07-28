@@ -1,0 +1,105 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Agence" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!--        <item name="fontFamily">@font/somar_regular</item>-->
+        <!--        <item name="android:textSize">@dimen/_13ssp</item>-->
+
+        <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
+        <!--        <item name="android:windowLightStatusBar">true</item>-->
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+
+
+    </style>
+
+
+
+
+
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/zoom_in</item>
+        <item name="android:windowExitAnimation">@anim/zoom_out</item>
+    </style>
+
+    <!--dialog theme-->
+    <style name="customDialogTheme" parent="android:Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/DialogAnimation</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:layout_marginStart">@dimen/_10sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_10sdp</item>
+    </style>
+
+
+    <style name="editText" parent="ThemeOverlay.Material3.TextInputEditText">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/shape_text</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
+        <item name="android:fontFamily">@font/somar_regular</item>
+        <item name="android:padding">@dimen/_12sdp</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+
+
+    <style name="bottom" parent="Widget.AppCompat.Button">
+        <item name="android:layout_height">@dimen/_40sdp</item>
+        <item name="android:background">@drawable/shape_bottom</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+        <item name="android:textSize">@dimen/_20ssp</item>
+        <item name="android:fontFamily">@font/somar_bold</item>
+        <item name="android:padding">@dimen/_6sdp</item>
+    </style>
+
+
+    <style name="BottomNavigationView" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">11sp</item>
+    </style>
+
+
+    <style name="NoRippleEffect" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemRippleColor">@android:color/transparent</item>
+        <item name="itemTextAppearanceActive">@style/BottomNavigationViewTextStyle</item>
+        <item name="itemTextAppearanceInactive">@style/BottomNavigationViewTextStyle</item>
+    </style>
+
+    <!-- Custom text appearance style -->
+    <style name="BottomNavigationViewTextStyle" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:fontFamily">@font/somar_semi_bold</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+    </style>
+
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/shape_layout_2</item>
+    </style>
+
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+
+    </style>
+
+    <!-- Custom ExtendedFloatingActionButton text style -->
+    <style name="ExtendedFabTextStyle" parent="TextAppearance.AppCompat.Button">
+        <item name="android:fontFamily">@font/somar_semi_bold</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+</resources>

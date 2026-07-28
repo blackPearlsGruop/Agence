@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/menuHome"
+        android:icon="@drawable/icon_home"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/menuOffers"
+        android:icon="@drawable/icon_offers"
+        android:title="@string/offers" />
+
+    <item
+        android:id="@+id/menuOrders"
+        android:icon="@drawable/icon_orders"
+        android:title="@string/orders" />
+
+
+    <item
+        android:id="@+id/menuChat"
+        android:icon="@drawable/icon_chat"
+        android:title="@string/chat" />
+
+
+
+
+
+
+</menu>

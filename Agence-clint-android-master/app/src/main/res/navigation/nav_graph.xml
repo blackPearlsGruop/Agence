@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/menuHome">
+
+
+    <fragment
+        android:id="@+id/menuHome"
+        android:name="com.ksa.agence.ui.fragment.home.HomeFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_menuHome_to_allComanyFragment"
+            app:destination="@id/allComanyFragment" />
+        <action
+            android:id="@+id/action_menuHome_to_allSreviesFragment"
+            app:destination="@id/allSreviesFragment" />
+        <action
+            android:id="@+id/action_menuHome_to_showCompanyFragment"
+            app:destination="@id/showCompanyFragment" />
+        <action
+            android:id="@+id/action_menuHome_to_showSreviesFragment"
+            app:destination="@id/showSreviesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuChat"
+        android:name="com.ksa.agence.ui.fragment.chat.ChatFragment"
+        android:label="ChatFragment"
+        tools:layout="@layout/fragment_chat">
+        <action
+            android:id="@+id/action_menuChat_to_conversationFragment"
+            app:destination="@id/conversationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuOffers"
+        android:name="com.ksa.agence.ui.fragment.home.OffersFragment"
+        android:label="OffersFragment"
+        tools:layout="@layout/fragment_offers">
+        <action
+            android:id="@+id/action_menuOffers_to_offerDetailsFragment"
+            app:destination="@id/offerDetailsFragment" />
+        <action
+            android:id="@+id/action_menuOffers_to_bottomSheetPaymentFragment"
+            app:destination="@id/bottomSheetPaymentFragment" />
+        <action
+            android:id="@+id/action_menuOffers_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuOrders"
+        android:name="com.ksa.agence.ui.fragment.home.OrdersFragment"
+        android:label="OrdersFragment"
+        tools:layout="@layout/fragment_orders">
+        <action
+            android:id="@+id/action_menuOrders_to_showOrderFragment"
+            app:destination="@id/showOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.ksa.agence.ui.fragment.home.SettingFragment"
+        android:label="SettingFragment"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_billsFragment"
+            app:destination="@id/billsFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_contacUsFragment"
+            app:destination="@id/contacUsFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_termsOfUseFragment"
+            app:destination="@id/termsOfUseFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_chooseLanguageFragment"
+            app:destination="@id/chooseLanguageFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_myProfileFragment"
+            app:destination="@id/myProfileFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_favouritesFragment"
+            app:destination="@id/favouritesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allComanyFragment"
+        android:name="com.ksa.agence.ui.fragment.home.AllCompanyFragment"
+        android:label="AllComanyFragment" >
+        <action
+            android:id="@+id/action_allComanyFragment_to_showCompanyFragment"
+            app:destination="@id/showCompanyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allSreviesFragment"
+        android:name="com.ksa.agence.ui.fragment.home.AllSreviesFragment"
+        android:label="AllSreviesFragment" >
+        <action
+            android:id="@+id/action_allSreviesFragment_to_showSreviesFragment"
+            app:destination="@id/showSreviesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/billsFragment"
+        android:name="com.ksa.agence.ui.fragment.setting.BillsFragment"
+        android:label="BillsFragment" />
+    <fragment
+        android:id="@+id/contacUsFragment"
+        android:name="com.ksa.agence.ui.fragment.setting.ContactUsFragment"
+        android:label="ContacUsFragment" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.ksa.agence.ui.fragment.notification.NotificationFragment"
+        android:label="NotificationFragment" />
+    <fragment
+        android:id="@+id/termsOfUseFragment"
+        android:name="com.ksa.agence.ui.fragment.setting.TermsOfUseFragment"
+        android:label="TermsOfUseFragment" />
+    <fragment
+        android:id="@+id/chooseLanguageFragment"
+        android:name="com.ksa.agence.ui.fragment.setting.ChooseLanguageFragment"
+        android:label="ChooseLanguageFragment" />
+    <fragment
+        android:id="@+id/offerDetailsFragment"
+        android:name="com.ksa.agence.ui.fragment.home.OfferDetailsFragment"
+        android:label="OfferDetailsFragment" >
+        <argument
+            android:name="idOffer"
+            app:argType="integer" />
+        <argument
+            android:name="imageCompany"
+            app:argType="string" />
+        <argument
+            android:name="nameCompany"
+            app:argType="string" />
+        <argument
+            android:name="dicCategory"
+            app:argType="string" />
+        <argument
+            android:name="nameCategory"
+            app:argType="string" />
+        <argument
+            android:name="priceOffer"
+            app:argType="string" />
+        <argument
+            android:name="descriptionOrder"
+            app:argType="string" />
+        <argument
+            android:name="orderNo"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/showCompanyFragment"
+        android:name="com.ksa.agence.ui.fragment.home.ShowCompanyFragment"
+        android:label="ShowCompanyFragment" >
+        <argument
+            android:name="idCompany"
+            app:argType="integer" />
+        <argument
+            android:name="flage"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_showCompanyFragment_to_quickOrderFragment"
+            app:destination="@id/quickOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quickOrderFragment"
+        android:name="com.ksa.agence.ui.fragment.home.QuickOrderFragment"
+        android:label="QuickOrderFragment" >
+        <argument
+            android:name="idOffer"
+            app:argType="integer" />
+        <argument
+            android:name="idService"
+            app:argType="integer"
+           />
+        <argument
+            android:name="idCompany"
+            app:argType="integer"
+            />
+        <argument
+            android:name="type"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/showOrderFragment"
+        android:name="com.ksa.agence.ui.fragment.home.ShowOrderFragment"
+        android:label="ShowOrderFragment" >
+        <argument
+            android:name="idOrder"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_showOrderFragment_to_ratingCompanyFragment"
+            app:destination="@id/ratingCompanyFragment" />
+        <action
+            android:id="@+id/action_showOrderFragment_to_offerDetailsFragment"
+            app:destination="@id/offerDetailsFragment" />
+        <action
+            android:id="@+id/action_showOrderFragment_to_conversationFragment"
+            app:destination="@id/conversationFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/bottomSheetPaymentFragment"
+        android:name="com.ksa.agence.ui.dialog.BottomSheetPaymentFragment"
+        android:label="BottomSheetPaymentFragment" >
+        <action
+            android:id="@+id/action_bottomSheetPaymentFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/myProfileFragment"
+        android:name="com.ksa.agence.ui.fragment.auth.MyProfileFragment"
+        android:label="MyProfileFragment" />
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="com.ksa.agence.ui.fragment.setting.FavouritesFragment"
+        android:label="FavouritesFragment" >
+        <action
+            android:id="@+id/action_favouritesFragment_to_showCompanyFragment"
+            app:destination="@id/showCompanyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ratingCompanyFragment"
+        android:name="com.ksa.agence.ui.fragment.home.RatingCompanyFragment"
+        android:label="RatingCompanyFragment" >
+        <argument
+            android:name="idOrder"
+            app:argType="integer" />
+        <argument
+            android:name="idCompany"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_ratingCompanyFragment_to_showOrderFragment"
+            app:destination="@id/showOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/showSreviesFragment"
+        android:name="com.ksa.agence.ui.fragment.home.ShowSreviesFragment"
+        android:label="ShowSreviesFragment" >
+        <argument
+            android:name="idServise"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_showSreviesFragment_to_showCompanyFragment"
+            app:destination="@id/showCompanyFragment" />
+        <argument
+            android:name="flage"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.ksa.agence.ui.fragment.payment.PaymentFragment"
+        android:label="PaymentFragment" >
+        <argument
+            android:name="urlPay"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/conversationFragment"
+        android:name="com.ksa.agence.ui.fragment.chat.ConversationFragment"
+        android:label="ConversationFragment" >
+        <argument
+            android:name="idCompany"
+            app:argType="integer" />
+        <argument
+            android:name="orderNO"
+            app:argType="string" />
+        <argument
+            android:name="CategoryName"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="nameCompany"
+            app:argType="string" />
+        <argument
+            android:name="imageCompany"
+            app:argType="string" />
+
+        <argument
+            android:name="idOrder"
+            app:argType="integer" />
+        <argument
+            android:name="flag"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="com.ksa.agence.ui.fragment.home.FilterFragment"
+        android:label="FilterFragment" >
+        <action
+            android:id="@+id/action_filterFragment_to_showCompanyFragment"
+            app:destination="@id/showCompanyFragment" />
+    </fragment>
+</navigation>

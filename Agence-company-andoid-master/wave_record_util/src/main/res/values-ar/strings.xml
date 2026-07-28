@@ -1,0 +1,12 @@
+<resources>
+    <string name="_00_00">٠٠:٠٠</string>
+
+    <string name="alert_pr">يتطلب الوصول إلى جميع الملفات إذنًا للتأكد من تحميل الملفات التي طلبتها.\n هل توافق على منح هذا الإذن؟</string>
+    <string name="allow">مسموح</string>
+    <string name="alert">تنبيه</string>
+    <string name="permission_denied">إذن مرفوض</string>
+    <string name="reject_permission">إذا رفضت الإذن، فلن تتمكن من استخدام هذه الخدمة \n يرجى تشغيل الأذونات في [الإعداد]</string>
+    <string name="setting">Setting</string>
+    <string name="cancel">Cancel</string>
+    <string name="the_sound_will_not_be_changed_without_permission">The sound will not be changed without permission.</string>
+</resources>

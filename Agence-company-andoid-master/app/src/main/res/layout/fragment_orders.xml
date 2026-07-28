@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <HorizontalScrollView
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <LinearLayout
+                android:padding="@dimen/_4sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+
+<!--                //  in-progress,completed,canceled,pending-->
+
+                <LinearLayout
+                android:id="@+id/btn_pending"
+                    android:layout_width="wrap_content"
+                    android:paddingHorizontal="@dimen/_8sdp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_bottom"
+                android:gravity="center">
+
+
+
+
+                <TextView
+                    android:id="@+id/tv_pending"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/somar_bold"
+                    android:padding="@dimen/_6sdp"
+                    android:text="@string/pending"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_18ssp" />
+
+
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/btn_in_progress"
+                android:layout_width="wrap_content"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+
+
+                <TextView
+                    android:id="@+id/tv_in_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/somar_bold"
+                    android:padding="@dimen/_6sdp"
+                    android:text="@string/in_progress"
+                    android:textAlignment="center"
+                    android:textColor="@color/primary"
+                    android:textSize="@dimen/_18ssp" />
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/btn_completed"
+                android:layout_width="wrap_content"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+
+
+                <TextView
+                    android:id="@+id/tv_completed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/somar_bold"
+                    android:padding="@dimen/_6sdp"
+                    android:text="@string/completed"
+                    android:textAlignment="center"
+                    android:textColor="@color/primary"
+                    android:textSize="@dimen/_18ssp" />
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/btn_canceled"
+                android:layout_width="wrap_content"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+
+
+                <TextView
+                    android:id="@+id/tv_canceled"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/somar_bold"
+                    android:padding="@dimen/_6sdp"
+                    android:text="@string/canceled"
+                    android:textAlignment="center"
+                    android:textColor="@color/primary"
+                    android:textSize="@dimen/_18ssp" />
+
+
+            </LinearLayout>
+
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_all_order"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            tools:itemCount="20"
+            tools:listitem="@layout/item_all_order" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

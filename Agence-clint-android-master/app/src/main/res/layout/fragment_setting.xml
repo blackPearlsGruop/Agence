@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:fillViewport="true"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_user_login"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:src="@drawable/backround_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/_16sdp" />
+
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/somar_bold"
+                android:text="فاطمة مصطفى"
+                android:textColor="@color/text"
+                android:textSize="@dimen/_24ssp"
+                android:layout_gravity="center"
+                android:textAlignment="center"/>
+
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_my_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_personly"
+                android:fontFamily="@font/somar_bold"
+                android:textSize="@dimen/_18ssp"
+                android:textColor="@color/grey_bold"
+                android:padding="@dimen/_8sdp"
+                android:drawableStart="@drawable/icon_my_profile"
+                android:drawableEnd="@drawable/icon_back_setting"
+                android:drawablePadding="@dimen/_8sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:background="@drawable/shape_text_border"/>
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/the_language"
+                android:fontFamily="@font/somar_bold"
+                android:textSize="@dimen/_18ssp"
+                android:textColor="@color/grey_bold"
+                android:padding="@dimen/_8sdp"
+                android:drawableStart="@drawable/icon_language"
+                android:drawableEnd="@drawable/icon_back_setting"
+                android:drawablePadding="@dimen/_8sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/shape_text_border"/>
+
+
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_favorite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/favorite"
+                android:fontFamily="@font/somar_bold"
+                android:textSize="@dimen/_18ssp"
+                android:textColor="@color/grey_bold"
+                android:padding="@dimen/_8sdp"
+                android:drawableStart="@drawable/icon_favorite"
+                android:drawableEnd="@drawable/icon_back_setting"
+                android:drawablePadding="@dimen/_8sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/shape_text_border"/>
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_previous_invoices"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/previous_invoices"
+                android:fontFamily="@font/somar_bold"
+                android:textSize="@dimen/_18ssp"
+                android:textColor="@color/grey_bold"
+                android:padding="@dimen/_8sdp"
+                android:drawableStart="@drawable/icon_park_outline_bill"
+                android:drawableEnd="@drawable/icon_back_setting"
+                android:drawablePadding="@dimen/_8sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/shape_text_border"/>
+
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_connect_with_us"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/connect_with_us"
+                android:fontFamily="@font/somar_bold"
+                android:textSize="@dimen/_18ssp"
+                android:textColor="@color/grey_bold"
+                android:padding="@dimen/_8sdp"
+                android:drawableStart="@drawable/icon_phone"
+                android:drawableEnd="@drawable/icon_back_setting"
+                android:drawablePadding="@dimen/_8sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/shape_text_border"/>
+
+
+
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_terms_and_conditions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/terms_and_conditions"
+                android:fontFamily="@font/somar_bold"
+                android:textSize="@dimen/_18ssp"
+                android:textColor="@color/grey_bold"
+                android:padding="@dimen/_8sdp"
+                android:drawableStart="@drawable/icon_md_paper"
+                android:drawableEnd="@drawable/icon_back_setting"
+                android:drawablePadding="@dimen/_8sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/shape_text_border"/>
+
+
+
+
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_delete_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/delete_account"
+                android:fontFamily="@font/somar_bold"
+                android:textSize="@dimen/_18ssp"
+                android:textColor="@color/grey_bold"
+                android:padding="@dimen/_8sdp"
+                android:drawableStart="@drawable/icon_delete_acount"
+                android:drawableEnd="@drawable/icon_back_setting"
+                android:drawablePadding="@dimen/_8sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/shape_text_border"/>
+
+
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_log_out"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/logout"
+                android:fontFamily="@font/somar_bold"
+                android:textSize="@dimen/_18ssp"
+                android:textColor="@color/grey_bold"
+                android:padding="@dimen/_8sdp"
+                android:drawableStart="@drawable/icon_log_out_outline"
+                android:drawableEnd="@drawable/icon_back_setting"
+                android:drawablePadding="@dimen/_8sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/shape_text_border"/>
+
+
+
+
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+</layout>

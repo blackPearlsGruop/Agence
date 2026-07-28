@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_130sdp"
+            android:layout_margin="@dimen/_16sdp"
+            app:cardCornerRadius="@dimen/_16sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/iv_cover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_logo_company"
+            android:layout_width="@dimen/_85sdp"
+            android:layout_height="@dimen/_85sdp"
+            android:elevation="@dimen/_2sdp"
+            android:src="@color/ted_image_picker_scroller"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView"
+            app:layout_constraintEnd_toEndOf="@+id/cardView"
+            app:layout_constraintStart_toStartOf="@+id/cardView"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+
+        <TextView
+            android:id="@+id/tv_name_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:fontFamily="@font/somar_bold"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_22ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_logo_company" />
+
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:progressTint="#FEB702"
+            android:rating="2"
+            android:scaleX="1.0"
+            android:scaleY="1.0"
+            android:stepSize="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name_company" />
+
+
+        <TextView
+            android:id="@+id/tv_count_rat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/somar_regular"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18ssp"
+            android:layout_marginStart="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
+            app:layout_constraintStart_toEndOf="@+id/ratingBar"
+            app:layout_constraintTop_toTopOf="@+id/ratingBar" />
+
+
+        <TextView
+            android:id="@+id/tv_address_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/icon_location"
+            android:drawablePadding="@dimen/_4sdp"
+            android:fontFamily="@font/somar_regular"
+            android:text="الرياض , السعودية"
+            android:textAlignment="center"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:drawableTint="@color/white"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_count_rat" />
+
+
+        <TextView
+            android:id="@+id/title_brief"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/somar_bold"
+            android:text="@string/brief"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_20ssp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginStart="@dimen/_16sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_address_company" />
+
+
+        <View
+            android:id="@+id/view_brief"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/title_brief"
+            app:layout_constraintStart_toStartOf="@+id/title_brief"
+            app:layout_constraintTop_toBottomOf="@+id/title_brief" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView_brief"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            app:cardCornerRadius="@dimen/_6sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_brief">
+
+
+            <TextView
+                android:id="@+id/tv_brief"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textSize="@dimen/_18ssp"
+                android:lines="4"
+                android:fontFamily="@font/somar_regular"
+                android:layout_margin="@dimen/_8sdp"/>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/title_our_business"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:fontFamily="@font/somar_bold"
+            android:text="@string/our_business"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_20ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView_brief" />
+
+
+        <View
+            android:id="@+id/view_our_business"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/title_our_business"
+            app:layout_constraintStart_toStartOf="@+id/title_our_business"
+            app:layout_constraintTop_toBottomOf="@+id/title_our_business" />
+
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/slider_our_business"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_100sdp"
+                android:scaleType="fitXY"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:src="@drawable/view_pager_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_our_business" />
+
+
+
+            <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                android:id="@+id/dotsIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:dotsColor="#1AFFFFFF"
+                app:dotsCornerRadius="8dp"
+                app:dotsSize="8dp"
+                app:dotsSpacing="2dp"
+                app:dotsWidthFactor="3.0"
+                app:selectedDotColor="@color/white"
+                app:progressMode="true"
+                android:layout_marginTop="@dimen/_4sdp"
+                app:layout_constraintEnd_toEndOf="@+id/slider_our_business"
+                app:layout_constraintStart_toStartOf="@+id/slider_our_business"
+                app:layout_constraintTop_toBottomOf="@+id/slider_our_business" />
+
+            <TextView
+                android:id="@+id/title_services"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:fontFamily="@font/somar_bold"
+                android:text="@string/services"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_20ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dotsIndicator" />
+
+
+            <View
+                android:id="@+id/view_services"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/title_services"
+                app:layout_constraintStart_toStartOf="@+id/title_services"
+                app:layout_constraintTop_toBottomOf="@+id/title_services" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_services"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:itemCount="1"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_services"
+                tools:listitem="@layout/item_services" />
+
+
+            <TextView
+                android:id="@+id/title_offers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:fontFamily="@font/somar_bold"
+                android:text="@string/offers"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_20ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_services" />
+
+
+            <View
+                android:id="@+id/view_offers"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/title_offers"
+                app:layout_constraintStart_toStartOf="@+id/title_offers"
+                app:layout_constraintTop_toBottomOf="@+id/title_offers" />
+
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_offers"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/view_offers"
+                tools:listitem="@layout/item_offers_company"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                tools:itemCount="20"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginTop="@dimen/_16sdp"
+                app:spanCount="1"/>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_send_a_special_request"
+                android:layout_width="0dp"
+                style="@style/bottom"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginBottom="@dimen/_16sdp"
+                android:backgroundTint="@color/white"
+                android:text="@string/send_a_special_request"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:textColor="@color/primary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_favorite"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_offers" />
+
+
+            <ImageView
+                android:id="@+id/iv_favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:src="@drawable/icon_bottom_nav_icons"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_send_a_special_request"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btn_send_a_special_request" />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>
