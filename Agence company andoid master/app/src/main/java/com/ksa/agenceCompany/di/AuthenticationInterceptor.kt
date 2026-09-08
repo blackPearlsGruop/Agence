@@ -74,10 +74,20 @@ class AuthenticationInterceptor(private val context: Context) : Interceptor {
 
         val request = requestBuilder.build()
 
-        return runBlocking {
-            retryIO {
-                chain.proceed(request)
+        return try {
+            runBlocking {
+                retryIO {
+                    chain.proceed(request)
+                }
             }
+        } catch (e: Exception) {
+            Response.Builder()
+                .body("لا يوجد اتصال".toResponseBody(null))
+                .protocol(Protocol.HTTP_2)
+                .message("لا يوجد اتصال")
+                .request(chain.request())
+                .code(0)
+                .build()
         }
     }
 }
@@ -110,4 +120,3 @@ suspend fun <T> retryIO(
     }
     return block() // المحاولة الأخيرة
 }
-

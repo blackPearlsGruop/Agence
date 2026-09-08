@@ -21,7 +21,7 @@ object Notifications {
 
                 override fun onPermissionDenied(deniedPermissions: List<String?>) {
                     this@showNotificationPermission.confirmStringDialog(
-                        title = R.string.notification_message, actionTitle = R.string.confirm, true
+                        title = R.string.notification_message, actionTitle = R.string.confirm, false
                     ) {
                         this@showNotificationPermission.showNotificationPermission()
                     }

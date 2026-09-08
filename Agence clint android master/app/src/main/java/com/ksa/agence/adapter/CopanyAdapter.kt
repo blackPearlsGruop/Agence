@@ -38,15 +38,27 @@ class CopanyAdapter(
             AnimationUtils.loadAnimation(holder.itemView.context, android.R.anim.fade_in)
         holder.itemView.startAnimation(animation)
         var model = listData[position]
-//        onLoadImageFromUrl(
-//            context, model.company_logo.toString(), holder.binding.ivLogoCompany
-//        )
+        onLoadImageFromUrl(
+            context, model.company_logo.toString(), holder.binding.ivLogoCompany
+        )
 
         holder.binding.tvNameCompany.text = model.title
         holder.binding.ratingBar.rating = model.avg_rate!!.toFloat()
         holder.binding.tvCountRat.text = ""+model.rate_count!!
-        holder.binding.tvNameCategory.text = model.categories!![0].title
+        val badgeText = model.categories!![0].title
+        holder.binding.tvNameCategory.text = badgeText
+        // Badge colour follows Figma: orange for "Top Rated"/"New", blue for "Fast Delivery"
+        val badgeColor = if (badgeText == "تسليم سريع" || badgeText == "Fast Delivery")
+            context.getColor(R.color.agence_blue) else context.getColor(R.color.agence_orange)
+        holder.binding.tvNameCategory.backgroundTintList = android.content.res.ColorStateList.valueOf(badgeColor)
         holder.binding.tvDicCompany.text = model.description
+
+        if (!model.address.isNullOrBlank()) {
+            holder.binding.tvCompanyLocation.text = model.address
+            holder.binding.tvCompanyLocation.visibility = View.VISIBLE
+        } else {
+            holder.binding.tvCompanyLocation.visibility = View.GONE
+        }
 
         if (model.is_added_favourite==false)
         {
@@ -56,13 +68,16 @@ class CopanyAdapter(
             holder.binding.ivFavorite.setImageResource(R.drawable.icon_action_favorite)
 
         }
-        holder.binding.ivFavorite.setOnClickListener {
-            company.clickItemAddCompanyFav(model.id!!,position)
-        }
 
-
-        holder.binding.btnShow.setOnClickListener {
+        // Card redesigned to match Figma: the whole row is tappable (opens the
+        // provider), long-press toggles favorite (kept working, just no longer
+        // a separate visible button/heart icon on the card itself).
+        holder.binding.rootCompanyCard.setOnClickListener {
             company.clickItemCompany(model.id!!,"")
+        }
+        holder.binding.rootCompanyCard.setOnLongClickListener {
+            company.clickItemAddCompanyFav(model.id!!,position)
+            true
         }
 
 

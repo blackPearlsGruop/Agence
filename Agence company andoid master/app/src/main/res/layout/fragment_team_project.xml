@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/agence_bg">
+
+        <!-- Slim header: back + title + 3-dot menu -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:paddingTop="@dimen/_14sdp"
+            android:paddingBottom="@dimen/_10sdp">
+
+            <ImageView
+                android:id="@+id/iv_back_team"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:padding="@dimen/_7sdp"
+                android:background="@drawable/bg_agence_list_group"
+                android:src="@drawable/icon_back_setting"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_team_project_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="@string/team_project_title"
+                android:fontFamily="@font/somar_bold"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/agence_black"
+                app:layout_constraintStart_toEndOf="@id/iv_back_team"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                android:id="@+id/btn_team_menu"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:padding="@dimen/_7sdp"
+                android:background="@drawable/bg_agence_list_group"
+                android:src="@drawable/icon_more_vert"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:fillViewport="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="@dimen/_16sdp"
+                android:paddingBottom="@dimen/_24sdp">
+
+                <!-- Project header card (blue) -->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:padding="@dimen/_16sdp"
+                    android:background="@drawable/bg_wallet_card">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/team_formed_status"
+                        android:fontFamily="@font/somar_regular"
+                        android:textSize="@dimen/_9ssp"
+                        android:textColor="#99FFFFFF"
+                        android:paddingHorizontal="@dimen/_8sdp"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:background="#1FFFFFFF"/>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp">
+
+                        <TextView
+                            android:id="@+id/tv_project_name"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/somar_bold"
+                            android:textSize="@dimen/_15ssp"
+                            android:textColor="@color/white"
+                            tools:text="هوية العلامة التجارية والتموضع"/>
+
+                        <ImageView
+                            android:id="@+id/btn_edit_project_name"
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:layout_marginStart="@dimen/_6sdp"
+                            android:src="@drawable/icon_edit_pencil"
+                            android:tint="@android:color/white"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:text="شركة رياض التقنية · خالد المنصوري"
+                        android:fontFamily="@font/somar_regular"
+                        android:textSize="@dimen/_11ssp"
+                        android:textColor="#A6FFFFFF"/>
+
+                    <LinearLayout
+                        android:id="@+id/layout_member_avatars"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_12sdp"/>
+
+                </LinearLayout>
+
+                <!-- 3 quick-access cards -->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:id="@+id/btn_payment_distribution"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:paddingVertical="@dimen/_14sdp"
+                        android:background="@drawable/bg_agence_list_group">
+
+                        <ImageView
+                            android:layout_width="@dimen/_34sdp"
+                            android:layout_height="@dimen/_34sdp"
+                            android:padding="@dimen/_8sdp"
+                            android:background="@drawable/bg_circle_orange_light"
+                            android:src="@drawable/icon_park_outline_bill"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_6sdp"
+                            android:text="@string/payment_distribution"
+                            android:fontFamily="@font/somar_semi_bold"
+                            android:textSize="@dimen/_9ssp"
+                            android:gravity="center"
+                            android:textColor="@color/agence_black"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_project_files"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:paddingVertical="@dimen/_14sdp"
+                        android:background="@drawable/bg_agence_list_group">
+
+                        <ImageView
+                            android:layout_width="@dimen/_34sdp"
+                            android:layout_height="@dimen/_34sdp"
+                            android:padding="@dimen/_8sdp"
+                            android:background="@drawable/bg_circle_blue_light"
+                            android:src="@drawable/icon_folder"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_6sdp"
+                            android:text="@string/project_files"
+                            android:fontFamily="@font/somar_semi_bold"
+                            android:textSize="@dimen/_9ssp"
+                            android:gravity="center"
+                            android:textColor="@color/agence_black"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_team_chat"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:paddingVertical="@dimen/_14sdp"
+                        android:background="@drawable/bg_agence_list_group">
+
+                        <ImageView
+                            android:layout_width="@dimen/_34sdp"
+                            android:layout_height="@dimen/_34sdp"
+                            android:padding="@dimen/_8sdp"
+                            android:background="@drawable/bg_circle_green_light"
+                            android:src="@drawable/icon_chat"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_6sdp"
+                            android:text="@string/team_chat"
+                            android:fontFamily="@font/somar_semi_bold"
+                            android:textSize="@dimen/_9ssp"
+                            android:gravity="center"
+                            android:textColor="@color/agence_black"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Progress card -->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:padding="@dimen/_14sdp"
+                    android:background="@drawable/bg_agence_list_group">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/project_progress"
+                            android:fontFamily="@font/somar_semi_bold"
+                            android:textSize="@dimen/_11ssp"
+                            android:textColor="@color/agence_muted"/>
+
+                        <TextView
+                            android:id="@+id/tv_progress_percent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/somar_bold"
+                            android:textSize="@dimen/_14ssp"
+                            android:textColor="@color/primary"
+                            tools:text="40%"/>
+
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_6sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:background="@drawable/bg_progress_track">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:id="@+id/view_progress_fill"
+                                android:layout_width="0dp"
+                                android:layout_weight="40"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/bg_progress_fill"/>
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_weight="60"
+                                android:layout_height="match_parent"/>
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/start_label"
+                                android:fontFamily="@font/somar_regular"
+                                android:textSize="@dimen/_9ssp"
+                                android:textColor="@color/agence_muted"/>
+
+                            <TextView
+                                android:id="@+id/tv_start_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_3sdp"
+                                android:paddingHorizontal="@dimen/_8sdp"
+                                android:paddingVertical="@dimen/_4sdp"
+                                android:drawableStart="@drawable/icon_calendar"
+                                android:drawablePadding="@dimen/_4sdp"
+                                android:background="@drawable/bg_pill_blue_light"
+                                android:fontFamily="@font/somar_semi_bold"
+                                android:textSize="@dimen/_10ssp"
+                                android:textColor="@color/primary"
+                                tools:text="٢ يوليو ٢٠٢٦"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:gravity="end"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/delivery_label"
+                                android:fontFamily="@font/somar_regular"
+                                android:textSize="@dimen/_9ssp"
+                                android:textColor="@color/agence_muted"/>
+
+                            <TextView
+                                android:id="@+id/tv_delivery_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_3sdp"
+                                android:paddingHorizontal="@dimen/_8sdp"
+                                android:paddingVertical="@dimen/_4sdp"
+                                android:drawableStart="@drawable/icon_calendar"
+                                android:drawablePadding="@dimen/_4sdp"
+                                android:background="@drawable/bg_pill_orange_light"
+                                android:fontFamily="@font/somar_semi_bold"
+                                android:textSize="@dimen/_10ssp"
+                                android:textColor="@color/secondary"
+                                tools:text="٣٠ يوليو ٢٠٢٦"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Team Members -->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:padding="@dimen/_14sdp"
+                    android:background="@drawable/bg_agence_list_group">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/team_members_title"
+                            android:fontFamily="@font/somar_semi_bold"
+                            android:textSize="@dimen/_11ssp"
+                            android:textColor="@color/agence_muted"/>
+
+                        <ImageView
+                            android:id="@+id/btn_add_member"
+                            android:layout_width="@dimen/_24sdp"
+                            android:layout_height="@dimen/_24sdp"
+                            android:padding="@dimen/_5sdp"
+                            android:background="@drawable/bg_circle_blue_light"
+                            android:src="@drawable/icon_plus_circle_blue"/>
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_team_members"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:nestedScrollingEnabled="false"/>
+
+                </LinearLayout>
+
+                <!-- Project Tasks -->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:padding="@dimen/_14sdp"
+                    android:background="@drawable/bg_agence_list_group">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/project_tasks_title"
+                            android:fontFamily="@font/somar_semi_bold"
+                            android:textSize="@dimen/_11ssp"
+                            android:textColor="@color/agence_muted"/>
+
+                        <ImageView
+                            android:id="@+id/btn_add_task"
+                            android:layout_width="@dimen/_24sdp"
+                            android:layout_height="@dimen/_24sdp"
+                            android:padding="@dimen/_5sdp"
+                            android:background="@drawable/bg_circle_blue_light"
+                            android:src="@drawable/icon_plus_circle_blue"/>
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_project_tasks"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:nestedScrollingEnabled="false"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+</layout>

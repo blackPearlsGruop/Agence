@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/_2sdp">
+
+        <LinearLayout
+            android:id="@+id/layout_promo_bg"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/_18sdp"
+            android:background="@drawable/bg_promo_banner_1">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_promo_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/somar_bold"
+                    android:textSize="@dimen/_14ssp"
+                    android:textColor="@color/white"
+                    tools:text="عرض الأسبوع"/>
+
+                <TextView
+                    android:id="@+id/tv_promo_ad_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:paddingHorizontal="@dimen/_6sdp"
+                    android:paddingVertical="@dimen/_1sdp"
+                    android:text="AD"
+                    android:fontFamily="@font/somar_bold"
+                    android:textSize="@dimen/_7ssp"
+                    android:textColor="@color/agence_black"
+                    android:background="@color/agence_orange"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_promo_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:fontFamily="@font/somar_regular"
+                android:textSize="@dimen/_10ssp"
+                android:textColor="#CCFFFFFF"
+                tools:text="خصم 20% على أول طلب"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+</layout>

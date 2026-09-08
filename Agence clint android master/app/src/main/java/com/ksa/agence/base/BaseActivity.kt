@@ -73,40 +73,21 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
     }
 
     override fun attachBaseContext(newBase: Context) {
-        if (Locale.getDefault().language == "ar") {
-            var prefrence = PreferencesUtils(newBase)
-            applyOverrideConfiguration(
-                LocaleUtil.getLocalizedConfiguration(
-                    prefrence.getString(
-                        LANG,
-                        "ar"
-                    )!!
-                )
-            )
-            super.attachBaseContext(newBase)
-        } else {
-            var prefrence = PreferencesUtils(newBase)
-            applyOverrideConfiguration(
-                LocaleUtil.getLocalizedConfiguration(
-                    prefrence.getString(
-                        LANG,
-                        "en"
-                    )!!
-                )
-            )
-            super.attachBaseContext(newBase)
-        }
+        super.attachBaseContext(newBase)
 
+        val prefrence = PreferencesUtils(newBase)
+        val defaultLang = if (Locale.getDefault().language == "ar") "ar" else "en"
 
+        applyOverrideConfiguration(
+            LocaleUtil.getLocalizedConfiguration(
+                prefrence.getString(LANG, defaultLang)!!
+            )
+        )
     }
-
-
     fun showProgress(it: Boolean) {
         if (it) showProgressDialog()
         else hideProgressDialog()
-
     }
-
     fun showProgressDialog() {
         hideProgressDialog()
         val alertDialogBuilder = AlertDialog.Builder(this).setCancelable(false)

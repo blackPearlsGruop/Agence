@@ -10,118 +10,347 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
-
+        android:background="@color/agence_bg"
+        android:fillViewport="true"
+        android:scrollbars="none">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/_24sdp">
 
+            <!-- Language toggle chip -->
+            <LinearLayout
+                android:id="@+id/btn_toggle_lang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:background="@drawable/bg_agence_lang_chip"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/_12sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_12sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
+                <ImageView
+                    android:layout_width="@dimen/_11sdp"
+                    android:layout_height="@dimen/_11sdp"
+                    android:src="@drawable/ic_globe" />
+
+                <TextView
+                    android:id="@+id/tv_lang_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:fontFamily="@font/somar_regular"
+                    android:text="AR"
+                    android:textColor="@color/agence_muted"
+                    android:textSize="@dimen/_10ssp" />
+
+            </LinearLayout>
+
+            <!-- Logo -->
             <ImageView
                 android:id="@+id/imageViewUser"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_50sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:src="@drawable/logo_splash"
+                android:background="@android:color/transparent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_toggle_lang" />
 
-
+            <!-- Heading -->
             <TextView
-                android:id="@+id/tv_nameUser"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_welcome"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_24sdp"
                 android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_24sdp"
                 android:fontFamily="@font/somar_bold"
-                android:text="@string/sign_in"
-                android:textColor="@color/text"
-                android:textSize="@dimen/_24ssp"
+                android:text="@string/welcome_back"
+                android:textColor="@color/agence_black"
+                android:textSize="@dimen/_20ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageViewUser" />
 
+            <TextView
+                android:id="@+id/tv_sign_in_desc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_24sdp"
+                android:fontFamily="@font/somar_regular"
+                android:text="@string/sign_in_desc"
+                android:textColor="@color/agence_muted"
+                android:textSize="@dimen/_11ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_welcome" />
 
+            <!-- Phone / email field (kept as tv_mobile_number so LoginFragment.kt logic still works) -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:layout_marginEnd="@dimen/_16sdp"
-                android:background="@drawable/shape_text"
-                android:padding="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_24sdp"
+                android:background="@drawable/bg_agence_input"
+                android:paddingStart="@dimen/_14sdp"
+                android:paddingTop="@dimen/_4sdp"
+                android:paddingEnd="@dimen/_14sdp"
+                android:paddingBottom="@dimen/_6sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_nameUser">
+                app:layout_constraintTop_toBottomOf="@+id/tv_sign_in_desc">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:fontFamily="@font/somar_regular"
+                    android:text="@string/email_or_phone"
+                    android:textColor="@color/agence_muted"
+                    android:textSize="@dimen/_9ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:drawablePadding="@dimen/_6sdp"
                     android:fontFamily="@font/somar_semi_bold"
                     android:text="+966"
-                    android:textSize="@dimen/_16ssp"
+                    android:textColor="@color/agence_black"
+                    android:textSize="@dimen/_14ssp"
                     app:drawableStartCompat="@drawable/icon_ksa"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <View
                     android:id="@+id/view"
                     android:layout_width="0.6dp"
-                    android:layout_height="@dimen/_28sdp"
+                    android:layout_height="@dimen/_20sdp"
                     android:layout_marginStart="@dimen/_8sdp"
-                    android:background="@color/text"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:background="@color/agence_border"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView2"
                     app:layout_constraintStart_toEndOf="@+id/textView2"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@+id/textView2" />
 
                 <EditText
                     android:id="@+id/tv_mobile_number"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_18sdp"
+                    android:layout_marginBottom="@dimen/_2sdp"
                     android:background="@null"
-                    android:maxLength="9"
+                    android:drawableEnd="@drawable/icon_phone"
+                    android:drawablePadding="@dimen/_4sdp"
                     android:fontFamily="@font/somar_regular"
                     android:hint="@string/mobile_number"
                     android:inputType="phone"
-                    android:drawablePadding="@dimen/_4sdp"
-                    android:drawableEnd="@drawable/icon_phone"
-                    android:textSize="@dimen/_16ssp"
+                    android:maxLength="9"
+                    android:textColor="@color/agence_black"
+                    android:textSize="@dimen/_14ssp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/view"
                     app:layout_constraintTop_toTopOf="parent" />
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Password field (visual only — current backend uses OTP, not password; wire up if/when backend adds password login) -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_24sdp"
+                android:background="@drawable/bg_agence_input"
+                android:paddingStart="@dimen/_14sdp"
+                android:paddingTop="@dimen/_4sdp"
+                android:paddingEnd="@dimen/_14sdp"
+                android:paddingBottom="@dimen/_6sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:fontFamily="@font/somar_regular"
+                    android:text="@string/password"
+                    android:textColor="@color/agence_muted"
+                    android:textSize="@dimen/_9ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/et_password"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_18sdp"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:background="@null"
+                    android:fontFamily="@font/somar_regular"
+                    android:hint="••••••••"
+                    android:inputType="textPassword"
+                    android:textColor="@color/agence_black"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <!-- Forgot password -->
+            <TextView
+                android:id="@+id/tv_forgot_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_24sdp"
+                android:fontFamily="@font/somar_semi_bold"
+                android:text="@string/forgot_password"
+                android:textColor="@color/agence_blue"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_password" />
+
+            <!-- Sign in button (kept id btn_sign_in — LoginFragment.kt already listens on it) -->
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_sign_in"
-                style="@style/bottom"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_24sdp"
                 android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_24sdp"
+                android:background="@drawable/bg_agence_btn_primary"
+                android:fontFamily="@font/somar_bold"
+                android:paddingTop="@dimen/_12sdp"
+                android:paddingBottom="@dimen/_12sdp"
                 android:text="@string/sign_in"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_forgot_password" />
 
+            <!-- Guest button -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_guest"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_24sdp"
+                android:background="@drawable/bg_agence_btn_guest"
+                android:fontFamily="@font/somar_semi_bold"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:text="@string/visit_as_guest"
+                android:textAllCaps="false"
+                android:textColor="@color/agence_muted"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_sign_in" />
 
+            <!-- Divider: —— or —— -->
+            <View
+                android:id="@+id/divider_left"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:background="@color/agence_border"
+                app:layout_constraintEnd_toStartOf="@+id/tv_or"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_guest" />
+
+            <TextView
+                android:id="@+id/tv_or"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:fontFamily="@font/somar_regular"
+                android:text="@string/or_text"
+                android:textColor="@color/agence_muted"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toStartOf="@+id/divider_right"
+                app:layout_constraintStart_toEndOf="@+id/divider_left"
+                app:layout_constraintTop_toTopOf="@+id/divider_left" />
+
+            <View
+                android:id="@+id/divider_right"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginEnd="@dimen/_24sdp"
+                android:background="@color/agence_border"
+                app:layout_constraintBottom_toBottomOf="@+id/divider_left"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_or"
+                app:layout_constraintTop_toTopOf="@+id/divider_left" />
+
+            <!-- Google button -->
+            <LinearLayout
+                android:id="@+id/btn_google"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:layout_marginEnd="@dimen/_24sdp"
+                android:background="@drawable/bg_agence_btn_google"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/_11sdp"
+                android:paddingBottom="@dimen/_11sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider_left">
+
+                <ImageView
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:src="@drawable/ic_google" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:fontFamily="@font/somar_semi_bold"
+                    android:text="@string/continue_with_google"
+                    android:textColor="@color/agence_black"
+                    android:textSize="@dimen/_12ssp" />
+
+            </LinearLayout>
+
+            <!-- Create account footer -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_18sdp"
                 android:gravity="center"
-                android:layout_marginTop="@dimen/_24sdp"
-                app:layout_constraintEnd_toEndOf="@+id/btn_sign_in"
-                app:layout_constraintStart_toStartOf="@+id/btn_sign_in"
-                app:layout_constraintTop_toBottomOf="@+id/btn_sign_in">
-
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/btn_google"
+                app:layout_constraintStart_toStartOf="@+id/btn_google"
+                app:layout_constraintTop_toBottomOf="@+id/btn_google">
 
                 <TextView
                     android:id="@+id/textView4"
@@ -129,11 +358,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/somar_regular"
                     android:text="@string/don_t_have_an_account"
-                    android:textColor="@color/text"
-                    android:textSize="@dimen/_16ssp"
-                    app:layout_constraintStart_toStartOf="@+id/btn_sign_in"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_sign_in" />
-
+                    android:textColor="@color/agence_muted"
+                    android:textSize="@dimen/_12ssp" />
 
                 <TextView
                     android:id="@+id/tv_register_now"
@@ -142,18 +368,12 @@
                     android:layout_marginStart="@dimen/_4sdp"
                     android:fontFamily="@font/somar_bold"
                     android:text="@string/register_now"
-                    android:textColor="@color/secondary"
-                    android:textSize="@dimen/_16ssp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView4"
-                    app:layout_constraintStart_toEndOf="@+id/textView4"
-                    app:layout_constraintTop_toTopOf="@+id/textView4" />
-
+                    android:textColor="@color/agence_blue"
+                    android:textSize="@dimen/_12ssp" />
 
             </LinearLayout>
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </ScrollView>
 </layout>

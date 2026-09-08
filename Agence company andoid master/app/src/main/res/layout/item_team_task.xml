@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/_6sdp">
+
+    <FrameLayout
+        android:id="@+id/btn_task_toggle"
+        android:layout_width="@dimen/_22sdp"
+        android:layout_height="@dimen/_22sdp"
+        android:background="@drawable/bg_task_checkbox_border">
+
+        <ImageView
+            android:id="@+id/iv_task_check"
+            android:layout_width="@dimen/_12sdp"
+            android:layout_height="@dimen/_12sdp"
+            android:layout_gravity="center"
+            android:src="@drawable/icon_check_white_small"
+            android:visibility="gone"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_task_avatar"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:gravity="center"
+        android:background="@drawable/bg_avatar_circle"
+        android:fontFamily="@font/somar_bold"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_8ssp"
+        tools:text="FA"/>
+
+    <TextView
+        android:id="@+id/tv_task_text"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:fontFamily="@font/somar_regular"
+        android:textColor="@color/agence_black"
+        android:textSize="@dimen/_12ssp"
+        tools:text="Finalize logo concept directions"/>
+
+    <ImageView
+        android:id="@+id/btn_task_edit"
+        android:layout_width="@dimen/_22sdp"
+        android:layout_height="@dimen/_22sdp"
+        android:padding="@dimen/_5sdp"
+        android:background="@drawable/bg_circle_blue_light"
+        android:src="@drawable/icon_edit_pencil"/>
+
+    <ImageView
+        android:id="@+id/btn_task_delete"
+        android:layout_width="@dimen/_22sdp"
+        android:layout_height="@dimen/_22sdp"
+        android:layout_marginStart="@dimen/_6sdp"
+        android:padding="@dimen/_5sdp"
+        android:background="@drawable/bg_circle_delete"
+        android:src="@drawable/icon_trash_small"/>
+
+</LinearLayout>

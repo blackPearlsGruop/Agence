@@ -1,134 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-
-    </data>
-
-    <androidx.core.widget.NestedScrollView
-        android:fillViewport="false"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout5"
-                android:layout_width="0dp"
-                android:visibility="gone"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_layout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/slider_viewPager2"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_90sdp"
-                    android:layout_marginHorizontal="@dimen/_16sdp"
-                    android:layout_marginBottom="@dimen/_16sdp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/view_pager_image"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
+<layout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data> </data>
+    <androidx.core.widget.NestedScrollView android:fillViewport="false" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/agence_bg">
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <!--  Header: greeting + logo (visual only, matches Figma)  -->
+            <TextView android:id="@+id/tv_good_morning" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/_16sdp" android:layout_marginTop="@dimen/_14sdp" android:fontFamily="@font/somar_regular" android:text="@string/good_morning" android:textColor="@color/agence_muted" android:textSize="@dimen/_10ssp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+            <TextView android:id="@+id/tv_find_marketer" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="@dimen/_16sdp" android:layout_marginTop="@dimen/_2sdp" android:layout_marginEnd="@dimen/_8sdp" android:fontFamily="@font/somar_bold" android:text="@string/find_marketer" android:textColor="@color/agence_black" android:textSize="@dimen/_16ssp" app:layout_constraintEnd_toStartOf="@+id/iv_home_logo" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/tv_good_morning"/>
+            <ImageView android:id="@+id/iv_home_logo" android:layout_width="@dimen/_32sdp" android:layout_height="@dimen/_32sdp" android:layout_marginEnd="@dimen/_16sdp" android:layout_marginTop="@dimen/_14sdp" android:background="@android:color/transparent" android:src="@drawable/logo_splash" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+            <!--  Search bar + filter buttons (visual only for now; not yet wired to rv_company filtering)  -->
+            <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/layout_search" android:layout_width="0dp" android:layout_height="@dimen/_38sdp" android:layout_marginStart="@dimen/_16sdp" android:layout_marginTop="@dimen/_14sdp" android:background="@drawable/bg_agence_card_shadow" android:paddingStart="@dimen/_14sdp" app:layout_constraintEnd_toStartOf="@+id/btn_filter" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/tv_find_marketer">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/somar_regular" android:text="@string/search_providers_hint" android:textColor="@color/agence_muted" android:textSize="@dimen/_11ssp" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_16sdp"
-                android:fontFamily="@font/somar_bold"
-                android:text="@string/services"
-                android:textColor="@color/grey_bold"
-                android:textSize="@dimen/_17ssp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
-
-
-            <TextView
-                android:id="@+id/tv_all_services"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_16sdp"
-                android:fontFamily="@font/somar_bold"
-                android:text="@string/view_all"
-                android:textColor="@color/grey_bold"
-                android:textSize="@dimen/_17ssp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_category"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_all_services"
-            tools:listitem="@layout/item_category" />
-
-
-        <TextView
-            android:id="@+id/textViewCompany"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_16sdp"
-            android:fontFamily="@font/somar_bold"
-            android:text="@string/companies"
-            android:textColor="@color/grey_bold"
-            android:textSize="@dimen/_17ssp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_category" />
-
-
-        <TextView
-            android:id="@+id/tv_all_companies"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_16sdp"
-            android:layout_marginEnd="@dimen/_16sdp"
-            android:fontFamily="@font/somar_bold"
-            android:text="@string/view_all"
-            android:textColor="@color/grey_bold"
-            android:textSize="@dimen/_17ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_category" />
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_company"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/item_company"
-            android:layout_margin="@dimen/_8sdp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:nestedScrollingEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_all_companies" />
-
-
+            <FrameLayout android:id="@+id/btn_filter" android:layout_width="@dimen/_38sdp" android:layout_height="@dimen/_38sdp" android:layout_marginEnd="@dimen/_16sdp" android:layout_marginStart="@dimen/_8sdp" android:background="@drawable/bg_agence_chip_blue" app:layout_constraintBottom_toBottomOf="@+id/layout_search" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="@+id/layout_search">
+                <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_gravity="center" android:src="@drawable/ic_sliders"/>
+            </FrameLayout>
+            <!--  Banner slider: shows local promo banners immediately (no server needed);
+                             swapped for real API banners if/when that call succeeds  -->
+            <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/constraintLayout5" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_12sdp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/layout_search">
+                <androidx.viewpager2.widget.ViewPager2 android:id="@+id/slider_viewPager2" android:layout_width="match_parent" android:layout_height="@dimen/_90sdp" android:layout_marginHorizontal="@dimen/_16sdp" android:scaleType="fitXY" android:src="@drawable/view_pager_image" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+                <LinearLayout android:id="@+id/layout_banner_dots" android:orientation="horizontal" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/_10sdp" android:layout_marginEnd="@dimen/_28sdp" app:layout_constraintBottom_toBottomOf="@+id/slider_viewPager2" app:layout_constraintEnd_toEndOf="@+id/slider_viewPager2"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!--  AI Matching banner (visual only; wire onClick once the AI-matching screen exists)  -->
+            <LinearLayout android:id="@+id/btn_ai_matching" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="@dimen/_16sdp" android:layout_marginTop="@dimen/_12sdp" android:layout_marginEnd="@dimen/_16sdp" android:background="@drawable/bg_agence_chip_blue" android:gravity="center_vertical" android:orientation="horizontal" android:paddingStart="@dimen/_14sdp" android:paddingEnd="@dimen/_14sdp" android:paddingTop="@dimen/_11sdp" android:paddingBottom="@dimen/_11sdp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/constraintLayout5">
+                <FrameLayout android:layout_width="@dimen/_30sdp" android:layout_height="@dimen/_30sdp" android:background="#33FFFFFF">
+                    <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_gravity="center" android:src="@drawable/ic_ai_spark"/>
+                </FrameLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="@dimen/_10sdp" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/somar_bold" android:text="@string/ai_matching_title" android:textColor="@color/white" android:textSize="@dimen/_12ssp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/somar_regular" android:text="@string/ai_matching_desc" android:textColor="#B3FFFFFF" android:textSize="@dimen/_9ssp"/>
+                </LinearLayout>
+                <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/ic_chevron_white"/>
+            </LinearLayout>
+            <TextView android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/_16sdp" android:fontFamily="@font/somar_bold" android:text="@string/services" android:textColor="@color/agence_black" android:textSize="@dimen/_14ssp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/btn_ai_matching"/>
+            <TextView android:id="@+id/tv_all_services" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/_16sdp" android:fontFamily="@font/somar_bold" android:text="@string/view_all" android:textColor="@color/agence_blue" android:textSize="@dimen/_11ssp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView3"/>
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_category" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="@dimen/_16sdp" android:layout_marginTop="@dimen/_8sdp" android:layout_marginEnd="@dimen/_8sdp" android:clipToPadding="false" android:orientation="horizontal" app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/tv_all_services" tools:listitem="@layout/item_category"/>
+            <TextView android:id="@+id/textViewCompany" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/_16sdp" android:fontFamily="@font/somar_bold" android:text="@string/top_providers" android:textColor="@color/agence_black" android:textSize="@dimen/_14ssp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/rv_category"/>
+            <TextView android:id="@+id/tv_all_companies" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/_16sdp" android:layout_marginEnd="@dimen/_16sdp" android:fontFamily="@font/somar_bold" android:text="@string/view_all" android:textColor="@color/agence_blue" android:textSize="@dimen/_11ssp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/rv_category"/>
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_company" android:layout_width="match_parent" android:layout_height="wrap_content" tools:listitem="@layout/item_company" android:layout_marginHorizontal="@dimen/_16sdp" app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" android:nestedScrollingEnabled="true" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/tv_all_companies"/>
+            <TextView android:id="@+id/tv_advanced_members" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/_16sdp" android:layout_marginTop="@dimen/_20sdp" android:fontFamily="@font/somar_bold" android:text="@string/advanced_members" android:textColor="@color/agence_black" android:textSize="@dimen/_14ssp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/rv_company"/>
+            <TextView android:id="@+id/btn_upgrade" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/_16sdp" android:background="@drawable/bg_upgrade_pill" android:drawableStart="@drawable/icon_favorite" android:drawableTint="@color/agence_orange" android:drawablePadding="@dimen/_4sdp" android:fontFamily="@font/somar_bold" android:paddingHorizontal="@dimen/_10sdp" android:paddingVertical="@dimen/_4sdp" android:text="@string/upgrade_label" android:textColor="@color/agence_orange" android:textSize="@dimen/_8ssp" app:layout_constraintBottom_toBottomOf="@+id/tv_advanced_members" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="@+id/tv_advanced_members"/>
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_featured_members" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginHorizontal="@dimen/_16sdp" android:layout_marginTop="@dimen/_10sdp" tools:listitem="@layout/item_featured_member" app:spanCount="3" app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/tv_advanced_members"/>
+            <LinearLayout android:id="@+id/layout_upgrade_teaser" android:orientation="horizontal" android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginHorizontal="@dimen/_16sdp" android:layout_marginTop="@dimen/_10sdp" android:layout_marginBottom="@dimen/_20sdp" android:padding="@dimen/_11sdp" android:background="@drawable/bg_upgrade_teaser" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/rv_featured_members">
+                <FrameLayout android:layout_width="@dimen/_32sdp" android:layout_height="@dimen/_32sdp" android:background="@drawable/bg_upgrade_pill">
+                    <ImageView android:layout_width="@dimen/_16sdp" android:layout_height="@dimen/_16sdp" android:layout_gravity="center" android:src="@drawable/icon_favorite" app:tint="@color/agence_orange"/>
+                </FrameLayout>
+                <LinearLayout android:orientation="vertical" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginHorizontal="@dimen/_10sdp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/appear_in_featured" android:fontFamily="@font/somar_bold" android:textSize="@dimen/_11ssp" android:textColor="@color/agence_orange"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_1sdp" android:text="@string/appear_in_featured_desc" android:fontFamily="@font/somar_regular" android:textSize="@dimen/_9ssp" android:textColor="@color/agence_muted"/>
+                </LinearLayout>
+                <ImageView android:layout_width="@dimen/_10sdp" android:layout_height="@dimen/_10sdp" android:src="@drawable/ic_row_chevron" app:tint="@color/agence_orange"/>
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </androidx.core.widget.NestedScrollView>
 </layout>

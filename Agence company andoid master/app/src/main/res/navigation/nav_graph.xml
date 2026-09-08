@@ -43,6 +43,11 @@
             app:destination="@id/showOrderFragment" />
     </fragment>
     <fragment
+        android:id="@+id/teamProjectFragment"
+        android:name="com.ksa.agenceCompany.ui.fragment.home.TeamProjectFragment"
+        android:label="TeamProjectFragment"
+        tools:layout="@layout/fragment_team_project" />
+    <fragment
         android:id="@+id/settingFragment"
         android:name="com.ksa.agenceCompany.ui.fragment.home.SettingFragment"
         android:label="SettingFragment"

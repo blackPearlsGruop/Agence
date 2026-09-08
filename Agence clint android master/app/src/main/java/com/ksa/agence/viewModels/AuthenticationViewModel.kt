@@ -71,7 +71,7 @@ class AuthenticationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    cityResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -95,7 +95,7 @@ class AuthenticationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    loginResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -119,7 +119,7 @@ class AuthenticationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    registerResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -144,7 +144,7 @@ class AuthenticationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    userUpdateProfileResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -167,7 +167,7 @@ class AuthenticationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    activeCodeResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -188,7 +188,7 @@ class AuthenticationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    userLogOutAppResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -209,7 +209,7 @@ class AuthenticationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    userDeleteAccountResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -229,7 +229,7 @@ class AuthenticationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    meResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 

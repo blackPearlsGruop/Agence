@@ -30,8 +30,9 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(), Chat {
         super.onViewCreated(view, savedInstanceState)
 
         mainActivity=requireActivity() as MainActivity
-        mainActivity.mViewDataBinding.constraintLayout2.setBackgroundColor(resources.getColor(R.color.primary))
-
+        // FIGMA REDESIGN: fragment_chat.xml has its own light header now.
+        // MainActivity's destination-changed listener already hides the old
+        // shared blue toolbar for this screen, same as Home/Account/Support.
 
         database = FirebaseDatabase.getInstance().reference.child("orders")
 
@@ -58,12 +59,19 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(), Chat {
                 }
 
                 adapter.notifyDataSetChanged()
+                updateEmptyState(companyList.isEmpty())
             }
 
             override fun onCancelled(error: DatabaseError) {
                 Log.e("FirebaseError", error.message)
+                updateEmptyState(companyList.isEmpty())
             }
         })
+    }
+
+    private fun updateEmptyState(isEmpty: Boolean) {
+        mViewDataBinding.layoutEmptyChat.visibility = if (isEmpty) View.VISIBLE else View.GONE
+        mViewDataBinding.rvNewUserChat.visibility = if (isEmpty) View.GONE else View.VISIBLE
     }
 
     override fun onNetworkConnectionChanged(isConnected: Boolean) {
@@ -74,7 +82,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(), Chat {
         orderNO: String,
         categoryName: String,
         userImage: String,
-       userName: String,
+        userName: String,
         idOrder: Int
     ) {
         val action = ChatFragmentDirections.actionChatFragmentToConversationFragment(

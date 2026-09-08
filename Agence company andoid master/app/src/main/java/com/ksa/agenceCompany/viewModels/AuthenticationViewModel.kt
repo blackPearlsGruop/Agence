@@ -47,7 +47,7 @@ class AuthenticationViewModel(
 
 
     init {
-         getFirebaseToken()
+        getFirebaseToken()
         getDeviceID()
     }
 
@@ -78,7 +78,7 @@ class AuthenticationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    cityResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -99,7 +99,7 @@ class AuthenticationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    categoriesNotTokenResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -124,7 +124,7 @@ class AuthenticationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    loginResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -154,7 +154,7 @@ class AuthenticationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    registerResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -174,7 +174,7 @@ class AuthenticationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    userUpdateProfileResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -193,7 +193,7 @@ class AuthenticationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    updateConsultationPriceResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -218,7 +218,7 @@ class AuthenticationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    activeCodeResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -239,7 +239,7 @@ class AuthenticationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    userLogOutAppResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -260,7 +260,7 @@ class AuthenticationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    userDeleteAccountResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -280,7 +280,7 @@ class AuthenticationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    meResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -289,8 +289,8 @@ class AuthenticationViewModel(
         }
     }
     fun sendWithdrawalRequest(name: String,
-           bank_account: String, bank_account_number: String,
-           iban_number: String) {
+                              bank_account: String, bank_account_number: String,
+                              iban_number: String) {
         if (Utilities.hasInternetConnection()) {
             sendWithdrawalRequestResponse.postValue(Resource.Loading())
             viewModelScope.launch {
@@ -300,7 +300,7 @@ class AuthenticationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    sendWithdrawalRequestResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 

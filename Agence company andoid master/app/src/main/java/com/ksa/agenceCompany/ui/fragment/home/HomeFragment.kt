@@ -64,7 +64,112 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), Home, Order {
         listDataOrder = ArrayList()
         listDataAllOpportunities = ArrayList()
 
+        // New Figma elements (local/mock — no backend for these yet)
+        try {
+            setupBeneficiariesFallback()
+        } catch (e: Exception) {
+            Utilities.showToastError(requireActivity(), "مستفيدين: ${e.message}")
+            Log.e("HomeFragment", "beneficiaries failed", e)
+        }
+        try {
+            setupProjectsFallback()
+        } catch (e: Exception) {
+            Log.e("HomeFragment", "projects list failed", e)
+        }
+        try {
+            setupOpportunitiesFallback()
+        } catch (e: Exception) {
+            Log.e("HomeFragment", "opportunities list failed", e)
+        }
+        try {
+            setupComingSoonButtons()
+        } catch (e: Exception) {
+            Utilities.showToastError(requireActivity(), "أزرار: ${e.message}")
+            Log.e("HomeFragment", "coming soon buttons failed", e)
+        }
+
         onClick()
+    }
+
+    private fun setupOpportunitiesFallback() {
+        val opportunities = listOf(
+            com.ksa.agenceCompany.adapter.OpportunityHome(
+                "إعداد حملة إعلانات جوجل", "صيدلية المدينة", "ريال 150/hr",
+                listOf("PPC", "Google Ads"), "الموعد النهائي: 15 أغسطس 2026"
+            ),
+            com.ksa.agenceCompany.adapter.OpportunityHome(
+                "تصميم هوية العلامة التجارية", "الفارس للتجزئة", "8,500 ريال",
+                listOf("Branding", "Design"), "الموعد النهائي: 20 أغسطس 2026"
+            ),
+            com.ksa.agenceCompany.adapter.OpportunityHome(
+                "استراتيجية سوشيال الربع الثالث", "تِك فيجن", "6,000 ريال",
+                listOf("Content", "Social Media"), "الموعد النهائي: 30 أغسطس 2026"
+            ),
+        )
+        val adapter = com.ksa.agenceCompany.adapter.OpportunityHomeAdapter(opportunities) {
+            Toast.makeText(requireContext(), getString(R.string.coming_soon), Toast.LENGTH_SHORT).show()
+        }
+        mViewDataBinding.rvAnOpportunity.layoutManager =
+            androidx.recyclerview.widget.LinearLayoutManager(requireContext())
+        mViewDataBinding.rvAnOpportunity.adapter = adapter
+    }
+
+    private fun setupProjectsFallback() {
+        val projects = listOf(
+            com.ksa.agenceCompany.adapter.ProjectHome(
+                "هوية العلامة التجارية والتموضع", "شركة رياض التقنية", "5 أعضاء"
+            ),
+            com.ksa.agenceCompany.adapter.ProjectHome(
+                "حملة سوشيال ميديا الربع الثالث", "الفارس للتجزئة", "3 أعضاء"
+            ),
+        )
+        val adapter = com.ksa.agenceCompany.adapter.ProjectHomeAdapter(projects) {
+            mViewDataBinding.root.findNavController().navigate(R.id.teamProjectFragment)
+        }
+        mViewDataBinding.rvProjectsHome.layoutManager =
+            androidx.recyclerview.widget.LinearLayoutManager(requireContext())
+        mViewDataBinding.rvProjectsHome.adapter = adapter
+    }
+
+    private fun setupBeneficiariesFallback() {
+        val isArabic = com.ksa.agenceCompany.AgenceCompanyApp.pref.getString(com.ksa.agenceCompany.common.LANG, "ar") == "ar"
+
+        val beneficiaries = listOf(
+            com.ksa.agenceCompany.adapter.Beneficiary(
+                companyAr = "شركة الرياض التقنية", companyEn = "Riyad Tech Co.",
+                projectAr = "الهوية البصرية وتحديد الموقع", projectEn = "Brand Identity & Positioning",
+                budget = "12,000 ر.س", progress = 45, statusAr = "نشط", statusEn = "Active", statusColorGreen = true
+            ),
+            com.ksa.agenceCompany.adapter.Beneficiary(
+                companyAr = "الفارس للتجزئة", companyEn = "Al-Faris Retail",
+                projectAr = "حملة سوشيال ميديا الربع الثالث", projectEn = "Social Media Campaign Q3",
+                budget = "8,500 ر.س", progress = 20, statusAr = "قيد المراجعة", statusEn = "In Review", statusColorGreen = false
+            ),
+            com.ksa.agenceCompany.adapter.Beneficiary(
+                companyAr = "صيدلية المدينة", companyEn = "Medina Pharmacy",
+                projectAr = "إعداد وإدارة إعلانات جوجل", projectEn = "Google Ads Setup & Management",
+                budget = "4,200 ر.س", progress = 70, statusAr = "نشط", statusEn = "Active", statusColorGreen = true
+            ),
+        )
+
+        val adapter = com.ksa.agenceCompany.adapter.BeneficiariesAdapter(beneficiaries, isArabic) {
+            mViewDataBinding.root.findNavController().navigate(R.id.teamProjectFragment)
+        }
+        mViewDataBinding.rvBeneficiaries.adapter = adapter
+
+        mViewDataBinding.tvWalletBalance.text = "24,500 ريال"
+    }
+
+    private fun setupComingSoonButtons() {
+        val comingSoon = View.OnClickListener {
+            Utilities.showToastError(requireActivity(), getString(R.string.coming_soon))
+        }
+        mViewDataBinding.btnNotification.setOnClickListener(comingSoon)
+        mViewDataBinding.btnViewCandidates.setOnClickListener(comingSoon)
+        mViewDataBinding.btnWalletTopup.setOnClickListener(comingSoon)
+        mViewDataBinding.btnWalletWithdraw.setOnClickListener(comingSoon)
+        mViewDataBinding.btnWalletHistory.setOnClickListener(comingSoon)
+        mViewDataBinding.layoutSearch.setOnClickListener(comingSoon)
     }
 
 
@@ -403,10 +508,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), Home, Order {
         }
 
         mViewDataBinding.tvAllServices.setOnClickListener {
-
-            val action = HomeFragmentDirections.actionMenuHomeToAllSreviesFragment()
-            mViewDataBinding.root.findNavController().navigate(action)
-
+            mViewDataBinding.root.findNavController().navigate(R.id.teamProjectFragment)
+        }
+        mViewDataBinding.textViewService.setOnClickListener {
+            mViewDataBinding.root.findNavController().navigate(R.id.teamProjectFragment)
         }
 
         mViewDataBinding.tvAllAnOpportunity.setOnClickListener {

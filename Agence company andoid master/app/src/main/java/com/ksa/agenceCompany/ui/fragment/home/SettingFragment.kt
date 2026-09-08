@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.ksa.agenceCompany.AgenceCompanyApp.Companion.pref
@@ -30,21 +31,15 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
-        if (pref.authToken != null) {
-            mViewDataBinding.tvUserName.text =
-                pref.loadUserData(requireActivity(), USER_DATA)!!.data!!.company!!.title
-            Utilities.onLoadImageFromUrl(
-                requireActivity(),
-                pref.loadUserData(requireActivity(), USER_DATA)!!.data!!.company!!.company_logo,
-                mViewDataBinding.ivUserLogin
-            )
-
+        if (!pref.authToken.isNullOrEmpty()) {
+            val userData = pref.loadUserData(requireActivity(), USER_DATA)
+            val company = userData?.data?.company
+            if (company != null) {
+                mViewDataBinding.tvUserName.text = company.title
+            }
         }
 
         onClick()
-
 
     }
 
@@ -93,99 +88,14 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
             }
         })
 
-        viewModel.userDeleteAccountResponse.observe(viewLifecycleOwner, Observer { result ->
-            when (result) {
-                is Resource.Success -> {
-                    showProgress(false)
-                    result.data?.let { it ->
-                        when (it.code) {
-                            // dismiss loading
-                            CODE200 -> {
-                                pref.clearSharedPref()
-                                val mainIntent = Intent(activity, AuthActivity::class.java)
-                                requireActivity().startActivity(mainIntent)
-                                requireActivity().finish()
-
-                            }
-
-                            CODE422 -> {
-                                Utilities.showToastError(requireActivity(), it.message!!)
-                            }
-
-                            else -> {
-                                showProgress(false)
-                                Utilities.showToastError(requireActivity(), it.message!!)
-
-                            }
-                        }
-                    }
-                }
-
-                is Resource.Error -> {
-                    // dismiss loading
-                    showProgress(false)
-                    Log.i("TestVerification", "error")
-
-                }
-
-                is Resource.Loading -> {
-                    // show loading
-                    Log.i("TestVerification", "loading")
-                    showProgress(true)
-
-                }
-            }
-        })
-
-
     }
 
 
     private fun onClick() {
 
-        mViewDataBinding.tvMyAccount.setOnClickListener {
-
-            val action=SettingFragmentDirections.actionSettingFragmentToMyProfileFragment()
-            mViewDataBinding.root.findNavController().navigate(action)
-
-        }
-
-        mViewDataBinding.tvAddBusiness.setOnClickListener {
-
-            val action = SettingFragmentDirections.actionSettingFragmentToAllBusinessFragment()
-            mViewDataBinding.root.findNavController().navigate(action)
-
-        }
-
-
-        mViewDataBinding.tvHourlyValueOfTheConsultation.setOnClickListener {
-
-            val action = SettingFragmentDirections.actionSettingFragmentToMoneyFragment()
-            mViewDataBinding.root.findNavController().navigate(action)
-
-        }
-
-
         mViewDataBinding.tvLanguage.setOnClickListener {
 
             val action = SettingFragmentDirections.actionSettingFragmentToChooseLanguageFragment()
-            mViewDataBinding.root.findNavController().navigate(action)
-
-        }
-
-
-
-
-        mViewDataBinding.tvConnectWithUs.setOnClickListener {
-
-            val action = SettingFragmentDirections.actionSettingFragmentToContacUsFragment()
-            mViewDataBinding.root.findNavController().navigate(action)
-
-        }
-
-        mViewDataBinding.tvMyAccount.setOnClickListener {
-
-            val action = SettingFragmentDirections.actionSettingFragmentToMyProfileFragment()
             mViewDataBinding.root.findNavController().navigate(action)
 
         }
@@ -196,22 +106,49 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
             mViewDataBinding.root.findNavController().navigate(action)
 
         }
-        mViewDataBinding.tvDeleteAccount.setOnClickListener {
-            showDialogLogOutApp(
-                getString(R.string.sorry),
-                getString(R.string.be_careful_if_you_delete_the_account_you_will_lose_all_data),
-                "DELETE_ACCOUNT"
-            )
 
-
+        // Wallet card shortcuts
+        mViewDataBinding.btnWalletTopup.setOnClickListener {
+            mViewDataBinding.root.findNavController().navigate(R.id.menuWallet)
         }
+        mViewDataBinding.btnWalletWithdraw.setOnClickListener {
+            mViewDataBinding.root.findNavController().navigate(R.id.menuWallet)
+        }
+        mViewDataBinding.btnWalletHistory.setOnClickListener {
+            mViewDataBinding.root.findNavController().navigate(R.id.menuWallet)
+        }
+
+        // Payment methods (placeholder for now)
+        mViewDataBinding.tvPaymentMada.setOnClickListener {
+            Toast.makeText(requireContext(), getString(R.string.coming_soon), Toast.LENGTH_SHORT).show()
+        }
+        mViewDataBinding.tvPaymentApplePay.setOnClickListener {
+            Toast.makeText(requireContext(), getString(R.string.coming_soon), Toast.LENGTH_SHORT).show()
+        }
+        mViewDataBinding.tvPaymentCard.setOnClickListener {
+            Toast.makeText(requireContext(), getString(R.string.coming_soon), Toast.LENGTH_SHORT).show()
+        }
+
+        // New menu items (all "coming soon" for now, matching the Figma prototype)
+        mViewDataBinding.tvAppointmentHistory.setOnClickListener {
+            Toast.makeText(requireContext(), getString(R.string.coming_soon), Toast.LENGTH_SHORT).show()
+        }
+        mViewDataBinding.tvInvoices.setOnClickListener {
+            Toast.makeText(requireContext(), getString(R.string.coming_soon), Toast.LENGTH_SHORT).show()
+        }
+        mViewDataBinding.tvFaq.setOnClickListener {
+            Toast.makeText(requireContext(), getString(R.string.coming_soon), Toast.LENGTH_SHORT).show()
+        }
+        mViewDataBinding.tvAccountSettings.setOnClickListener {
+            Toast.makeText(requireContext(), getString(R.string.coming_soon), Toast.LENGTH_SHORT).show()
+        }
+
         mViewDataBinding.tvLogOut.setOnClickListener {
             showDialogLogOutApp(
                 getString(R.string.sorry),
                 getString(R.string.are_you_sure_to_log_out),
                 "LogOut"
             )
-
 
         }
     }
@@ -235,13 +172,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
 
 
         btnYes.setOnClickListener {
-            if (type == "LogOut") {
-                viewModel.userLogOutApp()
-
-            } else {
-                viewModel.userDeleteAccount()
-
-            }
+            viewModel.userLogOutApp()
         }
 
         btnNo.setOnClickListener {

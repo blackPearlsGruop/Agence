@@ -42,10 +42,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                             // dismiss loading
                             CODE200 -> {
                                 Utilities.showToastSuccess(requireActivity(), it.message!!)
-                                    val action =
-                                        LoginFragmentDirections.actionLoginFragmentToConfirmOtpFragment(
-                                            phone,"+966")
-                                    mViewDataBinding.root.findNavController().navigate(action)
+                                val action =
+                                    LoginFragmentDirections.actionLoginFragmentToConfirmOtpFragment(
+                                        phone,"+966")
+                                mViewDataBinding.root.findNavController().navigate(action)
 
                             }
                             CODE422 -> {
@@ -100,6 +100,13 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             val action = LoginFragmentDirections
                 .actionLoginFragmentToRegisterFragment()
             mViewDataBinding.root.findNavController().navigate(action)
+        }
+
+        // TEMP dev-only shortcut — see layout comment. Remove once real login is testable.
+        mViewDataBinding.btnDevSkip.setOnClickListener {
+            val intent = android.content.Intent(requireActivity(), com.ksa.agenceCompany.ui.activity.MainActivity::class.java)
+            requireActivity().startActivity(intent)
+            requireActivity().finish()
         }
 
     }

@@ -42,9 +42,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         val navController = findNavController(R.id.nav_host_main)
         NavigationUI.setupWithNavController(navigation, navController)
 
-
-
-
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            mViewDataBinding.constraintLayout2.visibility =
+                if (destination.id == R.id.menuHome || destination.id == R.id.settingFragment || destination.id == R.id.teamProjectFragment || destination.id == R.id.contacUsFragment || destination.id == R.id.menuChat || destination.id == R.id.menuOrders) View.GONE else View.VISIBLE
+        }
 
 
         navigation.setOnItemSelectedListener {
@@ -64,21 +65,24 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     true
                 }
 
-                R.id.menuWallet -> {
-                    navController.navigate(R.id.menuWallet)
-                    mViewDataBinding.tvTitleToolBar.setText(R.string.wallet)
-                    //   mViewDataBinding.ivUser.visibility=View.VISIBLE
-
+                R.id.contacUsFragment -> {
+                    navController.navigate(R.id.contacUsFragment)
+                    mViewDataBinding.tvTitleToolBar.setText(R.string.support)
 
                     true
                 }
-
-
 
                 R.id.menuChat -> {
                     navController.navigate(R.id.menuChat)
                     mViewDataBinding.tvTitleToolBar.setText(R.string.chat)
                     //   mViewDataBinding.ivUser.visibility=View.VISIBLE
+
+                    true
+                }
+
+                R.id.settingFragment -> {
+                    navController.navigate(R.id.settingFragment)
+                    mViewDataBinding.tvTitleToolBar.setText(R.string.account)
 
                     true
                 }
@@ -93,17 +97,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
 
 
-
-
-
-
-        if (AgenceCompanyApp.pref.authToken != null) {
-            Utilities.onLoadImageFromUrl(
-                this,
-                AgenceCompanyApp.pref.loadUserData(this, USER_DATA)!!.data!!.company!!.company_logo,
-                mViewDataBinding.ivUser
-            )
-
+        if (!AgenceCompanyApp.pref.authToken.isNullOrEmpty()) {
+            val userData = AgenceCompanyApp.pref.loadUserData(this, USER_DATA)
+            val logoUrl = userData?.data?.company?.company_logo
+            if (!logoUrl.isNullOrEmpty()) {
+                Utilities.onLoadImageFromUrl(
+                    this,
+                    logoUrl,
+                    mViewDataBinding.ivUser
+                )
+            }
         }
         mViewDataBinding.ivUser.setOnClickListener {
             navController.navigate(R.id.settingFragment)
@@ -112,17 +115,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
 
         mViewDataBinding.ivBackPage.setOnClickListener {
-           // navController.popBackStack()
+            // navController.popBackStack()
             //showHomeToolbar()
             onBackPressed()
         }
         mViewDataBinding.ivNotification.setOnClickListener {
             navController.navigate(R.id.notificationFragment)
-        }
-        mViewDataBinding.btnAdd.setOnClickListener {
-            navController.navigate(R.id.addAServiceOrOfferFragment)
-            mViewDataBinding.tvTitleToolBar.setText(R.string.add_a_service_or_offer)
-
         }
 
     }
@@ -137,9 +135,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         {
             mViewDataBinding.tvTitleToolBar.text=getString(R.string.orders)
         }
-        else if (navHostFragment.navController.currentDestination!!.id == R.id.menuWallet )
+        else if (navHostFragment.navController.currentDestination!!.id == R.id.contacUsFragment )
         {
-            mViewDataBinding.tvTitleToolBar.text=getString(R.string.wallet)
+            mViewDataBinding.tvTitleToolBar.text=getString(R.string.support)
         }
         else if (navHostFragment.navController.currentDestination!!.id == R.id.menuChat )
         {
@@ -162,7 +160,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     fun hideHomeToolbar() {
         mViewDataBinding.bottomNav.visibility = View.GONE
-        mViewDataBinding.btnAdd.visibility = View.GONE
 //        mViewDataBinding.tvSearch.visibility = View.VISIBLE
         mViewDataBinding.fmIvUser.visibility = View.GONE
         mViewDataBinding.ivBackPage.visibility = View.VISIBLE
@@ -172,7 +169,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     fun showHomeToolbar() {
         mViewDataBinding.bottomNav.visibility = View.VISIBLE
-        mViewDataBinding.btnAdd.visibility = View.VISIBLE
 //        mViewDataBinding.tvSearch.visibility = View.VISIBLE
         mViewDataBinding.ivBackPage.visibility = View.GONE
         mViewDataBinding.fmIvUser.visibility = View.VISIBLE

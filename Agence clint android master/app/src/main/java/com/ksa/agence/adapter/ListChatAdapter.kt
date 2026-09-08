@@ -36,6 +36,8 @@ class ListChatAdapter(
             context, model.imageCompany, holder.binding.ivUser
         )
         holder.binding.tvNameUser.text = model.nameCompany
+        holder.binding.tvCategoryBadge.text = model.categoryName
+        holder.binding.tvOrderNo.text = model.orderNumber
 
         holder.itemView.setOnClickListener {
             chat.clickItemChat(

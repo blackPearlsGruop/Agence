@@ -14,4 +14,10 @@
 
     <color name="transparent">@android:color/transparent</color>
 
+    <color name="agence_bg">#FAF4F4</color>
+    <color name="agence_black">#070606</color>
+    <color name="agence_muted">#6B6B6B</color>
+    <color name="agence_border">#14070606</color>
+    <color name="agence_card">#FFFFFF</color>
+
 </resources>

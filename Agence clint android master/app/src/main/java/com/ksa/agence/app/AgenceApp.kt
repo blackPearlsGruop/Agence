@@ -14,6 +14,9 @@ import com.ksa.agence.receiver.FirebaseMessagingService.Companion.ANDROID_CHANNE
 import com.ksa.agence.receiver.FirebaseMessagingService.Companion.ANDROID_CHANNEL_ID
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
+import java.io.File
+import java.io.PrintWriter
+import java.io.StringWriter
 
 class AgenceApp : Application() {
 
@@ -32,6 +35,28 @@ class AgenceApp : Application() {
         super.onCreate()
         context = this
         pref = PreferencesUtils(this)
+
+        // ── TEMPORARY DEBUG: write every uncaught crash (any thread) to a
+        // file on device storage, then still hand off to whatever handler
+        // was already installed (e.g. Crashlytics) so normal behavior
+        // continues. Remove this block once the crash is found and fixed.
+        val previousHandler = Thread.getDefaultUncaughtExceptionHandler()
+        Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
+            try {
+                val sw = StringWriter()
+                throwable.printStackTrace(PrintWriter(sw))
+                val file = File(getExternalFilesDir(null), "crash_debug.txt")
+                file.writeText(
+                    "Thread: ${thread.name}\n" +
+                            "Time: ${System.currentTimeMillis()}\n\n" +
+                            sw.toString()
+                )
+                Log.e("MYCRASH", sw.toString())
+            } catch (inner: Throwable) {
+                Log.e("MYCRASH", "Failed to write crash file", inner)
+            }
+            previousHandler?.uncaughtException(thread, throwable)
+        }
 
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 

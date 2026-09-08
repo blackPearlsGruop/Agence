@@ -35,7 +35,7 @@ class AllOrdersAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val animation =
             AnimationUtils.loadAnimation(holder.itemView.context, android.R.anim.fade_in)
-       // holder.itemView.startAnimation(animation)
+        // holder.itemView.startAnimation(animation)
         val model = listData[position]
 
         // Log the model to check for null values
@@ -51,8 +51,38 @@ class AllOrdersAdapter(
         holder.binding.tvNameCategory.text = model.category?.title ?: "No Category"
         holder.binding.tvNoOrder.text = model.order_number ?: "No Order Number"
         holder.binding.tvPriceService.text = "${model.price ?: 0} ${context.getString(R.string.r_s)}"
+        holder.binding.tvOrderDate.text = formatOrderDate(model.created_at)
 
-      //  in-progress,completed,canceled,pending
+        //  in-progress,completed,canceled,pending
+        when (model.order_status) {
+            "in-progress" -> {
+                holder.binding.tvStatusBadge.text = "قيد التنفيذ"
+                holder.binding.tvStatusBadge.setBackgroundResource(R.drawable.bg_status_blue)
+                holder.binding.tvStatusBadge.setTextColor(context.getColor(R.color.agence_blue))
+            }
+            "pending" -> {
+                holder.binding.tvStatusBadge.text = "قيد المراجعة"
+                holder.binding.tvStatusBadge.setBackgroundResource(R.drawable.bg_status_orange)
+                holder.binding.tvStatusBadge.setTextColor(context.getColor(R.color.agence_orange))
+            }
+            "completed" -> {
+                holder.binding.tvStatusBadge.text = "مكتمل"
+                holder.binding.tvStatusBadge.setBackgroundResource(R.drawable.bg_status_green)
+                holder.binding.tvStatusBadge.setTextColor(context.getColor(R.color.agence_green))
+            }
+            "canceled" -> {
+                holder.binding.tvStatusBadge.text = "ملغي"
+                holder.binding.tvStatusBadge.setBackgroundResource(R.drawable.bg_status_orange)
+                holder.binding.tvStatusBadge.setTextColor(context.getColor(R.color.red))
+            }
+            else -> {
+                holder.binding.tvStatusBadge.text = model.order_status ?: ""
+                holder.binding.tvStatusBadge.setBackgroundResource(R.drawable.bg_status_blue)
+                holder.binding.tvStatusBadge.setTextColor(context.getColor(R.color.agence_blue))
+            }
+        }
+
+        //  in-progress,completed,canceled,pending
         if (model.order_status=="in-progress" || model.order_status=="pending")
         {
             holder.binding.btnReorder.visibility=View.GONE
@@ -92,6 +122,18 @@ class AllOrdersAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return position
+    }
+
+    private fun formatOrderDate(rawDate: String?): String {
+        if (rawDate.isNullOrBlank()) return ""
+        return try {
+            val inputFormat = java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", java.util.Locale.getDefault())
+            val outputFormat = java.text.SimpleDateFormat("d MMM", java.util.Locale("ar"))
+            val date = inputFormat.parse(rawDate.substring(0, minOf(19, rawDate.length)))
+            if (date != null) outputFormat.format(date) else rawDate
+        } catch (e: Exception) {
+            rawDate.take(10)
+        }
     }
 
 }

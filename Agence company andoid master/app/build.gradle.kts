@@ -145,7 +145,7 @@ dependencies {
     implementation("com.google.guava:guava:31.1-jre")
 
     // Swipe Layout
-    implementation("ru.rambler.android:swipe-layout:1.1.0")
+    implementation("com.github.rambler-digital-solutions:swipe-layout-android:1.0.17")
     implementation("com.github.3llomi:RecordView:3.1.3")
 
     implementation(project(":wave_record_util"))

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/_6sdp">
+
+    <TextView
+        android:id="@+id/tv_member_avatar"
+        android:layout_width="@dimen/_38sdp"
+        android:layout_height="@dimen/_38sdp"
+        android:gravity="center"
+        android:background="@drawable/bg_avatar_circle"
+        android:fontFamily="@font/somar_bold"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_10ssp"
+        tools:text="FA"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp">
+
+        <TextView
+            android:id="@+id/tv_member_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/somar_bold"
+            android:textColor="@color/agence_black"
+            android:textSize="@dimen/_13ssp"
+            tools:text="Fahad Al-Otaibi"/>
+
+        <TextView
+            android:id="@+id/tv_member_specialty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:fontFamily="@font/somar_regular"
+            android:textColor="@color/agence_muted"
+            android:textSize="@dimen/_11ssp"
+            tools:text="Brand Strategy"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_member_role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_4sdp"
+        android:fontFamily="@font/somar_semi_bold"
+        android:textSize="@dimen/_9ssp"
+        android:background="@drawable/bg_pill_blue_light"
+        android:textColor="@color/primary"
+        tools:text="عضو"/>
+
+    <ImageView
+        android:id="@+id/btn_member_menu"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:padding="@dimen/_4sdp"
+        android:background="@drawable/bg_circle_light_grey"
+        android:src="@drawable/icon_more_vert"/>
+
+    <ImageView
+        android:id="@+id/btn_member_delete"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:layout_marginStart="@dimen/_6sdp"
+        android:padding="@dimen/_5sdp"
+        android:background="@drawable/bg_circle_delete"
+        android:src="@drawable/icon_trash_small"/>
+
+</LinearLayout>

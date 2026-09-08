@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_8sdp"
+    android:padding="@dimen/_14sdp"
+    android:background="@drawable/shape_text">
+
+    <ImageView
+        android:layout_width="@dimen/_36sdp"
+        android:layout_height="@dimen/_36sdp"
+        android:padding="@dimen/_9sdp"
+        android:background="@drawable/bg_circle_blue_light"
+        android:src="@drawable/icon_folder"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp">
+
+        <TextView
+            android:id="@+id/tv_project_home_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/somar_bold"
+            android:textColor="@color/text"
+            android:textSize="@dimen/_12ssp"
+            tools:text="هوية العلامة التجارية والتموضع"/>
+
+        <TextView
+            android:id="@+id/tv_project_home_client"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:fontFamily="@font/somar_regular"
+            android:textColor="@color/grey_bold"
+            android:textSize="@dimen/_10ssp"
+            tools:text="شركة رياض التقنية"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_project_home_members"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_4sdp"
+        android:background="@drawable/bg_pill_blue_light"
+        android:fontFamily="@font/somar_semi_bold"
+        android:textColor="@color/primary"
+        android:textSize="@dimen/_9ssp"
+        tools:text="5 أعضاء"/>
+
+</LinearLayout>

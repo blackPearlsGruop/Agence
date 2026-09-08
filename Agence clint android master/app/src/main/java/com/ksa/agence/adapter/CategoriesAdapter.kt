@@ -42,8 +42,18 @@ class CategoriesAdapter(
 
         holder.binding.tvTitle.text = model.title
 
+        if (model.isSelected) {
+            holder.binding.tvTitle.setBackgroundResource(com.ksa.agence.R.drawable.bg_agence_chip_blue)
+            holder.binding.tvTitle.setTextColor(context.getColor(com.ksa.agence.R.color.white))
+        } else {
+            holder.binding.tvTitle.setBackgroundResource(com.ksa.agence.R.drawable.bg_agence_chip_white)
+            holder.binding.tvTitle.setTextColor(context.getColor(com.ksa.agence.R.color.agence_black))
+        }
 
         holder.itemView.setOnClickListener {
+            for (item in listData) item.isSelected = false
+            model.isSelected = true
+            notifyDataSetChanged()
             company.clickItemShowService(model.id!!)
         }
 

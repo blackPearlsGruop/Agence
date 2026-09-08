@@ -36,14 +36,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             when (it.itemId) {
                 R.id.menuHome -> {
                     navController.navigate(R.id.menuHome)
-                    mViewDataBinding.tvTitleToolBar.setText(R.string.home)
-                    mViewDataBinding.tvSearch.visibility = View.VISIBLE
+                    // FIGMA REDESIGN: the new fragment_home.xml header (logo, greeting,
+                    // search bar, filter) replaces this old shared toolbar entirely, so
+                    // hide it here to avoid showing both stacked on top of each other.
+                    mViewDataBinding.constraintLayout2.visibility = View.GONE
                     mViewDataBinding.btnQuickOrder.visibility = View.VISIBLE
                     true
                 }
 
                 R.id.menuOffers -> {
                     navController.navigate(R.id.menuOffers)
+                    mViewDataBinding.constraintLayout2.visibility = View.VISIBLE
                     mViewDataBinding.tvTitleToolBar.setText(R.string.offers)
                     mViewDataBinding.tvSearch.visibility = View.VISIBLE
                     mViewDataBinding.btnQuickOrder.visibility = View.VISIBLE
@@ -52,16 +55,40 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
                 R.id.menuOrders -> {
                     navController.navigate(R.id.menuOrders)
-                    mViewDataBinding.tvTitleToolBar.setText(R.string.orders)
-                    mViewDataBinding.tvSearch.visibility = View.VISIBLE
+                    // FIGMA REDESIGN: fragment_orders.xml has its own light header now,
+                    // same pattern as Home/Account/Messages/Support.
+                    mViewDataBinding.constraintLayout2.visibility = View.GONE
                     mViewDataBinding.btnQuickOrder.visibility = View.VISIBLE
                     true
                 }
 
                 R.id.menuChat -> {
                     navController.navigate(R.id.menuChat)
-                    mViewDataBinding.tvTitleToolBar.setText(R.string.chat)
-                    mViewDataBinding.tvSearch.visibility = View.INVISIBLE
+                    // FIGMA REDESIGN: fragment_chat.xml has its own light header now,
+                    // same pattern as Home/Account/Orders — hide the old shared blue
+                    // toolbar instead of leaving its search box reserved-but-invisible.
+                    mViewDataBinding.constraintLayout2.visibility = View.GONE
+                    mViewDataBinding.btnQuickOrder.visibility = View.GONE
+                    true
+                }
+
+                R.id.contacUsFragment -> {
+                    navController.navigate(R.id.contacUsFragment)
+                    // FIGMA REDESIGN: fragment_contac_us.xml has its own light header now,
+                    // same pattern as Home/Account/Orders/Messages.
+                    mViewDataBinding.constraintLayout2.visibility = View.GONE
+                    mViewDataBinding.btnQuickOrder.visibility = View.GONE
+                    true
+                }
+
+                R.id.settingFragment -> {
+                    navController.navigate(R.id.settingFragment)
+                    // FIGMA REDESIGN: fragment_setting.xml has its own light header
+                    // (bell + title), same pattern as Home — hide the old shared
+                    // blue toolbar entirely instead of leaving its search box
+                    // reserved-but-invisible (that reserved space was the big blue
+                    // empty block under the title).
+                    mViewDataBinding.constraintLayout2.visibility = View.GONE
                     mViewDataBinding.btnQuickOrder.visibility = View.GONE
                     true
                 }
@@ -72,7 +99,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }
         }
 
-        if (AgenceApp.pref.authToken != null) {
+        // Home is the default tab on launch — hide the old toolbar from the start too,
+        // since the listener above only fires on a later tap, not the initial state.
+        mViewDataBinding.constraintLayout2.visibility = View.GONE
+
+        if (!AgenceApp.pref.authToken.isNullOrEmpty()) {
             Utilities.onLoadImageFromUrl(
                 this,
                 AgenceApp.pref.loadUserData(this, USER_DATA)!!.data!!.user!!.profile_image,
@@ -86,7 +117,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
 
         mViewDataBinding.ivBackPage.setOnClickListener {
-           // navController.popBackStack()
+            // navController.popBackStack()
             onBackPressed()
         }
 
@@ -109,7 +140,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         {
             mViewDataBinding.tvTitleToolBar.text=getString(R.string.home)
         }
-       else if (navHostFragment.navController.currentDestination!!.id == R.id.menuOrders )
+        else if (navHostFragment.navController.currentDestination!!.id == R.id.menuOrders )
         {
             mViewDataBinding.tvTitleToolBar.text=getString(R.string.orders)
         }
@@ -162,4 +193,4 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         initToolBarText()
 
     }
-    }
+}

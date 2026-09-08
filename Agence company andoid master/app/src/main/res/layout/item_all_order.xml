@@ -1,206 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_8sdp"
-        android:layout_marginVertical="@dimen/_8sdp"
-        android:background="@drawable/shape_text"
-        android:elevation="@dimen/_3sdp"
-        android:padding="@dimen/_16sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <TextView
-            android:id="@+id/tvNameCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_4sdp"
-            android:fontFamily="@font/somar_bold"
-            android:text="خدمة تسويق لمدة شهر"
-            android:textColor="@color/secondary"
-            android:textSize="@dimen/_18ssp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <TextView
-            android:id="@+id/tv_no_order"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_4sdp"
-            android:layout_marginEnd="@dimen/_4sdp"
-            android:fontFamily="@font/somar_regular"
-            android:text="0000000"
-            android:textColor="@color/secondary"
-            android:textSize="@dimen/_16ssp"
-            app:layout_constraintBottom_toBottomOf="@+id/tvNameCategory"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvNameCategory" />
-
-        <View
-            android:id="@+id/view5"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="@dimen/_12ssp"
-            android:background="@color/grey"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNameCategory" />
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraint_data_company"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view5">
-
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_logo_user"
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:src="@drawable/backround_image"
-                app:civ_border_color="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <TextView
-                android:id="@+id/tv_name_user"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:fontFamily="@font/somar_regular"
-                android:text="@string/app_name"
-                android:layout_marginEnd="@dimen/_8sdp"
-                android:textColor="@color/text"
-                android:textAlignment="viewStart"
-                android:textSize="@dimen/_18ssp"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_logo_user"
-                app:layout_constraintEnd_toStartOf="@+id/tv_type_order"
-                app:layout_constraintStart_toEndOf="@+id/iv_logo_user"
-                app:layout_constraintTop_toTopOf="@+id/iv_logo_user" />
-
-
-            <TextView
-                android:id="@+id/tv_type_order"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_bottom2"
-                android:fontFamily="@font/somar_bold"
-                android:paddingHorizontal="@dimen/_16sdp"
-                android:paddingVertical="@dimen/_6sdp"
-                android:textAlignment="center"
-                android:text="@string/quick_order"
-                android:textColor="@color/secondary"
-                android:textSize="@dimen/_13ssp"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_name_user"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_name_user" />
-
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-        <TextView
-            android:id="@+id/tv_date"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:drawableStart="@drawable/icon_calendr"
-            android:drawablePadding="@dimen/_4sdp"
-            android:fontFamily="@font/somar_regular"
-            android:textAlignment="viewStart"
-            android:textColor="@color/grey_bold"
-            android:textSize="@dimen/_16ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraint_data_company" />
-
-
-        <TextView
-            android:id="@+id/tv_time"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:drawableStart="@drawable/icon_taim"
-            android:drawablePadding="@dimen/_4sdp"
-            android:fontFamily="@font/somar_regular"
-            android:textAlignment="viewStart"
-            android:textColor="@color/grey_bold"
-            android:textSize="@dimen/_16ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_date" />
-
-
-        <TextView
-            android:id="@+id/tv_dic_order"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:fontFamily="@font/somar_regular"
-            android:text="@string/a_4_digit_code_was_sent_to_the_mobile_number"
-            android:textAlignment="viewStart"
-            android:textColor="@color/text"
-            android:textSize="@dimen/_18ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_time" />
-
+        android:layout_marginHorizontal="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:padding="@dimen/_14sdp"
+        android:background="@drawable/bg_agence_list_group">
 
         <LinearLayout
-            android:id="@+id/layout_status"
-            android:visibility="gone"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/_8sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_dic_order">
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="0dp">
 
-            <ImageView
-                android:id="@+id/iv_action"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/iv_logo_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/backround_image"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/icon_complet"/>
+                android:layout_marginStart="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/tv_name_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/somar_bold"
+                    android:textColor="@color/agence_black"
+                    android:textSize="@dimen/_12ssp"
+                    tools:text="فهد العتيبي"/>
+
+                <TextView
+                    android:id="@+id/tv_name_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/somar_regular"
+                    android:textColor="@color/agence_muted"
+                    android:textSize="@dimen/_10ssp"
+                    tools:text="تدقيق العلامة التجارية والتموضع"/>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/somar_regular"
-                android:text="@string/done"
-                android:textAlignment="textStart"
-                android:textColor="@color/grey_bold"
-                android:textSize="@dimen/_16ssp"
-                android:layout_marginStart="@dimen/_4sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_time" />
-
+                android:paddingHorizontal="@dimen/_9sdp"
+                android:paddingVertical="@dimen/_3sdp"
+                android:fontFamily="@font/somar_semi_bold"
+                android:textSize="@dimen/_9ssp"
+                android:background="@drawable/bg_pill_blue_light"
+                android:textColor="@color/primary"
+                tools:text="قيد التنفيذ"/>
 
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/agence_border"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/icon_calendar"
+                    android:drawablePadding="@dimen/_4sdp"
+                    android:fontFamily="@font/somar_regular"
+                    android:textColor="@color/agence_muted"
+                    android:textSize="@dimen/_10ssp"
+                    tools:text="2 يوليو 2026"/>
+
+                <TextView
+                    android:id="@+id/tv_no_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/somar_regular"
+                    android:textColor="@color/agence_muted"
+                    android:textSize="@dimen/_9ssp"
+                    tools:text="ORD-00419"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:fontFamily="@font/somar_bold"
+                android:textColor="@color/secondary"
+                android:textSize="@dimen/_15ssp"
+                tools:text="5,000 ريال"/>
+
+            <ImageView
+                android:id="@+id/iv_action"
+                android:layout_width="@dimen/_28sdp"
+                android:layout_height="@dimen/_28sdp"
+                android:padding="@dimen/_6sdp"
+                android:background="@drawable/bg_circle_light_grey"
+                android:src="@drawable/ic_row_chevron"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 </layout>

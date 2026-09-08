@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/shape_text"
+        android:padding="@dimen/_14sdp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:id="@+id/tv_ben_company"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:fontFamily="@font/somar_bold"
+            android:textColor="@color/text"
+            android:textSize="@dimen/_13ssp"
+            tools:text="شركة الرياض التقنية"
+            app:layout_constraintEnd_toStartOf="@+id/tv_ben_status"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_ben_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_status_pill_green"
+            android:paddingHorizontal="@dimen/_9sdp"
+            android:paddingVertical="@dimen/_3sdp"
+            android:fontFamily="@font/somar_semi_bold"
+            android:textColor="@color/green"
+            android:textSize="@dimen/_9ssp"
+            tools:text="نشط"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_ben_project"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:fontFamily="@font/somar_regular"
+            android:textColor="@color/grey_bold"
+            android:textSize="@dimen/_10ssp"
+            tools:text="الهوية البصرية وتحديد الموقع"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_ben_company" />
+
+        <TextView
+            android:id="@+id/tv_ben_budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:fontFamily="@font/somar_semi_bold"
+            android:textColor="@color/secondary"
+            android:textSize="@dimen/_13ssp"
+            tools:text="12,000 ر.س"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_ben_project" />
+
+        <TextView
+            android:id="@+id/tv_ben_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/somar_regular"
+            android:textColor="@color/grey_bold"
+            android:textSize="@dimen/_11ssp"
+            tools:text="45%"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_ben_budget"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_ben_budget" />
+
+        <ProgressBar
+            android:id="@+id/progress_ben"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:max="100"
+            android:progress="45"
+            android:progressTint="@color/green"
+            android:progressBackgroundTint="@color/grey"
+            app:layout_constraintTop_toBottomOf="@+id/tv_ben_budget" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

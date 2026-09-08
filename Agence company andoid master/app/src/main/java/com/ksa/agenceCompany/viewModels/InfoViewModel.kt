@@ -16,7 +16,7 @@ class InfoViewModel(
     private val sharedPreferences: PreferencesUtils, private val mainRepo: MainRepo
 ) : ViewModel() {
 
-       val infoResponse: MutableLiveData<Resource<InfoResponse>> = MutableLiveData()
+    val infoResponse: MutableLiveData<Resource<InfoResponse>> = MutableLiveData()
     val contactUsResponse: MutableLiveData<Resource<AuthUserResponse>> = MutableLiveData()
 
 
@@ -30,7 +30,7 @@ class InfoViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    infoResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -49,7 +49,7 @@ class InfoViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    contactUsResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 

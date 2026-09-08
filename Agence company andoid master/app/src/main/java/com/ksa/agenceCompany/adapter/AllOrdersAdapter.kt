@@ -1,11 +1,8 @@
 package com.ksa.agenceCompany.adapter
 
 import android.app.Activity
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ksa.agenceCompany.R
@@ -16,7 +13,7 @@ import com.ksa.agenceCompany.interfaces.Order
 
 class AllOrdersAdapter(
     var context: Activity,
-    var listData: List<DataAllOrdersResponse>,var order:Order
+    var listData: List<DataAllOrdersResponse>, var order: Order
 ) : RecyclerView.Adapter<AllOrdersAdapter.ViewHolder?>() {
 
 
@@ -33,94 +30,55 @@ class AllOrdersAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val animation =
-            AnimationUtils.loadAnimation(holder.itemView.context, android.R.anim.fade_in)
-       // holder.itemView.startAnimation(animation)
         val model = listData[position]
 
-        // Log the model to check for null values
-        Log.d("AllOrdersAdapter", "Binding view holder for position: $position, model: $model")
-
-        model.user?.let { company ->
-            onLoadImageFromUrl(context, company.profile_image, holder.binding.ivLogoUser)
-
+        model.user?.profile_image?.let { image ->
+            onLoadImageFromUrl(context, image, holder.binding.ivLogoUser)
         }
 
         holder.binding.tvNameUser.text = model.user?.name
-        holder.binding.tvNameCategory.text = model.category?.title ?: "No Category"
-        holder.binding.tvNoOrder.text = model.order_number ?: "No Order Number"
+        holder.binding.tvNameCategory.text = model.category?.title ?: model.description
+        holder.binding.tvNoOrder.text = model.order_number ?: ""
         holder.binding.tvDate.text = model.created_at
-        holder.binding.tvTime.text = context.getString(R.string.duration_of_completion)+" : "+model.order_duration_in_days +" "+context.getString(R.string.day)
-        holder.binding.tvDicOrder.text = model.description
 
-        // service,offer,quick,private
-        if (model.order_type =="service")
-        {
-            holder.binding.tvTypeOrder.text = context.getString(R.string.the_service)
+        holder.binding.tvPrice.text = model.price?.toString() ?: ""
 
-        }
-        else   if (model.order_type =="offer")
-        {
-            holder.binding.tvTypeOrder.text = context.getString(R.string.offers)
-
-        }
-        else   if (model.order_type =="quick")
-        {
-            holder.binding.tvTypeOrder.text = context.getString(R.string.quick_order)
-
-        }
-        else   if (model.order_type =="private")
-        {
-            holder.binding.tvTypeOrder.text = context.getString(R.string.privates)
-
-        }
-
-//        holder.binding.tvPriceService.text = "${model.price ?: 0} ${context.getString(R.string.r_s)}"
-
-      //  in-progress,completed,canceled,pending
-        if ( model.order_status=="pending")
-        {
-            holder.binding.layoutStatus.visibility=View.GONE
-
-        }
-        else  if (model.order_status=="in-progress" ){
-            holder.binding.layoutStatus.visibility=View.VISIBLE
-            holder.binding.tvStatus.text=context.getString(R.string.in_progress)
-            holder.binding.ivAction.setImageResource(R.drawable.icon_complet)
-        }
-        else  if (model.order_status=="completed"){
-            holder.binding.layoutStatus.visibility=View.VISIBLE
-            holder.binding.tvStatus.text=context.getString(R.string.completed)
-            holder.binding.ivAction.setImageResource(R.drawable.icon_complet)
-        }
-        else  if (model.order_status=="canceled"){
-            holder.binding.tvStatus.text=context.getString(R.string.canceled)
-            holder.binding.ivAction.setImageResource(R.drawable.icon_reject)
-            holder.binding.layoutStatus.visibility=View.VISIBLE
-
+        // FIGMA: pending → "under review" (orange), in-progress (blue), completed → "delivered" (green)
+        when (model.order_status) {
+            "pending" -> {
+                holder.binding.tvStatus.text = context.getString(R.string.under_review)
+                holder.binding.tvStatus.setBackgroundResource(R.drawable.bg_pill_orange_light)
+                holder.binding.tvStatus.setTextColor(context.getColor(R.color.secondary))
+            }
+            "in-progress" -> {
+                holder.binding.tvStatus.text = context.getString(R.string.in_progress)
+                holder.binding.tvStatus.setBackgroundResource(R.drawable.bg_pill_blue_light)
+                holder.binding.tvStatus.setTextColor(context.getColor(R.color.primary))
+            }
+            "completed" -> {
+                holder.binding.tvStatus.text = context.getString(R.string.delivered)
+                holder.binding.tvStatus.setBackgroundResource(R.drawable.bg_pill_green_light)
+                holder.binding.tvStatus.setTextColor(context.getColor(R.color.green))
+            }
+            "canceled" -> {
+                holder.binding.tvStatus.text = context.getString(R.string.canceled)
+                holder.binding.tvStatus.setBackgroundResource(R.drawable.bg_circle_light_grey)
+                holder.binding.tvStatus.setTextColor(context.getColor(R.color.agence_muted))
+            }
         }
 
-        if (model.has_offers!! ==true)
-        {
-
-            holder.binding.constraintDataCompany.visibility=View.VISIBLE
-
+        // Active tab (pending/in-progress) shows a chat shortcut, finished tab shows a checkmark
+        if (model.order_status == "pending" || model.order_status == "in-progress") {
+            holder.binding.ivAction.setImageResource(R.drawable.icon_chat)
+            holder.binding.ivAction.setBackgroundResource(R.drawable.bg_circle_light_grey)
+        } else {
+            holder.binding.ivAction.setImageResource(R.drawable.icon_check_white_small)
+            holder.binding.ivAction.setBackgroundResource(R.drawable.bg_circle_blue_light)
         }
-        else
-        {
-            holder.binding.constraintDataCompany.visibility=View.GONE
-     //       holder.binding.btnShow.setText(context.getString(R.string.there_are_no_offers))
-        }
-
 
         holder.itemView.setOnClickListener {
-            order.clickItemOrder(model.id!!)
+            order.clickItemOrder(model.id)
         }
-//
-//        holder.binding.btnReorder.setOnClickListener {
-//            order.clickItemReorder(model.id!!)
-//        }
-
 
     }
 

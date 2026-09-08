@@ -70,7 +70,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    updateAvailabilityResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -88,7 +88,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    deleteWorksResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -109,7 +109,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    addWorksResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -127,7 +127,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    getCompanyWorksResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -147,7 +147,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    subscribeToPlanResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -166,7 +166,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    deleteServiceResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -185,7 +185,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    deleteOfferResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -204,7 +204,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    sendOfferResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -223,7 +223,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    sendRequestResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -242,7 +242,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    planResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -261,7 +261,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    getSingleOpportunitiesResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -280,7 +280,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    subscriptionResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -299,7 +299,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    allOpportunitiesResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -318,7 +318,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    categoriesResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -336,7 +336,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    offersResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -354,7 +354,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    allOrdersResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -385,7 +385,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    storeNewServiceResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -415,7 +415,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    updateOfferResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -445,7 +445,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    updateServiceResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -476,7 +476,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    storeNewServiceResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -494,7 +494,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    offerByIdResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -512,7 +512,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    categoriesByIdResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -531,7 +531,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    rejectOrderResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -549,7 +549,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    getSingleOrderResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -573,7 +573,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    ratingCompanyResponse.postValue(Resource.Error(response.message()))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 

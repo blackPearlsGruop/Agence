@@ -1,7 +1,5 @@
 package com.ksa.agence.di
 
-import AuthenticationInterceptor
-import ConnectivityInterceptor
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.ksa.agence.app.AgenceApp
 import com.ksa.agence.common.BASE_URL
@@ -57,5 +55,5 @@ fun createClient(): OkHttpClient {
     return OkHttpClient.Builder().addInterceptor(loggingInterceptor)
         .addInterceptor(AuthenticationInterceptor(AgenceApp.context!!))
         .addInterceptor(ConnectivityInterceptor(AgenceApp.context!!))
-        .readTimeout(20, TimeUnit.SECONDS).connectTimeout(20, TimeUnit.SECONDS).build()
+        .readTimeout(5, TimeUnit.SECONDS).connectTimeout(5, TimeUnit.SECONDS).build()
 }

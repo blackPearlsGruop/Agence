@@ -1,159 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-        <HorizontalScrollView
-            android:id="@+id/linearLayout2"
-            android:layout_width="match_parent"
-            android:layout_marginHorizontal="@dimen/_16sdp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-
-            <LinearLayout
-                android:padding="@dimen/_4sdp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-
-
-<!--                //  in-progress,completed,canceled,pending-->
-
-                <LinearLayout
-                android:id="@+id/btn_pending"
-                    android:layout_width="wrap_content"
-                    android:paddingHorizontal="@dimen/_8sdp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_bottom"
-                android:gravity="center">
-
-
-
-
-                <TextView
-                    android:id="@+id/tv_pending"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/somar_bold"
-                    android:padding="@dimen/_6sdp"
-                    android:text="@string/pending"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_18ssp" />
-
-
-
-
+<layout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data> </data>
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/agence_bg">
+        <TextView android:id="@+id/tv_orders_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/_16sdp" android:layout_marginTop="@dimen/_14sdp" android:text="@string/orders" android:fontFamily="@font/somar_bold" android:textSize="@dimen/_18ssp" android:textColor="@color/agence_black" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+        <LinearLayout android:id="@+id/linearLayout2" android:layout_width="0dp" android:layout_marginHorizontal="@dimen/_16sdp" android:layout_marginTop="@dimen/_12sdp" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="@dimen/_4sdp" android:background="@drawable/bg_agence_pill_track" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/tv_orders_title">
+            <LinearLayout android:id="@+id/btn_pending" android:orientation="horizontal" android:layout_width="0dp" android:layout_height="wrap_content" android:background="@drawable/bg_agence_pill_active" android:layout_weight="1" android:gravity="center">
+                <TextView android:id="@+id/tv_pending" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/somar_semi_bold" android:padding="@dimen/_9sdp" android:text="@string/active" android:textAlignment="center" android:textColor="@color/white" android:textSize="@dimen/_12ssp"/>
+                <TextView android:id="@+id/tv_pending_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/_4sdp" android:paddingHorizontal="@dimen/_6sdp" android:paddingVertical="@dimen/_1sdp" android:background="@drawable/bg_count_badge" android:fontFamily="@font/somar_semi_bold" android:textColor="@color/white" android:textSize="@dimen/_9ssp" tools:text="2"/>
             </LinearLayout>
-
-
-
-            <LinearLayout
-                android:id="@+id/btn_in_progress"
-                android:layout_width="wrap_content"
-                android:paddingHorizontal="@dimen/_8sdp"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-
-
-
-                <TextView
-                    android:id="@+id/tv_in_progress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/somar_bold"
-                    android:padding="@dimen/_6sdp"
-                    android:text="@string/in_progress"
-                    android:textAlignment="center"
-                    android:textColor="@color/primary"
-                    android:textSize="@dimen/_18ssp" />
-
-
+            <LinearLayout android:id="@+id/btn_completed" android:orientation="horizontal" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
+                <TextView android:id="@+id/tv_completed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/somar_semi_bold" android:padding="@dimen/_9sdp" android:text="@string/completed" android:textAlignment="center" android:textColor="@color/agence_muted" android:textSize="@dimen/_12ssp"/>
+                <TextView android:id="@+id/tv_completed_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/_4sdp" android:paddingHorizontal="@dimen/_6sdp" android:paddingVertical="@dimen/_1sdp" android:visibility="gone" android:background="@drawable/bg_count_badge" android:fontFamily="@font/somar_semi_bold" android:textColor="@color/white" android:textSize="@dimen/_9ssp" tools:text="1"/>
             </LinearLayout>
-
-
-
-            <LinearLayout
-                android:id="@+id/btn_completed"
-                android:layout_width="wrap_content"
-                android:paddingHorizontal="@dimen/_8sdp"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-
-
-
-                <TextView
-                    android:id="@+id/tv_completed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/somar_bold"
-                    android:padding="@dimen/_6sdp"
-                    android:text="@string/completed"
-                    android:textAlignment="center"
-                    android:textColor="@color/primary"
-                    android:textSize="@dimen/_18ssp" />
-
-
-            </LinearLayout>
-
-
-
-            <LinearLayout
-                android:id="@+id/btn_canceled"
-                android:layout_width="wrap_content"
-                android:paddingHorizontal="@dimen/_8sdp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center">
-
-
-
-                <TextView
-                    android:id="@+id/tv_canceled"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/somar_bold"
-                    android:padding="@dimen/_6sdp"
-                    android:text="@string/canceled"
-                    android:textAlignment="center"
-                    android:textColor="@color/primary"
-                    android:textSize="@dimen/_18ssp" />
-
-
-            </LinearLayout>
-
-
-            </LinearLayout>
-        </HorizontalScrollView>
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_all_order"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-            tools:itemCount="20"
-            tools:listitem="@layout/item_all_order" />
-
-
-
-
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_all_order" android:layout_width="match_parent" android:layout_height="0dp" android:layout_marginTop="@dimen/_2sdp" android:clipToPadding="false" android:paddingBottom="@dimen/_16sdp" app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/linearLayout2" tools:itemCount="20" tools:listitem="@layout/item_all_order"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

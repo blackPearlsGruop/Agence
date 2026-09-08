@@ -32,6 +32,15 @@ class OrdersFragment : BaseFragment<FragmentOrdersBinding>(), Order {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Belt-and-suspenders: hide the old shared blue toolbar here too (same
+        // fix as Home/Account/Messages/Support), in case this screen is reached
+        // without going through MainActivity's bottom nav click handler.
+        try {
+            (requireActivity() as com.ksa.agence.ui.activity.MainActivity).mViewDataBinding.constraintLayout2.visibility = View.GONE
+        } catch (e: Exception) {
+            Log.e("OrdersFragment", "constraintLayout2 hide failed", e)
+        }
+
         listData=ArrayList()
 
         onClick()
@@ -98,11 +107,11 @@ class OrdersFragment : BaseFragment<FragmentOrdersBinding>(), Order {
 
     private fun onClick() {
         mViewDataBinding.btnCurrentRequests.setOnClickListener {
-            mViewDataBinding.btnCurrentRequests.setBackgroundResource(R.drawable.shape_bottom)
+            mViewDataBinding.btnCurrentRequests.setBackgroundResource(R.drawable.bg_agence_pill_active)
             mViewDataBinding.tvCurrentRequests.setTextColor(resources.getColor(R.color.white))
 
             mViewDataBinding.btnFinishedRequests.setBackgroundDrawable(null)
-            mViewDataBinding.tvFinishedRequests.setTextColor(resources.getColor(R.color.primary))
+            mViewDataBinding.tvFinishedRequests.setTextColor(resources.getColor(R.color.agence_muted))
 
             val statusArray = listOf("pending", "in-progress")
             viewModel.allOrders(statusArray)
@@ -110,11 +119,11 @@ class OrdersFragment : BaseFragment<FragmentOrdersBinding>(), Order {
         }
 
         mViewDataBinding.btnFinishedRequests.setOnClickListener {
-            mViewDataBinding.btnFinishedRequests.setBackgroundResource(R.drawable.shape_bottom)
+            mViewDataBinding.btnFinishedRequests.setBackgroundResource(R.drawable.bg_agence_pill_active)
             mViewDataBinding.tvFinishedRequests.setTextColor(resources.getColor(R.color.white))
 
             mViewDataBinding.btnCurrentRequests.setBackgroundDrawable(null)
-            mViewDataBinding.tvCurrentRequests.setTextColor(resources.getColor(R.color.primary))
+            mViewDataBinding.tvCurrentRequests.setTextColor(resources.getColor(R.color.agence_muted))
 
             val statusArray = listOf("completed", "canceled")
             viewModel.allOrders(statusArray)

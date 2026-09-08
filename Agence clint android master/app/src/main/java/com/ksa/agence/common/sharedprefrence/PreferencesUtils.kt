@@ -30,7 +30,7 @@ class PreferencesUtils (context: Context) {
     }
 
     fun deleteObject(name:String){
-         preferences.edit().remove(name).commit()
+        preferences.edit().remove(name).commit()
     }
     fun getString(key: String, defValue: String): String? {
         return preferences.getString(key, defValue)
@@ -68,39 +68,27 @@ class PreferencesUtils (context: Context) {
         }
     }
 
+    // FIXED: returns null instead of crashing when there's no saved user data
+    // (e.g. guest mode, or before the first successful login).
     fun loadUserData(activity: Context, key: String): AuthUserResponse? {
-     preferences
-        var userData: AuthUserResponse
         val gson = Gson()
-        userData = gson.fromJson(
-         LoadData(
-                activity,
-                key),
-            AuthUserResponse::class.java
-        )
-        return userData
-    }
+        val jsonString = LoadData(activity, key)
 
-//    fun loadUserData(activity: Context, key: String): AuthenticationResponse? {
-//        val gson = Gson()
-//        val jsonString = LoadData(activity, key)
-//
-//        // Check if the JSON string is not null before parsing
-//        return if (!jsonString.isNullOrBlank()) {
-//            gson.fromJson(jsonString, AuthenticationResponse::class.java)
-//        } else {
-//            null
-//        }
-//    }
+        return if (!jsonString.isNullOrBlank()) {
+            gson.fromJson(jsonString, AuthUserResponse::class.java)
+        } else {
+            null
+        }
+    }
 
 
     fun LoadData(context: Context?, data_Key: String?): String? {
         preferences
         if (preferences != null) {
             val editor: SharedPreferences.Editor =
-               preferences.edit()
+                preferences.edit()
         } else {
-         preferences
+            preferences
         }
         return preferences.getString(
             data_Key,

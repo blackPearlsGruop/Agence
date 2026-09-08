@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_bottom"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:paddingTop="@dimen/_14sdp"
+        android:paddingBottom="@dimen/_28sdp">
+
+        <View
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="4dp"
+            android:layout_gravity="center"
+            android:background="@color/agence_border"/>
+
+        <FrameLayout
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:background="@drawable/bg_upgrade_pill">
+
+            <ImageView
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_gravity="center"
+                android:src="@drawable/icon_favorite"
+                app:tint="@color/agence_orange"/>
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:text="@string/get_featured_title"
+            android:fontFamily="@font/somar_bold"
+            android:textSize="@dimen/_16ssp"
+            android:textColor="@color/agence_black"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:text="@string/get_featured_desc"
+            android:fontFamily="@font/somar_regular"
+            android:textSize="@dimen/_12ssp"
+            android:lineSpacingExtra="@dimen/_3sdp"
+            android:textColor="@color/agence_muted"
+            android:textAlignment="center"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:padding="@dimen/_14sdp"
+            android:background="@color/agence_bg">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:text="@string/eligibility_requirements"
+                android:fontFamily="@font/somar_bold"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/agence_black"/>
+
+            <!-- Requirement 1: met -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_8sdp">
+
+                <FrameLayout
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:background="@drawable/bg_req_icon_green">
+
+                    <ImageView
+                        android:layout_width="@dimen/_12sdp"
+                        android:layout_height="@dimen/_12sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/icon_favorite"
+                        app:tint="@color/agence_green"/>
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:text="@string/req_rating"
+                    android:fontFamily="@font/somar_regular"
+                    android:textSize="@dimen/_11ssp"
+                    android:textColor="@color/agence_black"/>
+
+                <ImageView
+                    android:layout_width="@dimen/_11sdp"
+                    android:layout_height="@dimen/_11sdp"
+                    android:src="@drawable/ic_check"
+                    app:tint="@color/agence_green"/>
+
+            </LinearLayout>
+
+            <!-- Requirement 2: not met -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_8sdp">
+
+                <FrameLayout
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:background="@drawable/bg_req_icon_muted">
+
+                    <ImageView
+                        android:layout_width="@dimen/_12sdp"
+                        android:layout_height="@dimen/_12sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_check"
+                        app:tint="@color/agence_muted"/>
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:text="@string/req_projects"
+                    android:fontFamily="@font/somar_regular"
+                    android:textSize="@dimen/_11ssp"
+                    android:textColor="@color/agence_muted"/>
+
+            </LinearLayout>
+
+            <!-- Requirement 3: met -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:background="@drawable/bg_req_icon_green">
+
+                    <ImageView
+                        android:layout_width="@dimen/_12sdp"
+                        android:layout_height="@dimen/_12sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_check"
+                        app:tint="@color/agence_green"/>
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:text="@string/req_verified"
+                    android:fontFamily="@font/somar_regular"
+                    android:textSize="@dimen/_11ssp"
+                    android:textColor="@color/agence_black"/>
+
+                <ImageView
+                    android:layout_width="@dimen/_11sdp"
+                    android:layout_height="@dimen/_11sdp"
+                    android:src="@drawable/ic_check"
+                    app:tint="@color/agence_green"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_apply_featured"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_42sdp"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:text="@string/apply_for_featured"
+            android:backgroundTint="@color/agence_blue"
+            android:textAllCaps="false"
+            android:fontFamily="@font/somar_bold"
+            android:textSize="@dimen/_13ssp"
+            app:cornerRadius="999dp" />
+
+    </LinearLayout>
+</layout>

@@ -29,6 +29,16 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(), Chat {
 
         mainActivity = requireActivity() as MainActivity
 
+        // Belt-and-suspenders: hide the old shared blue toolbar here too, in case
+        // this screen is ever reached without going through MainActivity's bottom
+        // nav click handler (e.g. state restoration) — same fix as Home/Account/Orders.
+        try {
+            mainActivity.mViewDataBinding.constraintLayout2.visibility = View.GONE
+            mainActivity.mViewDataBinding.btnQuickOrder.visibility = View.GONE
+        } catch (e: Exception) {
+            Log.e("ChatFragment", "constraintLayout2 hide failed", e)
+        }
+
 
         database = FirebaseDatabase.getInstance().reference.child("orders")
 
@@ -55,6 +65,14 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(), Chat {
                 }
 
                 adapter.notifyDataSetChanged()
+
+                if (companyList.isEmpty()) {
+                    mViewDataBinding.rvNewUserChat.visibility = View.GONE
+                    mViewDataBinding.layoutEmptyChat.visibility = View.VISIBLE
+                } else {
+                    mViewDataBinding.rvNewUserChat.visibility = View.VISIBLE
+                    mViewDataBinding.layoutEmptyChat.visibility = View.GONE
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {

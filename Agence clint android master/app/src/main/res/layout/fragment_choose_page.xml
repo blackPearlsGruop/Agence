@@ -1,124 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <data>
-
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_50sdp"
-            android:src="@drawable/logo_splash"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <TextView
-            android:id="@+id/tv_nameUser"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/somar_bold"
-            android:gravity="center"
-            android:layout_marginEnd="@dimen/_24sdp"
-            android:layout_marginStart="@dimen/_24sdp"
-            android:text="@string/we_are_here_to_provide_a_media_experience_customized_for_you"
-            android:textColor="@color/text"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:textSize="@dimen/_20ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_customer"
-            style="@style/bottom"
-            android:layout_width="0dp"
-            android:text="@string/customer"
-            android:layout_marginTop="@dimen/_24sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_nameUser" />
-
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_provider"
-            style="@style/bottom"
-            android:layout_width="0dp"
-            android:text="@string/provider"
-            android:layout_marginTop="@dimen/_16sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_customer" />
-
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_24sdp"
-            app:layout_constraintEnd_toEndOf="@+id/btn_provider"
-            app:layout_constraintStart_toStartOf="@+id/btn_provider"
-            app:layout_constraintTop_toBottomOf="@+id/btn_provider">
-
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="4dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="@drawable/icon_line_1"
-                android:gravity="center" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_12sdp"
-                android:fontFamily="@font/somar_bold"
-                android:gravity="center"
-                android:text="@string/or"
-                android:textColor="@color/text"
-                android:textSize="@dimen/_16ssp" />
-
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="4dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="@drawable/icon_line_2"
-                android:gravity="center" />
-
-
-        </LinearLayout>
-
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_guest"
-            style="@style/bottom"
-            android:layout_width="0dp"
-            android:layout_marginTop="@dimen/_24sdp"
-            android:text="@string/follow_as_a_guest"
-            android:textColor="@color/secondary"
-            android:background="@drawable/shape_bottom2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+<layout xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+    <data> </data>
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/agence_bg" android:fillViewport="true" android:scrollbars="none">
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingBottom="@dimen/_24sdp">
+            <!--  Logo  -->
+            <ImageView android:id="@+id/imageView2" android:layout_width="wrap_content" android:layout_height="@dimen/_60sdp" android:layout_marginTop="@dimen/_28sdp" android:src="@drawable/logo_splash"
+                android:background="@android:color/transparent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+            <!--  Heading  -->
+            <TextView android:id="@+id/tv_choose_title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="@dimen/_24sdp" android:layout_marginTop="@dimen/_18sdp" android:layout_marginEnd="@dimen/_24sdp" android:fontFamily="@font/somar_bold" android:text="@string/choose_account_title" android:textColor="@color/agence_black" android:textSize="@dimen/_18ssp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/imageView2"/>
+            <TextView android:id="@+id/tv_choose_desc" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="@dimen/_24sdp" android:layout_marginTop="@dimen/_4sdp" android:layout_marginEnd="@dimen/_24sdp" android:fontFamily="@font/somar_regular" android:text="@string/choose_account_desc" android:textColor="@color/agence_muted" android:textSize="@dimen/_11ssp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/tv_choose_title"/>
+            <!--  Beneficiary card (kept id btn_customer so ChoosePageFragment.kt logic still works)  -->
+            <androidx.appcompat.widget.AppCompatButton android:id="@+id/btn_customer" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="@dimen/_24sdp" android:layout_marginTop="@dimen/_20sdp" android:layout_marginEnd="@dimen/_24sdp" android:background="@drawable/bg_agence_card_blue" android:text="" android:paddingStart="@dimen/_16sdp" android:paddingEnd="@dimen/_16sdp" android:paddingTop="@dimen/_16sdp" android:paddingBottom="@dimen/_16sdp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/tv_choose_desc"
+                android:stateListAnimator="@null"
+                android:elevation="0dp" />
+            <!--  Overlay content for the beneficiary card (visual only, sits on top of the button)  -->
+            <ImageView android:id="@+id/iv_beneficiary_icon" android:layout_width="@dimen/_38sdp" android:layout_height="@dimen/_38sdp" android:layout_marginStart="@dimen/_36sdp" android:padding="8dp" android:background="@drawable/bg_agence_icon_circle_blue" android:src="@drawable/ic_building" app:layout_constraintBottom_toBottomOf="@+id/btn_customer" app:layout_constraintStart_toStartOf="@+id/btn_customer" app:layout_constraintTop_toTopOf="@+id/btn_customer"/>
+            <TextView android:id="@+id/tv_beneficiary_title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="@dimen/_12sdp" android:layout_marginEnd="@dimen/_36sdp" android:fontFamily="@font/somar_bold" android:text="@string/beneficiary_title" android:textColor="@color/agence_black" android:textSize="@dimen/_13ssp" app:layout_constraintEnd_toEndOf="@+id/btn_customer" app:layout_constraintStart_toEndOf="@+id/iv_beneficiary_icon" app:layout_constraintTop_toTopOf="@+id/iv_beneficiary_icon"/>
+            <TextView android:id="@+id/tv_beneficiary_desc" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_3sdp" android:fontFamily="@font/somar_regular" android:text="@string/beneficiary_desc" android:textColor="@color/agence_muted" android:textSize="@dimen/_10ssp" app:layout_constraintEnd_toEndOf="@+id/tv_beneficiary_title" app:layout_constraintStart_toStartOf="@+id/tv_beneficiary_title" app:layout_constraintTop_toBottomOf="@+id/tv_beneficiary_title"/>
+            <ImageView android:layout_width="@dimen/_16sdp" android:layout_height="@dimen/_16sdp" android:layout_marginEnd="@dimen/_14sdp" android:src="@drawable/ic_chevron_right" app:layout_constraintBottom_toBottomOf="@+id/btn_customer" app:layout_constraintEnd_toEndOf="@+id/btn_customer" app:layout_constraintTop_toTopOf="@+id/btn_customer"/>
+            <!--  Member card (kept id btn_provider)  -->
+            <androidx.appcompat.widget.AppCompatButton android:id="@+id/btn_provider" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="@dimen/_24sdp" android:layout_marginTop="@dimen/_14sdp" android:layout_marginEnd="@dimen/_24sdp" android:background="@drawable/bg_agence_card_orange" android:text="" android:paddingStart="@dimen/_16sdp" android:paddingEnd="@dimen/_16sdp" android:paddingTop="@dimen/_16sdp" android:paddingBottom="@dimen/_16sdp"
+                android:stateListAnimator="@null"
+                android:elevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/btn_customer"/>
+            <ImageView android:id="@+id/iv_member_icon" android:layout_width="@dimen/_38sdp" android:layout_height="@dimen/_38sdp" android:layout_marginStart="@dimen/_36sdp" android:padding="8dp" android:background="@drawable/bg_agence_icon_circle_orange" android:src="@drawable/ic_briefcase" app:layout_constraintBottom_toBottomOf="@+id/btn_provider" app:layout_constraintStart_toStartOf="@+id/btn_provider" app:layout_constraintTop_toTopOf="@+id/btn_provider"/>
+            <TextView android:id="@+id/tv_member_title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="@dimen/_12sdp" android:layout_marginEnd="@dimen/_36sdp" android:fontFamily="@font/somar_bold" android:text="@string/member_title" android:textColor="@color/agence_black" android:textSize="@dimen/_13ssp" app:layout_constraintEnd_toEndOf="@+id/btn_provider" app:layout_constraintStart_toEndOf="@+id/iv_member_icon" app:layout_constraintTop_toTopOf="@+id/iv_member_icon"/>
+            <TextView android:id="@+id/tv_member_desc" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_3sdp" android:fontFamily="@font/somar_regular" android:text="@string/member_desc" android:textColor="@color/agence_muted" android:textSize="@dimen/_10ssp" app:layout_constraintEnd_toEndOf="@+id/tv_member_title" app:layout_constraintStart_toStartOf="@+id/tv_member_title" app:layout_constraintTop_toBottomOf="@+id/tv_member_title"/>
+            <ImageView android:layout_width="@dimen/_16sdp" android:layout_height="@dimen/_16sdp" android:layout_marginEnd="@dimen/_14sdp" android:src="@drawable/ic_chevron_right" app:layout_constraintBottom_toBottomOf="@+id/btn_provider" app:layout_constraintEnd_toEndOf="@+id/btn_provider" app:layout_constraintTop_toTopOf="@+id/btn_provider"/>
+            <!--  Guest button (kept id btn_guest)  -->
+            <androidx.appcompat.widget.AppCompatButton android:id="@+id/btn_guest" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="@dimen/_24sdp" android:layout_marginTop="@dimen/_18sdp" android:layout_marginEnd="@dimen/_24sdp" android:background="@drawable/bg_agence_btn_guest" android:fontFamily="@font/somar_semi_bold" android:paddingTop="@dimen/_10sdp" android:paddingBottom="@dimen/_10sdp" android:text="@string/visit_as_guest" android:textAllCaps="false" android:textColor="@color/agence_muted" android:textSize="@dimen/_12ssp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/btn_provider"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

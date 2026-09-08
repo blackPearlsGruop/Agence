@@ -38,7 +38,7 @@ class NotificationViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    notificationResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 

@@ -1,202 +1,444 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
-    <ScrollView
-        android:fillViewport="true"
-        android:background="@color/white"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/agence_bg">
 
+        <!-- Slim header: bell + title (replaces the old shared blue toolbar,
+             same approach used for the Home screen) -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:paddingTop="@dimen/_14sdp"
+            android:paddingBottom="@dimen/_10sdp">
 
+            <ImageView
+                android:id="@+id/iv_notification"
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:src="@drawable/icon_notification"
+                app:tint="@color/agence_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <LinearLayout
-            android:orientation="vertical"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_account_title"
+                android:fontFamily="@font/somar_bold"
+                android:textSize="@dimen/_18ssp"
+                android:textColor="@color/agence_black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:fillViewport="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_user_login"
-                android:layout_gravity="center"
-                android:layout_width="@dimen/_100sdp"
-                android:layout_height="@dimen/_100sdp"
-                android:src="@drawable/backround_image"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="@dimen/_16sdp" />
-
-
-            <TextView
-                android:id="@+id/tv_user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/somar_bold"
-                android:text="فاطمة مصطفى"
-                android:textColor="@color/text"
-                android:textSize="@dimen/_24ssp"
-                android:layout_gravity="center"
-                android:textAlignment="center"/>
-
-
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_my_account"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/profile_personly"
-                android:fontFamily="@font/somar_bold"
-                android:textSize="@dimen/_18ssp"
-                android:textColor="@color/grey_bold"
-                android:padding="@dimen/_8sdp"
-                android:drawableStart="@drawable/icon_my_profile"
-                android:drawableEnd="@drawable/icon_back_setting"
-                android:drawablePadding="@dimen/_8sdp"
-                android:layout_marginHorizontal="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:background="@drawable/shape_text_border"/>
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/_24sdp">
 
+                <!-- Balance card -->
+                <LinearLayout
+                    android:id="@+id/layout_balance_card"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:padding="@dimen/_16sdp"
+                    android:background="@drawable/bg_agence_balance_card">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_language"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/the_language"
-                android:fontFamily="@font/somar_bold"
-                android:textSize="@dimen/_18ssp"
-                android:textColor="@color/grey_bold"
-                android:padding="@dimen/_8sdp"
-                android:drawableStart="@drawable/icon_language"
-                android:drawableEnd="@drawable/icon_back_setting"
-                android:drawablePadding="@dimen/_8sdp"
-                android:layout_marginHorizontal="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:background="@drawable/shape_text_border"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/current_balance"
+                        android:fontFamily="@font/somar_regular"
+                        android:textSize="@dimen/_10ssp"
+                        android:textColor="#B8B0FA"
+                        android:letterSpacing="0.05"/>
 
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:gravity="center_vertical">
 
+                        <TextView
+                            android:id="@+id/tv_balance_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:fontFamily="@font/somar_bold"
+                            android:textSize="@dimen/_24ssp"
+                            android:textColor="@color/white"/>
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_6sdp"
+                            android:text="@string/riyal"
+                            android:fontFamily="@font/somar_regular"
+                            android:textSize="@dimen/_13ssp"
+                            android:textColor="@color/white"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_favorite"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/favorite"
-                android:fontFamily="@font/somar_bold"
-                android:textSize="@dimen/_18ssp"
-                android:textColor="@color/grey_bold"
-                android:padding="@dimen/_8sdp"
-                android:drawableStart="@drawable/icon_favorite"
-                android:drawableEnd="@drawable/icon_back_setting"
-                android:drawablePadding="@dimen/_8sdp"
-                android:layout_marginHorizontal="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:background="@drawable/shape_text_border"/>
+                    </LinearLayout>
 
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_14sdp"
+                        android:weightSum="3">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_previous_invoices"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/previous_invoices"
-                android:fontFamily="@font/somar_bold"
-                android:textSize="@dimen/_18ssp"
-                android:textColor="@color/grey_bold"
-                android:padding="@dimen/_8sdp"
-                android:drawableStart="@drawable/icon_park_outline_bill"
-                android:drawableEnd="@drawable/icon_back_setting"
-                android:drawablePadding="@dimen/_8sdp"
-                android:layout_marginHorizontal="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:background="@drawable/shape_text_border"/>
+                        <LinearLayout
+                            android:id="@+id/btn_top_up"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_6sdp"
+                            android:paddingVertical="@dimen/_10sdp"
+                            android:background="@drawable/bg_agence_balance_action">
 
+                            <ImageView
+                                android:layout_width="@dimen/_16sdp"
+                                android:layout_height="@dimen/_16sdp"
+                                android:src="@drawable/ic_balance_topup"/>
 
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:text="@string/top_up"
+                                android:fontFamily="@font/somar_regular"
+                                android:textSize="@dimen/_10ssp"
+                                android:textColor="@color/white"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_connect_with_us"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/connect_with_us"
-                android:fontFamily="@font/somar_bold"
-                android:textSize="@dimen/_18ssp"
-                android:textColor="@color/grey_bold"
-                android:padding="@dimen/_8sdp"
-                android:drawableStart="@drawable/icon_phone"
-                android:drawableEnd="@drawable/icon_back_setting"
-                android:drawablePadding="@dimen/_8sdp"
-                android:layout_marginHorizontal="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:background="@drawable/shape_text_border"/>
+                        </LinearLayout>
 
+                        <LinearLayout
+                            android:id="@+id/btn_withdraw"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_3sdp"
+                            android:paddingVertical="@dimen/_10sdp"
+                            android:background="@drawable/bg_agence_balance_action">
 
+                            <ImageView
+                                android:layout_width="@dimen/_16sdp"
+                                android:layout_height="@dimen/_16sdp"
+                                android:src="@drawable/ic_balance_withdraw"/>
 
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:text="@string/withdraw"
+                                android:fontFamily="@font/somar_regular"
+                                android:textSize="@dimen/_10ssp"
+                                android:textColor="@color/white"/>
 
+                        </LinearLayout>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_terms_and_conditions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/terms_and_conditions"
-                android:fontFamily="@font/somar_bold"
-                android:textSize="@dimen/_18ssp"
-                android:textColor="@color/grey_bold"
-                android:padding="@dimen/_8sdp"
-                android:drawableStart="@drawable/icon_md_paper"
-                android:drawableEnd="@drawable/icon_back_setting"
-                android:drawablePadding="@dimen/_8sdp"
-                android:layout_marginHorizontal="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:background="@drawable/shape_text_border"/>
+                        <LinearLayout
+                            android:id="@+id/btn_balance_history"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_6sdp"
+                            android:paddingVertical="@dimen/_10sdp"
+                            android:background="@drawable/bg_agence_balance_action">
 
+                            <ImageView
+                                android:layout_width="@dimen/_16sdp"
+                                android:layout_height="@dimen/_16sdp"
+                                android:src="@drawable/ic_balance_history"/>
 
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:text="@string/history"
+                                android:fontFamily="@font/somar_regular"
+                                android:textSize="@dimen/_10ssp"
+                                android:textColor="@color/white"/>
 
+                        </LinearLayout>
 
+                    </LinearLayout>
 
+                </LinearLayout>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_delete_account"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/delete_account"
-                android:fontFamily="@font/somar_bold"
-                android:textSize="@dimen/_18ssp"
-                android:textColor="@color/grey_bold"
-                android:padding="@dimen/_8sdp"
-                android:drawableStart="@drawable/icon_delete_acount"
-                android:drawableEnd="@drawable/icon_back_setting"
-                android:drawablePadding="@dimen/_8sdp"
-                android:layout_marginHorizontal="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:background="@drawable/shape_text_border"/>
+                <!-- Payment methods -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/payment_methods"
+                    android:fontFamily="@font/somar_regular"
+                    android:textSize="@dimen/_10ssp"
+                    android:textColor="@color/agence_muted"
+                    android:letterSpacing="0.05"
+                    android:layout_marginStart="@dimen/_18sdp"
+                    android:layout_marginTop="@dimen/_18sdp"/>
 
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@drawable/bg_agence_list_group">
 
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_payment_mada"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mada"
+                        android:fontFamily="@font/somar_semi_bold"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/agence_black"
+                        android:paddingHorizontal="@dimen/_14sdp"
+                        android:paddingVertical="@dimen/_13sdp"
+                        android:drawableStart="@drawable/ic_payment_card_generic"
+                        android:drawableEnd="@drawable/ic_row_chevron"
+                        android:drawablePadding="@dimen/_10sdp"/>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/_46sdp"
+                        android:background="@color/agence_border"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_log_out"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/logout"
-                android:fontFamily="@font/somar_bold"
-                android:textSize="@dimen/_18ssp"
-                android:textColor="@color/grey_bold"
-                android:padding="@dimen/_8sdp"
-                android:drawableStart="@drawable/icon_log_out_outline"
-                android:drawableEnd="@drawable/icon_back_setting"
-                android:drawablePadding="@dimen/_8sdp"
-                android:layout_marginHorizontal="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:background="@drawable/shape_text_border"/>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_payment_apple_pay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/apple_pay"
+                        android:fontFamily="@font/somar_semi_bold"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/agence_black"
+                        android:paddingHorizontal="@dimen/_14sdp"
+                        android:paddingVertical="@dimen/_13sdp"
+                        android:drawableStart="@drawable/ic_payment_apple"
+                        android:drawableEnd="@drawable/ic_row_chevron"
+                        android:drawablePadding="@dimen/_10sdp"/>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/_46sdp"
+                        android:background="@color/agence_border"/>
 
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_payment_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/credit_debit_card"
+                        android:fontFamily="@font/somar_semi_bold"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/agence_black"
+                        android:paddingHorizontal="@dimen/_14sdp"
+                        android:paddingVertical="@dimen/_13sdp"
+                        android:drawableStart="@drawable/ic_payment_card_generic"
+                        android:drawableEnd="@drawable/ic_row_chevron"
+                        android:drawablePadding="@dimen/_10sdp"/>
 
+                </LinearLayout>
 
+                <!-- Language row with chip: tapping switches the app language
+                     immediately, no separate page -->
+                <LinearLayout
+                    android:id="@+id/tv_language"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:padding="@dimen/_14sdp"
+                    android:background="@drawable/bg_agence_list_group">
 
-        </LinearLayout>
+                    <ImageView
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:src="@drawable/icon_language"/>
 
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:text="@string/the_language"
+                        android:fontFamily="@font/somar_semi_bold"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/agence_black"/>
 
+                    <TextView
+                        android:id="@+id/tv_language_chip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="@dimen/_14sdp"
+                        android:paddingVertical="@dimen/_6sdp"
+                        android:text="@string/language_chip_label"
+                        android:fontFamily="@font/somar_semi_bold"
+                        android:textSize="@dimen/_11ssp"
+                        android:textColor="@color/white"
+                        android:background="@drawable/bg_agence_lang_pill"/>
 
-    </ScrollView>
+                </LinearLayout>
+
+                <!-- Menu list -->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@drawable/bg_agence_list_group">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_my_account"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/profile_personly"
+                        android:fontFamily="@font/somar_semi_bold"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/agence_black"
+                        android:paddingHorizontal="@dimen/_14sdp"
+                        android:paddingVertical="@dimen/_13sdp"
+                        android:drawableStart="@drawable/icon_my_profile"
+                        android:drawableEnd="@drawable/ic_row_chevron"
+                        android:drawablePadding="@dimen/_10sdp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/_46sdp"
+                        android:background="@color/agence_border"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_previous_invoices"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/previous_invoices"
+                        android:fontFamily="@font/somar_semi_bold"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/agence_black"
+                        android:paddingHorizontal="@dimen/_14sdp"
+                        android:paddingVertical="@dimen/_13sdp"
+                        android:drawableStart="@drawable/icon_park_outline_bill"
+                        android:drawableEnd="@drawable/ic_row_chevron"
+                        android:drawablePadding="@dimen/_10sdp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/_46sdp"
+                        android:background="@color/agence_border"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_favorite"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/favorite"
+                        android:fontFamily="@font/somar_semi_bold"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/agence_black"
+                        android:paddingHorizontal="@dimen/_14sdp"
+                        android:paddingVertical="@dimen/_13sdp"
+                        android:drawableStart="@drawable/icon_favorite"
+                        android:drawableEnd="@drawable/ic_row_chevron"
+                        android:drawablePadding="@dimen/_10sdp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/_46sdp"
+                        android:background="@color/agence_border"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_connect_with_us"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/connect_with_us"
+                        android:fontFamily="@font/somar_semi_bold"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/agence_black"
+                        android:paddingHorizontal="@dimen/_14sdp"
+                        android:paddingVertical="@dimen/_13sdp"
+                        android:drawableStart="@drawable/icon_phone"
+                        android:drawableEnd="@drawable/ic_row_chevron"
+                        android:drawablePadding="@dimen/_10sdp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/_46sdp"
+                        android:background="@color/agence_border"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_terms_and_conditions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/terms_and_conditions"
+                        android:fontFamily="@font/somar_semi_bold"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/agence_black"
+                        android:paddingHorizontal="@dimen/_14sdp"
+                        android:paddingVertical="@dimen/_13sdp"
+                        android:drawableStart="@drawable/icon_md_paper"
+                        android:drawableEnd="@drawable/ic_row_chevron"
+                        android:drawablePadding="@dimen/_10sdp"/>
+
+                </LinearLayout>
+
+                <!-- Log out only (delete-account row removed per feedback) -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_log_out"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:text="@string/logout"
+                    android:fontFamily="@font/somar_semi_bold"
+                    android:textSize="@dimen/_13ssp"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textColor="@color/red"
+                    android:padding="@dimen/_13sdp"
+                    android:drawableStart="@drawable/icon_log_out_outline"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:background="@drawable/bg_agence_logout"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
 </layout>

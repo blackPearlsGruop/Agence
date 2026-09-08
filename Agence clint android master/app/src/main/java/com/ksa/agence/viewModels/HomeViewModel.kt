@@ -55,7 +55,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    makePaymentResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -72,7 +72,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    categoriesResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -95,7 +95,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    companyResultFilterResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -112,7 +112,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    companyResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -130,7 +130,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    getAllFavouritesResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -148,7 +148,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    addFavouritesResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -166,7 +166,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    bannerResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -184,7 +184,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    allOfferCompanyResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -193,7 +193,7 @@ class HomeViewModel(
     }
 
 
-  fun allOrders(status:List<String>) {
+    fun allOrders(status:List<String>) {
         if (Utilities.hasInternetConnection()) {
             allOrdersResponse.postValue(Resource.Loading())
             viewModelScope.launch {
@@ -203,7 +203,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    allOrdersResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -211,7 +211,7 @@ class HomeViewModel(
         }
     }
 
-  fun showCompanies(idCompanies:Int) {
+    fun showCompanies(idCompanies:Int) {
         if (Utilities.hasInternetConnection()) {
             showCompaniesResponse.postValue(Resource.Loading())
             viewModelScope.launch {
@@ -221,7 +221,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVMFav", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    showCompaniesResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVMFav", " error ${response.code()}")
                 }
 
@@ -234,9 +234,9 @@ class HomeViewModel(
                    offer_id:Int?,
                    service_id:Int?,
                    order_type:String,
-                      order_title:String,
-                      order_description:String,
-                      order_duration_in_days:String) {
+                   order_title:String,
+                   order_description:String,
+                   order_duration_in_days:String) {
         if (Utilities.hasInternetConnection()) {
             quickOrderResponse.postValue(Resource.Loading())
             viewModelScope.launch {
@@ -254,7 +254,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    quickOrderResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -272,7 +272,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    categoriesByIdResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -291,7 +291,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    acceptOfferResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -309,7 +309,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    rejectOfferResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -326,7 +326,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    getSingleOrderResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 
@@ -349,7 +349,7 @@ class HomeViewModel(
                     // handling if repsonse is succesfully
                     Log.i("TestLoginterVM", "${response.body()}")
                 } else {
-                    Resource.Error(response.message())
+                    ratingCompanyResponse.postValue(Resource.Error(response.message() ?: "خطأ غير معروف"))
                     Log.i("TestLoginterVM", " error ${response.code()}")
                 }
 

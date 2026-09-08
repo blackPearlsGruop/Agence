@@ -1,3 +1,5 @@
+package com.ksa.agence.di
+
 import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Handler
@@ -74,10 +76,25 @@ class AuthenticationInterceptor(private val context: Context) : Interceptor {
 
         val request = requestBuilder.build()
 
-        return runBlocking {
-            retryIO {
-                chain.proceed(request)
+        // FIXED: previously, if every retry attempt failed (e.g. the server is
+        // unreachable), the exception from the final attempt was never caught
+        // and crashed the whole app. Now it's caught here and turned into a
+        // graceful "no connection" response instead, matching the pattern
+        // already used by ConnectivityInterceptor above.
+        return try {
+            runBlocking {
+                retryIO {
+                    chain.proceed(request)
+                }
             }
+        } catch (e: IOException) {
+            Response.Builder()
+                .body("تعذر الاتصال بالخادم".toResponseBody(null))
+                .protocol(Protocol.HTTP_2)
+                .message(e.message ?: "تعذر الاتصال بالخادم")
+                .request(chain.request())
+                .code(0)
+                .build()
         }
     }
 }
@@ -90,7 +107,7 @@ class NoInternetException(message: String) : IOException(message)
 
 // داخل retryIO
 suspend fun <T> retryIO(
-    times: Int = 3, initialDelay: Long = 100, // بالمللي ثانية
+    times: Int = 1, initialDelay: Long = 100, // بالمللي ثانية
     maxDelay: Long = 1000, // بالمللي ثانية
     factor: Double = 2.0, block: suspend () -> T
 ): T {
@@ -108,6 +125,5 @@ suspend fun <T> retryIO(
             currentDelay = (currentDelay * factor).toLong().coerceAtMost(maxDelay)
         }
     }
-    return block() // المحاولة الأخيرة
+    return block() // المحاولة الأخيرة — أي خطأ هنا يترفع لـ intercept() فوق ويتحول لرد فاشل بدل ما يكرش التطبيق
 }
-
