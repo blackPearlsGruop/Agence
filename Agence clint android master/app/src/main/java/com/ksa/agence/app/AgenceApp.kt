@@ -36,26 +36,33 @@ class AgenceApp : Application() {
         context = this
         pref = PreferencesUtils(this)
 
-        // ── TEMPORARY DEBUG: write every uncaught crash (any thread) to a
-        // file on device storage, then still hand off to whatever handler
-        // was already installed (e.g. Crashlytics) so normal behavior
-        // continues. Remove this block once the crash is found and fixed.
-        val previousHandler = Thread.getDefaultUncaughtExceptionHandler()
+        // ── TEMPORARY DEBUG: on any uncaught crash (any thread), show the
+        // full stack trace in a plain on-device screen (no Logcat / Device
+        // Explorer needed), then still write it to a file and hand off to
+        // whatever handler was already installed. Remove this block once
+        // Remove this block once the crash is found and fixed.
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
             try {
                 val sw = StringWriter()
                 throwable.printStackTrace(PrintWriter(sw))
+                val fullTrace = "Thread: ${thread.name}\nTime: ${System.currentTimeMillis()}\n\n${sw}"
+
                 val file = File(getExternalFilesDir(null), "crash_debug.txt")
-                file.writeText(
-                    "Thread: ${thread.name}\n" +
-                            "Time: ${System.currentTimeMillis()}\n\n" +
-                            sw.toString()
-                )
-                Log.e("MYCRASH", sw.toString())
+                file.writeText(fullTrace)
+                Log.e("MYCRASH", fullTrace)
+
+                val intent = android.content.Intent(
+                    this,
+                    com.ksa.agence.ui.activity.CrashDisplayActivity::class.java
+                ).apply {
+                    putExtra(com.ksa.agence.ui.activity.CrashDisplayActivity.EXTRA_TRACE, fullTrace)
+                    addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK or android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                }
+                startActivity(intent)
             } catch (inner: Throwable) {
-                Log.e("MYCRASH", "Failed to write crash file", inner)
+                Log.e("MYCRASH", "Failed to show crash screen", inner)
             }
-            previousHandler?.uncaughtException(thread, throwable)
+            Runtime.getRuntime().exit(1)
         }
 
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager

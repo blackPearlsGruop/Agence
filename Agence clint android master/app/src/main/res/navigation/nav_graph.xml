@@ -23,6 +23,21 @@
         <action
             android:id="@+id/action_menuHome_to_showSreviesFragment"
             app:destination="@id/showSreviesFragment" />
+        <action
+            android:id="@+id/action_menuHome_to_aiMatchingFragment"
+            app:destination="@id/aiMatchingFragment" />
+        <action
+            android:id="@+id/action_menuHome_to_conversationFragment_TEST"
+            app:destination="@id/conversationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aiMatchingFragment"
+        android:name="com.ksa.agence.ui.fragment.home.AiMatchingFragment"
+        android:label="AiMatchingFragment"
+        tools:layout="@layout/fragment_ai_matching">
+        <action
+            android:id="@+id/action_aiMatchingFragment_to_showCompanyFragment"
+            app:destination="@id/showCompanyFragment" />
     </fragment>
     <fragment
         android:id="@+id/menuChat"
@@ -56,6 +71,9 @@
         <action
             android:id="@+id/action_menuOrders_to_showOrderFragment"
             app:destination="@id/showOrderFragment" />
+        <action
+            android:id="@+id/action_menuOrders_to_conversationFragment"
+            app:destination="@id/conversationFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingFragment"
@@ -170,7 +188,7 @@
         <argument
             android:name="idService"
             app:argType="integer"
-           />
+            />
         <argument
             android:name="idCompany"
             app:argType="integer"

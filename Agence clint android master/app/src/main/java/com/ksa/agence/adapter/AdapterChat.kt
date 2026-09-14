@@ -123,10 +123,10 @@ class AdapterChat(
     override fun getItemCount(): Int = messages.size
 
     override fun getItemViewType(position: Int): Int {
-        return if (messages[position].senderId == AgenceApp.pref.loadUserData(
-                context, USER_DATA
-            )!!.data!!.user!!.id!!
-        ) {
+        // Same safe fallback as ConversationFragment: avoid crashing when
+        // testing without a real logged-in session.
+        val currentUserId = AgenceApp.pref.loadUserData(context, USER_DATA)?.data?.user?.id ?: -1
+        return if (messages[position].senderId == currentUserId) {
             RIGHT_SEND
         } else {
             LEFT_RECEIVE

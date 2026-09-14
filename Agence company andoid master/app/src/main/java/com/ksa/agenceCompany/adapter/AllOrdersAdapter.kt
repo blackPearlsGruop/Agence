@@ -69,11 +69,13 @@ class AllOrdersAdapter(
 
         // Active tab (pending/in-progress) shows a chat shortcut, finished tab shows a checkmark
         if (model.order_status == "pending" || model.order_status == "in-progress") {
-            holder.binding.ivAction.setImageResource(R.drawable.icon_chat)
-            holder.binding.ivAction.setBackgroundResource(R.drawable.bg_circle_light_grey)
+            holder.binding.ivActionIcon.setImageResource(R.drawable.icon_chat)
+            holder.binding.ivActionIcon.setColorFilter(context.getColor(R.color.agence_muted))
+            holder.binding.ivActionIcon.background = null
         } else {
-            holder.binding.ivAction.setImageResource(R.drawable.icon_check_white_small)
-            holder.binding.ivAction.setBackgroundResource(R.drawable.bg_circle_blue_light)
+            holder.binding.ivActionIcon.setImageResource(R.drawable.icon_show_message)
+            holder.binding.ivActionIcon.setColorFilter(context.getColor(R.color.primary))
+            holder.binding.ivActionIcon.setBackgroundResource(R.drawable.bg_circle_blue_light)
         }
 
         holder.itemView.setOnClickListener {
@@ -89,5 +91,4 @@ class AllOrdersAdapter(
     override fun getItemViewType(position: Int): Int {
         return position
     }
-
 }

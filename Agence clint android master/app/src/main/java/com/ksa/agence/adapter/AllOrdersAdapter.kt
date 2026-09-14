@@ -1,11 +1,9 @@
 package com.ksa.agence.adapter
 
 import android.app.Activity
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ksa.agence.R
@@ -16,9 +14,8 @@ import com.ksa.agence.interfaces.Order
 
 class AllOrdersAdapter(
     var context: Activity,
-    var listData: List<DataAllOrdersResponse>,val order: Order
+    var listData: List<DataAllOrdersResponse>, var order: Order
 ) : RecyclerView.Adapter<AllOrdersAdapter.ViewHolder?>() {
-
 
     inner class ViewHolder(binding: ItemAllOrderBinding) : RecyclerView.ViewHolder(binding.root) {
         var binding: ItemAllOrderBinding = binding
@@ -33,107 +30,73 @@ class AllOrdersAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val animation =
-            AnimationUtils.loadAnimation(holder.itemView.context, android.R.anim.fade_in)
-        // holder.itemView.startAnimation(animation)
         val model = listData[position]
 
-        // Log the model to check for null values
-        Log.d("AllOrdersAdapter", "Binding view holder for position: $position, model: $model")
+        // Every card renders the same way regardless of data completeness —
+        // matches the Figma reference exactly (no special "awaiting offers"
+        // treatment there). Fall back gracefully when a field is missing.
+        model.company?.company_logo?.let { onLoadImageFromUrl(context, it, holder.binding.ivLogoCompany) }
+        holder.binding.tvNameCompany.text = model.company?.title ?: context.getString(R.string.app_name)
+        holder.binding.tvNameCategory.text = model.category?.title ?: model.description ?: ""
+        holder.binding.tvNoOrder.text = model.order_number ?: ""
+        holder.binding.tvDate.text = model.created_at ?: ""
+        holder.binding.tvPrice.text = "${model.price ?: 0} ${context.getString(R.string.r_s)}"
 
-        model.company?.let { company ->
-            onLoadImageFromUrl(context, company.company_logo, holder.binding.ivLogoCompany)
-            holder.binding.tvAddressCompany.text = company.address ?: "No Address"
-            holder.binding.tvNameCompany.text = model.company?.title ?: "No Company"
-
-        }
-
-        holder.binding.tvNameCategory.text = model.category?.title ?: "No Category"
-        holder.binding.tvNoOrder.text = model.order_number ?: "No Order Number"
-        holder.binding.tvPriceService.text = "${model.price ?: 0} ${context.getString(R.string.r_s)}"
-        holder.binding.tvOrderDate.text = formatOrderDate(model.created_at)
-
-        //  in-progress,completed,canceled,pending
         when (model.order_status) {
-            "in-progress" -> {
-                holder.binding.tvStatusBadge.text = "قيد التنفيذ"
-                holder.binding.tvStatusBadge.setBackgroundResource(R.drawable.bg_status_blue)
-                holder.binding.tvStatusBadge.setTextColor(context.getColor(R.color.agence_blue))
-            }
             "pending" -> {
-                holder.binding.tvStatusBadge.text = "قيد المراجعة"
-                holder.binding.tvStatusBadge.setBackgroundResource(R.drawable.bg_status_orange)
-                holder.binding.tvStatusBadge.setTextColor(context.getColor(R.color.agence_orange))
+                holder.binding.tvStatus.text = context.getString(R.string.under_review)
+                holder.binding.tvStatus.setBackgroundResource(R.drawable.bg_status_orange)
+                holder.binding.tvStatus.setTextColor(context.getColor(R.color.agence_orange))
+            }
+            "in-progress" -> {
+                holder.binding.tvStatus.text = context.getString(R.string.in_progress)
+                holder.binding.tvStatus.setBackgroundResource(R.drawable.bg_status_blue)
+                holder.binding.tvStatus.setTextColor(context.getColor(R.color.agence_blue))
             }
             "completed" -> {
-                holder.binding.tvStatusBadge.text = "مكتمل"
-                holder.binding.tvStatusBadge.setBackgroundResource(R.drawable.bg_status_green)
-                holder.binding.tvStatusBadge.setTextColor(context.getColor(R.color.agence_green))
+                holder.binding.tvStatus.text = context.getString(R.string.delivered)
+                holder.binding.tvStatus.setBackgroundResource(R.drawable.bg_status_green)
+                holder.binding.tvStatus.setTextColor(context.getColor(R.color.agence_green))
             }
             "canceled" -> {
-                holder.binding.tvStatusBadge.text = "ملغي"
-                holder.binding.tvStatusBadge.setBackgroundResource(R.drawable.bg_status_orange)
-                holder.binding.tvStatusBadge.setTextColor(context.getColor(R.color.red))
-            }
-            else -> {
-                holder.binding.tvStatusBadge.text = model.order_status ?: ""
-                holder.binding.tvStatusBadge.setBackgroundResource(R.drawable.bg_status_blue)
-                holder.binding.tvStatusBadge.setTextColor(context.getColor(R.color.agence_blue))
+                holder.binding.tvStatus.text = context.getString(R.string.canceled)
+                holder.binding.tvStatus.setBackgroundResource(R.drawable.bg_status_orange)
+                holder.binding.tvStatus.setTextColor(context.getColor(R.color.red))
             }
         }
 
-        //  in-progress,completed,canceled,pending
-        if (model.order_status=="in-progress" || model.order_status=="pending")
-        {
-            holder.binding.btnReorder.visibility=View.GONE
-
-        }
-        else{
-            holder.binding.btnReorder.visibility=View.VISIBLE
-        }
-
-        if (model.accepted_offer !=null)
-        {
-
-            holder.binding.constraintDataCompany.visibility=View.VISIBLE
-
-        }
-        else
-        {
-            holder.binding.constraintDataCompany.visibility=View.GONE
-            holder.binding.btnShow.setText(context.getString(R.string.there_are_no_offers))
+        // Active orders (pending/in-progress) -> simple gray transparent chat
+        // icon, no background. Finished orders (completed/canceled) -> blue
+        // checkmark on a light blue circle. Same rule as the company app.
+        holder.binding.ivActionIcon.visibility = View.VISIBLE
+        if (model.order_status == "pending" || model.order_status == "in-progress") {
+            holder.binding.ivActionIcon.setImageResource(R.drawable.icon_chat)
+            holder.binding.ivActionIcon.setColorFilter(context.getColor(R.color.agence_muted))
+            holder.binding.ivActionIcon.background = null
+        } else {
+            holder.binding.ivActionIcon.setImageResource(R.drawable.icon_show_message)
+            holder.binding.ivActionIcon.setColorFilter(context.getColor(R.color.agence_blue))
+            holder.binding.ivActionIcon.setBackgroundResource(R.drawable.bg_circle_blue_light)
         }
 
+        // Reorder button: only meaningful once an order has actually finished.
+        holder.binding.btnReorder.visibility =
+            if (model.order_status == "completed" || model.order_status == "canceled") View.VISIBLE else View.GONE
 
-        holder.binding.btnShow.setOnClickListener {
-            order.clickItemOrder(model.id!!)
+        holder.binding.rootOrderCard.setOnClickListener {
+            model.id?.let { order.clickItemOrder(it) }
+        }
+
+        holder.binding.ivActionIcon.setOnClickListener {
+            order.clickItemChat(model)
         }
 
         holder.binding.btnReorder.setOnClickListener {
-            order.clickItemReorder(model.id!!)
-        }
-
-
-    }
-
-    override fun getItemCount(): Int {
-        return listData.size
-    }
-
-    override fun getItemViewType(position: Int): Int {
-        return position
-    }
-
-    private fun formatOrderDate(rawDate: String?): String {
-        if (rawDate.isNullOrBlank()) return ""
-        return try {
-            val inputFormat = java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", java.util.Locale.getDefault())
-            val outputFormat = java.text.SimpleDateFormat("d MMM", java.util.Locale("ar"))
-            val date = inputFormat.parse(rawDate.substring(0, minOf(19, rawDate.length)))
-            if (date != null) outputFormat.format(date) else rawDate
-        } catch (e: Exception) {
-            rawDate.take(10)
+            model.id?.let { order.clickItemReorder(it) }
         }
     }
 
+    override fun getItemCount(): Int = listData.size
+
+    override fun getItemViewType(position: Int): Int = position
 }

@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/agence_bg">
+
+        <!-- ── Header (own light header, same pattern as Home/Account/Support — the -->
+        <!-- shared blue toolbar is already hidden coming from Home) ── -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_14sdp">
+
+            <FrameLayout
+                android:id="@+id/iv_back"
+                android:layout_width="@dimen/_34sdp"
+                android:layout_height="@dimen/_34sdp"
+                android:background="@drawable/bg_agence_chip_white">
+
+                <ImageView
+                    android:layout_width="@dimen/_14sdp"
+                    android:layout_height="@dimen/_14sdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_arrow_back"/>
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:text="@string/ai_title"
+                android:fontFamily="@font/somar_bold"
+                android:textColor="@color/agence_black"
+                android:textSize="@dimen/_16ssp"/>
+
+        </LinearLayout>
+
+        <!-- ── Step indicator (fixed 3 steps — no adapter needed) ── -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_16sdp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_step1_dot"
+                    android:layout_width="@dimen/_22sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:gravity="center"
+                    android:background="@drawable/bg_step_dot_active"
+                    android:fontFamily="@font/somar_bold"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp"/>
+
+                <TextView
+                    android:id="@+id/tv_step1_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:text="@string/step1_label"
+                    android:fontFamily="@font/somar_regular"
+                    android:textColor="@color/agence_blue"
+                    android:textSize="@dimen/_8ssp"/>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/line_1_2"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_14sdp"
+                android:background="@color/agence_muted_bg"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_step2_dot"
+                    android:layout_width="@dimen/_22sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:gravity="center"
+                    android:background="@drawable/bg_step_dot_inactive"
+                    android:fontFamily="@font/somar_bold"
+                    android:text="2"
+                    android:textColor="@color/agence_muted"
+                    android:textSize="@dimen/_10ssp"/>
+
+                <TextView
+                    android:id="@+id/tv_step2_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:text="@string/step2_label"
+                    android:fontFamily="@font/somar_regular"
+                    android:textColor="@color/agence_muted"
+                    android:textSize="@dimen/_8ssp"/>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/line_2_3"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_14sdp"
+                android:background="@color/agence_muted_bg"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_step3_dot"
+                    android:layout_width="@dimen/_22sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:gravity="center"
+                    android:background="@drawable/bg_step_dot_inactive"
+                    android:fontFamily="@font/somar_bold"
+                    android:text="3"
+                    android:textColor="@color/agence_muted"
+                    android:textSize="@dimen/_10ssp"/>
+
+                <TextView
+                    android:id="@+id/tv_step3_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:text="@string/step3_label"
+                    android:fontFamily="@font/somar_regular"
+                    android:textColor="@color/agence_muted"
+                    android:textSize="@dimen/_8ssp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/_20sdp"
+                android:paddingBottom="@dimen/_20sdp">
+
+                <!-- ═══════════ STEP 1: Service type + Budget ═══════════ -->
+                <LinearLayout
+                    android:id="@+id/layout_step1"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_20sdp"
+                        android:text="@string/ai_desc"
+                        android:fontFamily="@font/somar_regular"
+                        android:textColor="@color/agence_muted"
+                        android:textSize="@dimen/_12ssp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:text="@string/select_service_type"
+                        android:fontFamily="@font/somar_semi_bold"
+                        android:textColor="@color/agence_black"
+                        android:textSize="@dimen/_11ssp"/>
+
+                    <LinearLayout
+                        android:id="@+id/btn_service_type"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_18sdp"
+                        android:padding="@dimen/_13sdp"
+                        android:background="@drawable/bg_budget_option_default">
+
+                        <TextView
+                            android:id="@+id/tv_service_type"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/somar_regular"
+                            android:textColor="@color/agence_black"
+                            android:textSize="@dimen/_13ssp"
+                            tools:text="استراتيجية العلامة والسوشيال"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/_14sdp"
+                            android:layout_height="@dimen/_14sdp"
+                            android:src="@drawable/icon_arrow_down"
+                            app:tint="@color/agence_muted"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:text="@string/budget_range"
+                        android:fontFamily="@font/somar_semi_bold"
+                        android:textColor="@color/agence_black"
+                        android:textSize="@dimen/_11ssp"/>
+
+                    <LinearLayout
+                        android:id="@+id/budget_option_1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:padding="@dimen/_13sdp"
+                        android:background="@drawable/bg_budget_option_default">
+
+                        <FrameLayout
+                            android:layout_width="@dimen/_16sdp"
+                            android:layout_height="@dimen/_16sdp">
+                            <View
+                                android:id="@+id/dot_budget_1"
+                                android:layout_width="@dimen/_8sdp"
+                                android:layout_height="@dimen/_8sdp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/bg_radio_dot"
+                                android:visibility="invisible"/>
+                        </FrameLayout>
+
+                        <TextView
+                            android:id="@+id/tv_budget_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:fontFamily="@font/somar_regular"
+                            android:textColor="@color/agence_black"
+                            android:textSize="@dimen/_12ssp"
+                            tools:text="&lt; ﷼5,000"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/budget_option_2"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:padding="@dimen/_13sdp"
+                        android:background="@drawable/bg_budget_option_selected">
+
+                        <FrameLayout
+                            android:layout_width="@dimen/_16sdp"
+                            android:layout_height="@dimen/_16sdp">
+                            <View
+                                android:id="@+id/dot_budget_2"
+                                android:layout_width="@dimen/_8sdp"
+                                android:layout_height="@dimen/_8sdp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/bg_radio_dot"
+                                android:visibility="visible"/>
+                        </FrameLayout>
+
+                        <TextView
+                            android:id="@+id/tv_budget_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:fontFamily="@font/somar_semi_bold"
+                            android:textColor="@color/agence_blue"
+                            android:textSize="@dimen/_12ssp"
+                            tools:text="﷼5,000–15,000"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/budget_option_3"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_24sdp"
+                        android:padding="@dimen/_13sdp"
+                        android:background="@drawable/bg_budget_option_default">
+
+                        <FrameLayout
+                            android:layout_width="@dimen/_16sdp"
+                            android:layout_height="@dimen/_16sdp">
+                            <View
+                                android:id="@+id/dot_budget_3"
+                                android:layout_width="@dimen/_8sdp"
+                                android:layout_height="@dimen/_8sdp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/bg_radio_dot"
+                                android:visibility="invisible"/>
+                        </FrameLayout>
+
+                        <TextView
+                            android:id="@+id/tv_budget_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:fontFamily="@font/somar_regular"
+                            android:textColor="@color/agence_black"
+                            android:textSize="@dimen/_12ssp"
+                            tools:text="&gt; ﷼15,000"/>
+
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_find_match"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_44sdp"
+                        android:backgroundTint="@color/agence_blue"
+                        android:fontFamily="@font/somar_bold"
+                        android:text="@string/find_match"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_13ssp"
+                        app:cornerRadius="999dp"/>
+
+                </LinearLayout>
+
+                <!-- ═══════════ STEP 2: Top 10 matched providers ═══════════ -->
+                <LinearLayout
+                    android:id="@+id/layout_step2"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:text="@string/match_results"
+                        android:fontFamily="@font/somar_bold"
+                        android:textColor="@color/agence_black"
+                        android:textSize="@dimen/_15ssp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_14sdp"
+                        android:text="@string/tap_provider_hint"
+                        android:fontFamily="@font/somar_regular"
+                        android:textColor="@color/agence_muted"
+                        android:textSize="@dimen/_11ssp"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_matched_providers"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:itemCount="10"
+                        tools:listitem="@layout/item_matched_provider"/>
+
+                </LinearLayout>
+
+                <!-- ═══════════ STEP 3: Confirm selected provider ═══════════ -->
+                <LinearLayout
+                    android:id="@+id/layout_step3"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_16sdp"
+                        android:text="@string/confirm_provider_msg"
+                        android:fontFamily="@font/somar_regular"
+                        android:textColor="@color/agence_muted"
+                        android:textSize="@dimen/_12ssp"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_20sdp"
+                        app:cardCornerRadius="@dimen/_20sdp"
+                        app:cardElevation="@dimen/_4sdp">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/agence_card">
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_78sdp"
+                                android:background="@drawable/bg_gradient_header_blue">
+
+                                <TextView
+                                    android:id="@+id/tv_best_match_badge"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="top|end"
+                                    android:layout_margin="@dimen/_10sdp"
+                                    android:paddingHorizontal="@dimen/_7sdp"
+                                    android:paddingVertical="@dimen/_3sdp"
+                                    android:background="@drawable/bg_pill_orange_solid"
+                                    android:fontFamily="@font/somar_bold"
+                                    android:text="@string/best_match_badge"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_7ssp"
+                                    android:visibility="gone"/>
+
+                            </FrameLayout>
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-24dp"
+                                android:paddingHorizontal="@dimen/_15sdp"
+                                android:paddingBottom="@dimen/_15sdp">
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:layout_width="@dimen/_48sdp"
+                                    android:layout_height="@dimen/_48sdp"
+                                    android:layout_marginBottom="@dimen/_10sdp"
+                                    app:cardCornerRadius="@dimen/_13sdp"
+                                    app:cardElevation="0dp"
+                                    app:strokeColor="@color/white"
+                                    app:strokeWidth="3dp">
+
+                                    <ImageView
+                                        android:id="@+id/iv_confirm_photo"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:scaleType="centerCrop"
+                                        android:src="@drawable/backround_image"/>
+
+                                </com.google.android.material.card.MaterialCardView>
+
+                                <TextView
+                                    android:id="@+id/tv_confirm_name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/somar_bold"
+                                    android:textColor="@color/agence_black"
+                                    android:textSize="@dimen/_16ssp"
+                                    tools:text="فهد العتيبي"/>
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_4sdp"
+                                    android:layout_marginBottom="@dimen/_16sdp">
+
+                                    <RatingBar
+                                        android:id="@+id/rating_bar_confirm"
+                                        style="?android:attr/ratingBarStyleSmall"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="-6dp"
+                                        android:focusable="false"
+                                        android:isIndicator="true"
+                                        android:numStars="5"
+                                        android:progressTint="#FEB702"
+                                        android:rating="4.9"
+                                        android:scaleX="0.75"
+                                        android:scaleY="0.75"
+                                        android:stepSize="0.1"/>
+
+                                    <TextView
+                                        android:id="@+id/tv_confirm_delivery_inline"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_4sdp"
+                                        android:fontFamily="@font/somar_regular"
+                                        android:textColor="@color/agence_muted"
+                                        android:textSize="@dimen/_10ssp"
+                                        tools:text="2 wks delivery"/>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_12sdp"
+                                    android:background="@color/agence_bg">
+
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="@dimen/_8sdp">
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_weight="1"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/price_label"
+                                            android:fontFamily="@font/somar_regular"
+                                            android:textColor="@color/agence_muted"
+                                            android:textSize="@dimen/_11ssp"/>
+
+                                        <TextView
+                                            android:id="@+id/tv_confirm_price"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/somar_bold"
+                                            android:textColor="@color/agence_black"
+                                            android:textSize="@dimen/_12ssp"
+                                            tools:text="﷼ 5,000"/>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="@dimen/_8sdp">
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_weight="1"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/delivery_label"
+                                            android:fontFamily="@font/somar_regular"
+                                            android:textColor="@color/agence_muted"
+                                            android:textSize="@dimen/_11ssp"/>
+
+                                        <TextView
+                                            android:id="@+id/tv_confirm_delivery"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/somar_bold"
+                                            android:textColor="@color/agence_black"
+                                            android:textSize="@dimen/_12ssp"
+                                            tools:text="2 wks"/>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_weight="1"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/match_score_label"
+                                            android:fontFamily="@font/somar_regular"
+                                            android:textColor="@color/agence_muted"
+                                            android:textSize="@dimen/_11ssp"/>
+
+                                        <TextView
+                                            android:id="@+id/tv_confirm_score"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/somar_bold"
+                                            android:textColor="@color/agence_black"
+                                            android:textSize="@dimen/_12ssp"
+                                            tools:text="96%"/>
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_start_project"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_44sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:backgroundTint="@color/agence_blue"
+                        android:fontFamily="@font/somar_bold"
+                        android:text="@string/start_project"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_13ssp"
+                        app:cornerRadius="999dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_back_to_results"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="@dimen/_12sdp"
+                        android:background="@drawable/bg_budget_option_default"
+                        android:text="@string/back_to_results"
+                        android:fontFamily="@font/somar_regular"
+                        android:textColor="@color/agence_muted"
+                        android:textSize="@dimen/_12ssp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+</layout>

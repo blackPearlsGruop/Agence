@@ -46,9 +46,17 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(), Chat {
         val adapter = ListChatAdapter(requireActivity(), companyList, this)
         mViewDataBinding.rvNewUserChat.adapter = adapter
 
+        // Local mock data so the screen isn't blank while there are no real
+        // orders/conversations yet — same pattern used across Home/Orders.
+        // Replaced automatically the moment Firebase returns real rows below.
+        companyList.addAll(mockConversations())
+        adapter.notifyDataSetChanged()
+        mViewDataBinding.rvNewUserChat.visibility = View.VISIBLE
+        mViewDataBinding.layoutEmptyChat.visibility = View.GONE
+
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                companyList.clear()
+                val realList = mutableListOf<AllListChatCompany>()
 
                 for (orderSnapshot in snapshot.children) {
                     val idOrder = orderSnapshot.key?.toIntOrNull()
@@ -59,19 +67,17 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(), Chat {
 
                         company?.let {
                             it.idOrder = idOrder
-                            companyList.add(it)
+                            realList.add(it)
                         }
                     }
                 }
 
-                adapter.notifyDataSetChanged()
-
-                if (companyList.isEmpty()) {
-                    mViewDataBinding.rvNewUserChat.visibility = View.GONE
-                    mViewDataBinding.layoutEmptyChat.visibility = View.VISIBLE
-                } else {
-                    mViewDataBinding.rvNewUserChat.visibility = View.VISIBLE
-                    mViewDataBinding.layoutEmptyChat.visibility = View.GONE
+                // Only replace the mock rows once there's real data to show —
+                // an empty snapshot just means no orders yet, not "hide the list".
+                if (realList.isNotEmpty()) {
+                    companyList.clear()
+                    companyList.addAll(realList)
+                    adapter.notifyDataSetChanged()
                 }
             }
 
@@ -80,6 +86,15 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(), Chat {
             }
         })
     }
+
+    private fun mockConversations(): List<AllListChatCompany> = listOf(
+        AllListChatCompany(idOrder = 9001, idCompany = 1, nameCompany = "فهد العتيبي", imageCompany = "", categoryName = "استراتيجية العلامة والسوشيال", orderNumber = "ORD-00419"),
+        AllListChatCompany(idOrder = 9002, idCompany = 2, nameCompany = "وكالة نجم", imageCompany = "", categoryName = "الإعلانات المدفوعة والنمو", orderNumber = "ORD-00387"),
+        AllListChatCompany(idOrder = 9003, idCompany = 3, nameCompany = "استوديو أثر", imageCompany = "", categoryName = "الهوية البصرية والتصميم", orderNumber = "ORD-00301"),
+        AllListChatCompany(idOrder = 9004, idCompany = 4, nameCompany = "ريم ميديا", imageCompany = "", categoryName = "إنشاء المحتوى", orderNumber = "ORD-00276"),
+        AllListChatCompany(idOrder = 9005, idCompany = 5, nameCompany = "Sky Brand Co.", imageCompany = "", categoryName = "تحسين محركات البحث والنمو", orderNumber = "ORD-00250"),
+        AllListChatCompany(idOrder = 9006, idCompany = 6, nameCompany = "Pulse Ads", imageCompany = "", categoryName = "التسويق عبر المؤثرين", orderNumber = "ORD-00214")
+    )
 
     override fun onNetworkConnectionChanged(isConnected: Boolean) {
     }

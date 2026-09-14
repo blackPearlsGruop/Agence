@@ -580,6 +580,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), Company {
 
         }
 
+        mViewDataBinding.btnAiMatching.setOnClickListener {
+            val action = HomeFragmentDirections.actionMenuHomeToAiMatchingFragment()
+            mViewDataBinding.root.findNavController().navigate(action)
+        }
+
 
     }
 

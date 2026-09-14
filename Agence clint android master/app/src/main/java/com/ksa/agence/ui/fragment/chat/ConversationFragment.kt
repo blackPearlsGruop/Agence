@@ -165,7 +165,7 @@ class ConversationFragment : BaseFragment<FragmentConversationBinding>() {
         ) // تأكد من أن الملف موجود في res/raw
 
 
-            soundIdError = soundPool.load(
+        soundIdError = soundPool.load(
             requireContext(),
             R.raw.record_error,
             1
@@ -176,6 +176,18 @@ class ConversationFragment : BaseFragment<FragmentConversationBinding>() {
     override fun onNetworkConnectionChanged(isConnected: Boolean) {
         // Handle network changes if necessary
     }
+
+    // Safe fallbacks: when testing via a mock/guest entry point with no real
+    // saved session, these avoid a crash instead of force-unwrapping to a
+    // NullPointerException. A real logged-in user always gets their real id/name.
+    private fun currentUserId(): Int =
+        pref.loadUserData(requireActivity(), USER_DATA)?.data?.user?.id ?: -1
+
+    private fun currentUserName(): String =
+        pref.loadUserData(requireActivity(), USER_DATA)?.data?.user?.name ?: "Guest"
+
+    private fun currentUserImage(): String =
+        pref.loadUserData(requireActivity(), USER_DATA)?.data?.user?.profile_image ?: ""
 
     private fun setupMainActivity() {
         mainActivity = requireActivity() as MainActivity
@@ -219,6 +231,10 @@ class ConversationFragment : BaseFragment<FragmentConversationBinding>() {
     }
 
     private fun setupListeners() {
+        mViewDataBinding.lyChat.ivBackPage.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
+
         mViewDataBinding.lyChat.ivSend.setOnClickListener {
             val messageText = mViewDataBinding.lyChat.tvYorMessage.text.toString()
             if (messageText.isNotEmpty()) {
@@ -230,18 +246,14 @@ class ConversationFragment : BaseFragment<FragmentConversationBinding>() {
                     isSent = true,
                     isRead = false,
                     isReceived = false,
-                    senderId = pref.loadUserData(requireActivity(), USER_DATA)!!.data!!.user!!.id!!,
+                    senderId = currentUserId(),
                     receivedId = idCompany,
                     timestamp = System.currentTimeMillis()
                 )
                 saveMessage(message)
                 mViewDataBinding.lyChat.tvYorMessage.text.clear()
                 mViewDataBinding.lyChat.tvYorMessage.text.clear()
-                exampleUsage(
-                    pref.loadUserData(
-                        requireActivity(), USER_DATA
-                    )!!.data!!.user!!.name!!, messageText
-                )
+                exampleUsage(currentUserName(), messageText)
 
             } else {
                 Toast.makeText(requireActivity(), "Please enter a message", Toast.LENGTH_SHORT)
@@ -335,11 +347,9 @@ class ConversationFragment : BaseFragment<FragmentConversationBinding>() {
         )
 
         newUserChat = ListChatUser(
-            idUser = pref.loadUserData(requireActivity(), USER_DATA)!!.data!!.user!!.id!!,
-            nameUser = pref.loadUserData(requireActivity(), USER_DATA)!!.data!!.user!!.name!!,
-            imageUser = pref.loadUserData(
-                requireActivity(), USER_DATA
-            )!!.data!!.user!!.profile_image!!,
+            idUser = currentUserId(),
+            nameUser = currentUserName(),
+            imageUser = currentUserImage(),
             categoryName = categoryName,
             orderNumber = orderNO
         )
@@ -450,6 +460,7 @@ class ConversationFragment : BaseFragment<FragmentConversationBinding>() {
             // عرض رسالة تخبر المستخدم ببدء التسجيل
             Toast.makeText(requireActivity(), "Recording started...", Toast.LENGTH_SHORT).show()
             mViewDataBinding.lyChat.cardView3.visibility = View.GONE
+            mViewDataBinding.lyChat.tvTimer.visibility = View.VISIBLE
 
         } catch (e: IOException) {
             e.printStackTrace()
@@ -505,6 +516,7 @@ class ConversationFragment : BaseFragment<FragmentConversationBinding>() {
                 }
 
                 mViewDataBinding.lyChat.cardView3.visibility = View.VISIBLE
+                mViewDataBinding.lyChat.tvTimer.visibility = View.GONE
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -525,19 +537,13 @@ class ConversationFragment : BaseFragment<FragmentConversationBinding>() {
                     isSent = true,
                     isRead = false,
                     isReceived = false,
-                    senderId = pref.loadUserData(
-                        requireActivity(), USER_DATA
-                    )!!.data!!.user!!.id!!,
+                    senderId = currentUserId(),
                     receivedId = idCompany,
                     timestamp = 0
 
                 )
                 saveMessage(message)
-                exampleUsage(
-                    pref.loadUserData(
-                        requireActivity(), USER_DATA
-                    )!!.data!!.user!!.name!!, getString(R.string.send_pictures)
-                )
+                exampleUsage(currentUserName(), getString(R.string.send_pictures))
             }
         }.addOnFailureListener { e ->
             e.printStackTrace()
@@ -558,18 +564,12 @@ class ConversationFragment : BaseFragment<FragmentConversationBinding>() {
                     isSent = true,
                     isRead = false,
                     isReceived = false,
-                    senderId = pref.loadUserData(
-                        requireActivity(), USER_DATA
-                    )!!.data!!.user!!.id!!,
+                    senderId = currentUserId(),
                     receivedId = idCompany,
                     timestamp = recordTime
                 )
                 saveMessage(message)
-                exampleUsage(
-                    pref.loadUserData(
-                        requireActivity(), USER_DATA
-                    )!!.data!!.user!!.name!!, getString(R.string.send_pictures)
-                )
+                exampleUsage(currentUserName(), getString(R.string.send_pictures))
             }
         }.addOnFailureListener { e ->
             Log.e("FirebaseUpload", "Error uploading audio: ${e.message}")

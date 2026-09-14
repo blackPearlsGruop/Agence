@@ -16,6 +16,7 @@
         android:id="@+id/constraintLayoutText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:elevation="@dimen/_2sdp"
         android:background="@drawable/message_background_dark"
         android:gravity="end"
         android:orientation="horizontal"
@@ -33,7 +34,7 @@
             android:inputType="textMultiLine"
             android:paddingVertical="@dimen/_6sdp"
             android:text="@string/available"
-            android:textColor="@color/text"
+            android:textColor="@color/agence_black"
             android:textSize="@dimen/_18sdp"
             tools:ignore="TextViewEdits" />
 

@@ -174,4 +174,32 @@
   <string name="req_projects">5 إلى 7 مشاريع مكتملة على الأقل</string>
   <string name="req_verified">ملف شخصي وأعمال موثقة</string>
   <string name="apply_for_featured">تقدّم للحصول على الميزة</string>
+
+  <!-- AI Matching screen -->
+  <string name="ai_title">التوافق الذكي</string>
+  <string name="ai_desc">أخبرنا عن مشروعك وسنجد أفضل مقدمي الخدمة</string>
+  <string name="select_service_type">اختر نوع الخدمة</string>
+  <string name="budget_range">نطاق الميزانية</string>
+  <string name="find_match">ابحث عن توافقي</string>
+  <string name="step1_label">المتطلبات</string>
+  <string name="step2_label">النتائج</string>
+  <string name="step3_label">التأكيد</string>
+  <string name="match_results">أفضل التوافقات</string>
+  <string name="tap_provider_hint">اختر مزوداً للمتابعة</string>
+  <string name="match_label">توافق</string>
+  <string name="confirm_provider_msg">تأكيد المزود المختار</string>
+  <string name="price_label">السعر</string>
+  <string name="delivery_label">التسليم</string>
+  <string name="match_score_label">التوافق</string>
+  <string name="start_project">ابدأ المشروع</string>
+  <string name="back_to_results">← العودة للنتائج</string>
+  <string name="best_match_badge">الأفضل توافقاً</string>
+  <string name="best_badge">الأفضل</string>
+  <string name="delivery_suffix">تسليم</string>
+
+  <!-- Orders screen (redesigned to match the member app) -->
+  <string name="under_review">قيد المراجعة</string>
+  <string name="in_progress">جاري التنفيذ</string>
+  <string name="delivered">تم التسليم</string>
+  <string name="canceled">ملغي</string>
 </resources>

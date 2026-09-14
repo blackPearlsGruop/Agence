@@ -176,4 +176,32 @@
     <string name="req_projects">At least 5\u20137 completed projects</string>
     <string name="req_verified">Verified profile and portfolio</string>
     <string name="apply_for_featured">Apply for Featured Placement</string>
+
+    <!-- AI Matching screen -->
+    <string name="ai_title">AI Matching</string>
+    <string name="ai_desc">Tell us about your project and we\'ll find the best providers.</string>
+    <string name="select_service_type">Select Service Type</string>
+    <string name="budget_range">Budget Range</string>
+    <string name="find_match">Find My Match</string>
+    <string name="step1_label">Requirements</string>
+    <string name="step2_label">Results</string>
+    <string name="step3_label">Confirm</string>
+    <string name="match_results">Best Matches</string>
+    <string name="tap_provider_hint">Tap a provider to select them</string>
+    <string name="match_label">Match</string>
+    <string name="confirm_provider_msg">Confirm your selected provider</string>
+    <string name="price_label">Price</string>
+    <string name="delivery_label">Delivery</string>
+    <string name="match_score_label">Match Score</string>
+    <string name="start_project">Start Project</string>
+    <string name="back_to_results">← Back to results</string>
+    <string name="best_match_badge">BEST MATCH</string>
+    <string name="best_badge">BEST</string>
+    <string name="delivery_suffix">delivery</string>
+
+    <!-- Orders screen (redesigned to match the member app) -->
+    <string name="under_review">Under Review</string>
+    <string name="in_progress">in Progress</string>
+    <string name="delivered">Delivered</string>
+    <string name="canceled">Canceled</string>
 </resources>

@@ -134,12 +134,13 @@
                 tools:text="5,000 ريال"/>
 
             <ImageView
-                android:id="@+id/iv_action"
+                android:id="@+id/iv_action_icon"
                 android:layout_width="@dimen/_28sdp"
                 android:layout_height="@dimen/_28sdp"
                 android:padding="@dimen/_6sdp"
-                android:background="@drawable/bg_circle_light_grey"
-                android:src="@drawable/ic_row_chevron"/>
+                android:scaleType="fitCenter"
+                tools:src="@drawable/icon_chat"
+                tools:tint="@color/agence_muted"/>
 
         </LinearLayout>
 
