@@ -135,17 +135,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), Company {
                 subtitleEn = "Limited time on all services",
                 backgroundRes = R.drawable.bg_promo_banner_2,
                 isAd = true
-            ),
-            PromoBanner(
-                titleAr = "التوافق الذكي",
-                titleEn = "Smart AI Matching",
-                subtitleAr = "دع الذكاء الاصطناعي يلقى أفضل مزوّد لمشروعك",
-                subtitleEn = "Let AI find the best provider for your project",
-                backgroundRes = R.drawable.bg_promo_banner_3
             )
         )
 
-        mViewDataBinding.sliderViewPager2.adapter = PromoBannerAdapter(promoBanners, isArabic)
+        mViewDataBinding.sliderViewPager2.adapter = PromoBannerAdapter(promoBanners, isArabic) { banner ->
+            if (banner.isAd) {
+                mViewDataBinding.root.findNavController().navigate(R.id.action_menuHome_to_paidAdViewFragment)
+            }
+        }
         mViewDataBinding.constraintLayout5.visibility = View.VISIBLE
         setupBannerDots(promoBanners.size)
 
@@ -276,45 +273,120 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), Company {
 
         val members = listOf(
             com.ksa.agence.adapter.FeaturedMember(
-                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&auto=format",
-                "James Whitfield", "James Whitfield", "استراتيجية العلامة التجارية", "Brand Strategy"
+                photoUrl = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&auto=format",
+                nameAr = "James Whitfield", nameEn = "James Whitfield",
+                specialtyAr = "استراتيجية العلامة التجارية", specialtyEn = "Brand Strategy",
+                locationAr = "لندن، المملكة المتحدة", locationEn = "London, UK",
+                rating = 4.9f, reviews = 128, matchPct = 97,
+                bioAr = "استراتيجي علامات تجارية أول بخبرة تزيد على 10 سنوات في بناء هويات احترافية للشركات العالمية. متخصص في تحديد موقع السوق ورواية القصص البصرية.",
+                bioEn = "Senior brand strategist with 10+ years helping global businesses build iconic identities. Specialises in market positioning and visual storytelling.",
+                servicesAr = listOf("تدقيق العلامة التجارية", "تصميم الهوية", "تحديد موقع السوق"),
+                servicesEn = listOf("Brand Audit", "Identity Design", "Market Positioning")
             ),
             com.ksa.agence.adapter.FeaturedMember(
-                "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&auto=format",
-                "Sophie Hartley", "Sophie Hartley", "سوشيال ميديا والمحتوى", "Social Media & Content"
+                photoUrl = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&auto=format",
+                nameAr = "Sophie Hartley", nameEn = "Sophie Hartley",
+                specialtyAr = "سوشيال ميديا والمحتوى", specialtyEn = "Social Media & Content",
+                locationAr = "مانشستر، المملكة المتحدة", locationEn = "Manchester, UK",
+                rating = 4.8f, reviews = 94, matchPct = 94,
+                bioAr = "استراتيجية محتوى إبداعية متخصصة في منصات التواصل الاجتماعي متعددة اللغات. أدارت قنوات تجاوزت 2 مليون متابع لعلامات FMCG والأسلوب الحياتي.",
+                bioEn = "Creative content strategist focused on multilingual social media. Built and managed channels exceeding 2M followers for lifestyle and FMCG brands.",
+                servicesAr = listOf("تخطيط المحتوى", "إعلانات سوشيال", "إدارة المجتمع"),
+                servicesEn = listOf("Content Calendar", "Social Ads", "Community Management")
             ),
             com.ksa.agence.adapter.FeaturedMember(
-                "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&auto=format",
-                "Oliver Pemberton", "Oliver Pemberton", "الإعلانات المدفوعة", "Paid Advertising"
+                photoUrl = "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&auto=format",
+                nameAr = "Oliver Pemberton", nameEn = "Oliver Pemberton",
+                specialtyAr = "الإعلانات المدفوعة", specialtyEn = "Paid Advertising",
+                locationAr = "برمنغهام، المملكة المتحدة", locationEn = "Birmingham, UK",
+                rating = 4.7f, reviews = 77, matchPct = 91,
+                bioAr = "خبير تسويق أداء يدير حملات Google وMeta وTikTok وSnapchat. متوسط عائد الإنفاق الإعلاني للعملاء 4.2×.",
+                bioEn = "Performance marketing expert running Google, Meta, TikTok and Snapchat campaigns. Average client ROAS of 4.2×.",
+                servicesAr = listOf("إعلانات جوجل", "إعلانات ميتا", "حملات تيك توك"),
+                servicesEn = listOf("Google Ads", "Meta Ads", "TikTok Campaigns")
             ),
             com.ksa.agence.adapter.FeaturedMember(
-                "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&auto=format",
-                "Charlotte Moore", "Charlotte Moore", "تصميم تجربة المستخدم", "UI/UX & Digital Design"
+                photoUrl = "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&auto=format",
+                nameAr = "Charlotte Moore", nameEn = "Charlotte Moore",
+                specialtyAr = "تصميم تجربة المستخدم", specialtyEn = "UI/UX & Digital Design",
+                locationAr = "إدنبرة، المملكة المتحدة", locationEn = "Edinburgh, UK",
+                rating = 4.9f, reviews = 112, matchPct = 96,
+                bioAr = "مصممة رقمية حائزة على جوائز متخصصة في الواجهات ثنائية اللغة. نفّذت منتجات لعملاء التقنية المالية والرعاية الصحية والتجارة الإلكترونية في MENA وأوروبا.",
+                bioEn = "Award-winning digital designer with a focus on bilingual interfaces. Delivered products for fintech, healthcare and e-commerce clients across MENA and Europe.",
+                servicesAr = listOf("تصميم التطبيق", "هوية بصرية", "أنظمة التصميم"),
+                servicesEn = listOf("App Design", "Brand Identity", "Design Systems")
             ),
             com.ksa.agence.adapter.FeaturedMember(
-                "https://images.unsplash.com/photo-1741241290790-0b69e17888da?w=200&h=200&fit=crop&auto=format",
-                "Ethan Clarke", "Ethan Clarke", "تحسين محركات البحث والنمو", "SEO & Growth"
+                photoUrl = "https://images.unsplash.com/photo-1741241290790-0b69e17888da?w=200&h=200&fit=crop&auto=format",
+                nameAr = "Ethan Clarke", nameEn = "Ethan Clarke",
+                specialtyAr = "تحسين محركات البحث والنمو", specialtyEn = "SEO & Growth",
+                locationAr = "بريستول، المملكة المتحدة", locationEn = "Bristol, UK",
+                rating = 4.7f, reviews = 63, matchPct = 89,
+                bioAr = "متخصص SEO وخبير نمو يتخصص في البحث متعدد اللغات. ساعد أكثر من 30 علامة تجارية على مضاعفة حركتها العضوية ثلاث مرات خلال 6 أشهر.",
+                bioEn = "SEO specialist and growth hacker focusing on multilingual search. Helped 30+ brands triple their organic traffic within 6 months.",
+                servicesAr = listOf("تدقيق SEO", "محتوى SEO", "إعداد التحليلات"),
+                servicesEn = listOf("SEO Audit", "Content SEO", "Analytics Setup")
             ),
             com.ksa.agence.adapter.FeaturedMember(
-                "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&auto=format",
-                "Isabelle Grant", "Isabelle Grant", "التسويق عبر المؤثرين", "Influencer Marketing"
+                photoUrl = "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&auto=format",
+                nameAr = "Isabelle Grant", nameEn = "Isabelle Grant",
+                specialtyAr = "التسويق عبر المؤثرين", specialtyEn = "Influencer Marketing",
+                locationAr = "ليدز، المملكة المتحدة", locationEn = "Leeds, UK",
+                rating = 4.8f, reviews = 88, matchPct = 93,
+                bioAr = "مديرة علاقات مؤثرين بشبكة تضم أكثر من 500 مبدع موثّق. تتخصص في حملات أصيلة لعلامات الجمال وأسلوب الحياة والمطاعم.",
+                bioEn = "Influencer relations manager with a network of 500+ verified creators. Specialises in authentic campaigns for beauty, lifestyle and F&B brands.",
+                servicesAr = listOf("اختيار المؤثرين", "إدارة الحملة", "تقارير الأداء"),
+                servicesEn = listOf("Influencer Casting", "Campaign Management", "Performance Reports")
             ),
             com.ksa.agence.adapter.FeaturedMember(
-                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&auto=format",
-                "William Foster", "William Foster", "إنتاج الفيديو", "Video Production"
+                photoUrl = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&auto=format",
+                nameAr = "William Foster", nameEn = "William Foster",
+                specialtyAr = "إنتاج الفيديو", specialtyEn = "Video Production",
+                locationAr = "غلاسكو، المملكة المتحدة", locationEn = "Glasgow, UK",
+                rating = 4.6f, reviews = 51, matchPct = 87,
+                bioAr = "مصوّر ومخرج متخصص في الأفلام التجارية للعلامات التجارية والفعاليات المؤسسية والحملات الرقمية.",
+                bioEn = "Videographer and director specialising in commercial brand films for corporate events and digital campaigns.",
+                servicesAr = listOf("أفلام تجارية", "تغطية فعاليات", "فيديوهات سوشيال"),
+                servicesEn = listOf("Brand Films", "Event Coverage", "Social Videos")
             ),
             com.ksa.agence.adapter.FeaturedMember(
-                "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&auto=format",
-                "Amelia Thornton", "Amelia Thornton", "العلاقات العامة", "Public Relations"
+                photoUrl = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&auto=format",
+                nameAr = "Amelia Thornton", nameEn = "Amelia Thornton",
+                specialtyAr = "العلاقات العامة", specialtyEn = "Public Relations",
+                locationAr = "لندن، المملكة المتحدة", locationEn = "London, UK",
+                rating = 4.7f, reviews = 72, matchPct = 90,
+                bioAr = "مستشارة علاقات عامة أولى بعلاقات وثيقة مع الإعلام الدولي والشرق الأوسطي. خبيرة في التواصل في الأزمات والبيانات الصحفية وتحديد موقع التنفيذيين.",
+                bioEn = "Senior PR consultant with deep ties to international and Middle East media. Expert in crisis communications, press releases and executive positioning.",
+                servicesAr = listOf("علاقات إعلامية", "إدارة الأزمات", "بيانات صحفية"),
+                servicesEn = listOf("Media Relations", "Crisis Comms", "Press Releases")
             ),
             com.ksa.agence.adapter.FeaturedMember(
-                "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&auto=format",
-                "George Caldwell", "George Caldwell", "الاستشارات التسويقية", "Marketing Consulting"
+                photoUrl = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&auto=format",
+                nameAr = "George Caldwell", nameEn = "George Caldwell",
+                specialtyAr = "الاستشارات التسويقية", specialtyEn = "Marketing Consulting",
+                locationAr = "أوكسفورد، المملكة المتحدة", locationEn = "Oxford, UK",
+                rating = 4.8f, reviews = 99, matchPct = 95,
+                bioAr = "مستشار تسويق بمستوى CMO للشركات الدولية الراغبة في التوسع في أسواق MENA. يقدّم خطط طرح للسوق مدتها 90 يومًا مستندةً إلى أبحاث المستهلك المحلي.",
+                bioEn = "CMO-level marketing consultant for international companies expanding into MENA markets. Delivers 90-day go-to-market plans grounded in local consumer research.",
+                servicesAr = listOf("استراتيجية الطرح للسوق", "أبحاث المستهلك", "تخطيط الحملات"),
+                servicesEn = listOf("GTM Strategy", "Consumer Research", "Campaign Planning")
             ),
         )
 
-        val featuredAdapter = com.ksa.agence.adapter.FeaturedMembersAdapter(requireActivity(), members, isArabic) {
-            com.ksa.agence.ui.dialog.UpgradeFeaturedDialog().show(childFragmentManager, "upgrade_featured")
+        val featuredAdapter = com.ksa.agence.adapter.FeaturedMembersAdapter(requireActivity(), members, isArabic) { member ->
+            val bundle = android.os.Bundle().apply {
+                putString("name", if (isArabic) member.nameAr else member.nameEn)
+                putString("specialty", if (isArabic) member.specialtyAr else member.specialtyEn)
+                putString("location", if (isArabic) member.locationAr else member.locationEn)
+                putString("bio", if (isArabic) member.bioAr else member.bioEn)
+                putString("photo", member.photoUrl)
+                putFloat("rating", member.rating)
+                putInt("reviews", member.reviews)
+                putInt("matchPct", member.matchPct)
+                putStringArrayList("services", ArrayList(if (isArabic) member.servicesAr else member.servicesEn))
+            }
+            mViewDataBinding.root.findNavController()
+                .navigate(R.id.action_menuHome_to_featuredMemberProfileFragment, bundle)
         }
         mViewDataBinding.rvFeaturedMembers.layoutManager =
             androidx.recyclerview.widget.GridLayoutManager(requireActivity(), 3)
@@ -583,6 +655,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), Company {
         mViewDataBinding.btnAiMatching.setOnClickListener {
             val action = HomeFragmentDirections.actionMenuHomeToAiMatchingFragment()
             mViewDataBinding.root.findNavController().navigate(action)
+        }
+
+        val runSearch = {
+            val query = mViewDataBinding.etSearch.text.toString().trim()
+            val bundle = android.os.Bundle().apply { putString("searchQuery", query) }
+            mViewDataBinding.root.findNavController().navigate(R.id.allComanyFragment, bundle)
+        }
+        mViewDataBinding.etSearch.setOnEditorActionListener { _, _, _ -> runSearch(); true }
+        mViewDataBinding.ivSearchIcon.setOnClickListener { runSearch() }
+
+        mViewDataBinding.btnFilter.setOnClickListener {
+            mViewDataBinding.root.findNavController().navigate(R.id.allComanyFragment)
         }
 
 

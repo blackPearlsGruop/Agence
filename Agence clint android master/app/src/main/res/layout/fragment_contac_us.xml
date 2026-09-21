@@ -11,13 +11,31 @@
                     <!--  FAQ items get added here programmatically  -->
                     <LinearLayout android:id="@+id/faq_container" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content"/>
                 </LinearLayout>
-                <!--  Contact form card  -->
-                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginHorizontal="@dimen/_16sdp" android:layout_marginTop="@dimen/_14sdp" android:padding="@dimen/_14sdp" android:background="@drawable/bg_agence_card_shadow">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/connect_with_us" android:fontFamily="@font/somar_bold" android:textSize="@dimen/_14ssp" android:textColor="@color/agence_black" android:layout_marginBottom="@dimen/_10sdp"/>
-                    <com.google.android.material.textview.MaterialTextView android:id="@+id/tv_whats_app" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_agence_list_group" android:drawableStart="@drawable/icon_whatsapp" android:drawableEnd="@drawable/ic_row_chevron" android:drawablePadding="@dimen/_10sdp" android:fontFamily="@font/somar_semi_bold" android:padding="@dimen/_13sdp" android:text="@string/whatsapp" android:textColor="@color/agence_black" android:textSize="@dimen/_13ssp"/>
-                    <EditText android:id="@+id/tv_title" style="@style/editText" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_12sdp" android:hint="@string/title"/>
-                    <EditText android:id="@+id/tv_message_content" style="@style/editText" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textMultiLine" android:lines="6" android:gravity="top" android:hint="@string/message_content" android:layout_marginTop="@dimen/_12sdp"/>
-                    <com.google.android.material.button.MaterialButton android:id="@+id/btn_send" android:layout_width="match_parent" android:layout_height="@dimen/_38sdp" android:text="@string/send" android:backgroundTint="@color/agence_blue" android:textAllCaps="false" android:fontFamily="@font/somar_bold" android:textSize="@dimen/_13ssp" app:cornerRadius="999dp" android:layout_marginTop="@dimen/_16sdp"/>
+                <!--  Live chat card (matches Figma: a Start Chat button that -->
+                <!--  reveals an inline chat widget, no WhatsApp / ticket form) -->
+                <com.google.android.material.button.MaterialButton android:id="@+id/btn_start_chat" android:layout_width="match_parent" android:layout_height="@dimen/_42sdp" android:layout_marginHorizontal="@dimen/_16sdp" android:layout_marginTop="@dimen/_14sdp" android:backgroundTint="@color/agence_blue" android:drawableStart="@drawable/icon_support" android:drawablePadding="@dimen/_8sdp" app:drawableTint="@color/white" android:fontFamily="@font/somar_bold" android:text="@string/start_chat" android:textAllCaps="false" android:textColor="@color/white" android:textSize="@dimen/_13ssp" app:cornerRadius="999dp"/>
+
+                <LinearLayout android:id="@+id/layout_chat_widget" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginHorizontal="@dimen/_16sdp" android:layout_marginTop="@dimen/_14sdp" android:background="@drawable/bg_agence_card_shadow" android:visibility="gone">
+
+                    <LinearLayout android:orientation="horizontal" android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="@dimen/_13sdp" android:background="@drawable/bg_chat_widget_header">
+                        <FrameLayout android:layout_width="@dimen/_32sdp" android:layout_height="@dimen/_32sdp" android:background="@drawable/bg_chat_widget_icon_circle">
+                            <ImageView android:layout_width="@dimen/_16sdp" android:layout_height="@dimen/_16sdp" android:layout_gravity="center" android:src="@drawable/icon_support" app:tint="@color/white"/>
+                        </FrameLayout>
+                        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/_8sdp">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/agence_support_name" android:fontFamily="@font/somar_bold" android:textColor="@color/white" android:textSize="@dimen/_12ssp"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/support_online_status" android:fontFamily="@font/somar_regular" android:textColor="#B3FFFFFF" android:textSize="@dimen/_9ssp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout android:id="@+id/chat_messages_container" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="@dimen/_12sdp"/>
+
+                    <LinearLayout android:orientation="horizontal" android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="@dimen/_10sdp" android:background="@drawable/bg_chat_widget_top_border">
+                        <EditText android:id="@+id/et_chat_message" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:background="@drawable/bg_agence_pill_track" android:paddingHorizontal="@dimen/_14sdp" android:paddingVertical="@dimen/_9sdp" android:hint="@string/type_your_question" android:fontFamily="@font/somar_regular" android:textColor="@color/agence_black" android:textColorHint="@color/agence_muted" android:textSize="@dimen/_12ssp" android:maxLines="1"/>
+                        <FrameLayout android:id="@+id/btn_send_chat" android:layout_width="@dimen/_34sdp" android:layout_height="@dimen/_34sdp" android:layout_marginStart="@dimen/_8sdp" android:background="@drawable/bg_agence_send_circle">
+                            <ImageView android:layout_width="@dimen/_14sdp" android:layout_height="@dimen/_14sdp" android:layout_gravity="center" android:src="@drawable/icon_send" app:tint="@color/white"/>
+                        </FrameLayout>
+                    </LinearLayout>
+
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

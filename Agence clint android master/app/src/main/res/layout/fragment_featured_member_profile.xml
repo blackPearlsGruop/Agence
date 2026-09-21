@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/agence_bg"
+        android:scrollbars="none"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- ═══ Hero photo + gradient + back + name + PRO badge ═══ -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_180sdp">
+
+                <ImageView
+                    android:id="@+id/iv_hero_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/backround_image"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_hero_gradient_overlay"/>
+
+                <FrameLayout
+                    android:id="@+id/iv_back"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_margin="@dimen/_12sdp"
+                    android:background="@drawable/bg_hero_back_circle">
+
+                    <ImageView
+                        android:layout_width="@dimen/_14sdp"
+                        android:layout_height="@dimen/_14sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/icon_arrow_back"
+                        app:tint="@color/white"/>
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:padding="@dimen/_16sdp">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_member_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/somar_bold"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_18ssp"
+                            tools:text="James Whitfield"/>
+
+                        <TextView
+                            android:id="@+id/tv_member_specialty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_3sdp"
+                            android:fontFamily="@font/somar_regular"
+                            android:textColor="#CCFFFFFF"
+                            android:textSize="@dimen/_11ssp"
+                            tools:text="استراتيجية العلامة التجارية"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_4sdp"
+                        android:background="@drawable/bg_pill_orange_solid"
+                        android:fontFamily="@font/somar_bold"
+                        android:text="PRO"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10ssp"/>
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_16sdp">
+
+                <!-- ═══ Stats row ═══ -->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_14sdp">
+
+                    <LinearLayout
+                        android:id="@+id/stat_rating"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_6sdp"
+                        android:padding="@dimen/_11sdp"
+                        android:background="@drawable/bg_agence_card_shadow">
+
+                        <TextView
+                            android:id="@+id/tv_stat_rating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/somar_bold"
+                            android:textColor="@color/agence_blue"
+                            android:textSize="@dimen/_14ssp"
+                            tools:text="4.9 ★"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:text="@string/rating_label"
+                            android:fontFamily="@font/somar_regular"
+                            android:textColor="@color/agence_muted"
+                            android:textSize="@dimen/_9ssp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_3sdp"
+                        android:padding="@dimen/_11sdp"
+                        android:background="@drawable/bg_agence_card_shadow">
+
+                        <TextView
+                            android:id="@+id/tv_stat_reviews"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/somar_bold"
+                            android:textColor="@color/agence_blue"
+                            android:textSize="@dimen/_14ssp"
+                            tools:text="128"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:text="@string/reviews_label"
+                            android:fontFamily="@font/somar_regular"
+                            android:textColor="@color/agence_muted"
+                            android:textSize="@dimen/_9ssp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_6sdp"
+                        android:padding="@dimen/_11sdp"
+                        android:background="@drawable/bg_agence_card_shadow">
+
+                        <TextView
+                            android:id="@+id/tv_stat_match"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/somar_bold"
+                            android:textColor="@color/agence_blue"
+                            android:textSize="@dimen/_14ssp"
+                            tools:text="97%"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:text="@string/top_match_label"
+                            android:fontFamily="@font/somar_regular"
+                            android:textColor="@color/agence_muted"
+                            android:textSize="@dimen/_9ssp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- ═══ Location ═══ -->
+                <TextView
+                    android:id="@+id/tv_member_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_14sdp"
+                    android:drawableStart="@drawable/icon_location"
+                    android:drawablePadding="@dimen/_6sdp"
+                    android:fontFamily="@font/somar_regular"
+                    android:textColor="@color/agence_muted"
+                    android:textSize="@dimen/_12ssp"
+                    tools:text="لندن، المملكة المتحدة"/>
+
+                <!-- ═══ Bio ═══ -->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_14sdp"
+                    android:padding="@dimen/_14sdp"
+                    android:background="@drawable/bg_agence_card_shadow">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:text="@string/about"
+                        android:fontFamily="@font/somar_bold"
+                        android:textColor="@color/agence_black"
+                        android:textSize="@dimen/_13ssp"/>
+
+                    <TextView
+                        android:id="@+id/tv_member_bio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/somar_regular"
+                        android:textColor="@color/agence_muted"
+                        android:textSize="@dimen/_12ssp"
+                        android:lineSpacingExtra="4dp"
+                        tools:text="Senior brand strategist with 10+ years..."/>
+
+                </LinearLayout>
+
+                <!-- ═══ Services checklist ═══ -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:text="@string/services"
+                    android:fontFamily="@font/somar_bold"
+                    android:textColor="@color/agence_black"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <LinearLayout
+                    android:id="@+id/layout_member_services"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_16sdp"/>
+
+                <!-- ═══ CTA ═══ -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_get_in_touch"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_44sdp"
+                    android:backgroundTint="@color/agence_blue"
+                    android:fontFamily="@font/somar_bold"
+                    android:text="@string/get_in_touch"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13ssp"
+                    app:cornerRadius="999dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

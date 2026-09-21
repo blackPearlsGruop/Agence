@@ -1,165 +1,294 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <!-- Define your data binding variables here -->
+
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/primary"
-        android:fitsSystemWindows="true"
-        >
+        android:background="@color/agence_bg">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_16sdp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="@string/quick_order"
+                android:fontFamily="@font/somar_bold"
+                android:textColor="@color/agence_orange"
+                android:textSize="@dimen/_16ssp"/>
+
+            <FrameLayout
+                android:id="@+id/iv_close"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:background="@drawable/bg_agence_chip_white">
+
+                <ImageView
+                    android:layout_width="@dimen/_14sdp"
+                    android:layout_height="@dimen/_14sdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_close"/>
+
+            </FrameLayout>
+
+        </LinearLayout>
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="none">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape_layout_2">
+                android:paddingHorizontal="@dimen/_16sdp"
+                android:paddingBottom="@dimen/_24sdp">
 
                 <TextView
-                    android:id="@+id/title_quick_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:text="@string/quick_order_desc"
+                    android:fontFamily="@font/somar_regular"
+                    android:textColor="@color/agence_muted"
+                    android:textSize="@dimen/_11ssp"/>
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    android:fontFamily="@font/somar_bold"
-                    android:text="@string/quick_order"
-                    android:textColor="@color/secondary"
-                    android:textSize="@dimen/_22ssp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:text="@string/service_type"
+                    android:fontFamily="@font/somar_semi_bold"
+                    android:textColor="@color/agence_black"
+                    android:textSize="@dimen/_11ssp"/>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayoutCity"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_margin="@dimen/_16sdp"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    android:background="@drawable/shape_text"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/title_quick_order">
+                <LinearLayout
+                    android:id="@+id/btn_service_type"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:padding="@dimen/_13sdp"
+                    android:background="@drawable/bg_budget_option_default">
 
-                    <Spinner
-                        android:id="@+id/sp_service"
+                    <TextView
+                        android:id="@+id/tv_service_type"
                         android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:text="@string/select_service_type"
+                        android:fontFamily="@font/somar_regular"
+                        android:textColor="@color/agence_muted"
+                        android:textSize="@dimen/_13ssp"/>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    <ImageView
+                        android:layout_width="@dimen/_14sdp"
+                        android:layout_height="@dimen/_14sdp"
+                        android:src="@drawable/icon_arrow_down"
+                        app:tint="@color/agence_muted"/>
+
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/title_order_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_16sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:fontFamily="@font/somar_bold"
+                    android:layout_marginBottom="@dimen/_8sdp"
                     android:text="@string/order_address"
-                    android:textColor="@color/text"
-                    android:textSize="@dimen/_18ssp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/constraintLayoutCity" />
+                    android:fontFamily="@font/somar_semi_bold"
+                    android:textColor="@color/agence_black"
+                    android:textSize="@dimen/_11ssp"/>
 
                 <EditText
                     android:id="@+id/tv_order_address"
-                    style="@style/editText"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/title_order_address" />
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:padding="@dimen/_13sdp"
+                    android:background="@drawable/bg_budget_option_default"
+                    android:hint="@string/order_title_hint"
+                    android:fontFamily="@font/somar_regular"
+                    android:textColor="@color/agence_black"
+                    android:textColorHint="@color/agence_muted"
+                    android:textSize="@dimen/_13ssp"/>
 
                 <TextView
-                    android:id="@+id/title_duration_of_completion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_16sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:fontFamily="@font/somar_bold"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:text="@string/approx_budget"
+                    android:fontFamily="@font/somar_semi_bold"
+                    android:textColor="@color/agence_black"
+                    android:textSize="@dimen/_11ssp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:padding="@dimen/_13sdp"
+                    android:background="@drawable/bg_budget_option_default">
+
+                    <EditText
+                        android:id="@+id/tv_budget"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/budget_hint"
+                        android:inputType="number"
+                        android:fontFamily="@font/somar_regular"
+                        android:textColor="@color/agence_black"
+                        android:textColorHint="@color/agence_muted"
+                        android:textSize="@dimen/_13ssp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/r_s"
+                        android:fontFamily="@font/somar_semi_bold"
+                        android:textColor="@color/agence_muted"
+                        android:textSize="@dimen/_12ssp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_8sdp"
                     android:text="@string/duration_of_completion"
-                    android:textColor="@color/text"
-                    android:textSize="@dimen/_18ssp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_order_address" />
+                    android:fontFamily="@font/somar_semi_bold"
+                    android:textColor="@color/agence_black"
+                    android:textSize="@dimen/_11ssp"/>
 
                 <EditText
                     android:id="@+id/tv_duration_of_completion"
-                    style="@style/editText"
-                    android:layout_width="0dp"
-                    android:inputType="numberDecimal"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/title_duration_of_completion" />
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:padding="@dimen/_13sdp"
+                    android:background="@drawable/bg_budget_option_default"
+                    android:hint="@string/duration_hint"
+                    android:fontFamily="@font/somar_regular"
+                    android:textColor="@color/agence_black"
+                    android:textColorHint="@color/agence_muted"
+                    android:textSize="@dimen/_13ssp"/>
 
                 <TextView
-                    android:id="@+id/title_order_details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_16sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:fontFamily="@font/somar_bold"
+                    android:layout_marginBottom="@dimen/_8sdp"
                     android:text="@string/order_details"
-                    android:textColor="@color/text"
-                    android:textSize="@dimen/_18ssp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_duration_of_completion" />
+                    android:fontFamily="@font/somar_semi_bold"
+                    android:textColor="@color/agence_black"
+                    android:textSize="@dimen/_11ssp"/>
 
                 <EditText
                     android:id="@+id/tv_order_details"
-                    style="@style/editText"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:padding="@dimen/_13sdp"
                     android:gravity="top"
                     android:inputType="textMultiLine"
-                    android:lines="4"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/title_order_details" />
+                    android:minLines="4"
+                    android:background="@drawable/bg_budget_option_default"
+                    android:hint="@string/order_details_hint"
+                    android:fontFamily="@font/somar_regular"
+                    android:textColor="@color/agence_black"
+                    android:textColorHint="@color/agence_muted"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical|top"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:padding="@dimen/_12sdp"
+                    android:background="#1A2505ED">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/the_completion_period_is_calculated_from_the_company_s_acceptance_of_the_order_and_payment"
+                        android:fontFamily="@font/somar_regular"
+                        android:textColor="@color/agence_blue"
+                        android:textSize="@dimen/_10ssp"/>
+
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/title_notes"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    android:layout_marginHorizontal="@dimen/_16sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:text="@string/attachments"
                     android:fontFamily="@font/somar_semi_bold"
-                    android:text="@string/the_completion_period_is_calculated_from_the_company_s_acceptance_of_the_order_and_payment"
-                    android:textColor="#AD0000"
-                    android:textSize="@dimen/_14ssp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_order_details" />
+                    android:textColor="@color/agence_black"
+                    android:textSize="@dimen/_11ssp"/>
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_send_to_all"
-                    style="@style/bottom"
-                    android:layout_width="0dp"
-                    android:layout_marginTop="@dimen/_24sdp"
+                <LinearLayout
+                    android:id="@+id/btn_attach"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_16sdp"
-                    android:text="@string/send_to_all"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/title_notes" />
+                    android:padding="@dimen/_13sdp"
+                    android:background="@drawable/bg_budget_option_default">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <ImageView
+                        android:layout_width="@dimen/_16sdp"
+                        android:layout_height="@dimen/_16sdp"
+                        android:src="@drawable/icon_attachment"
+                        app:tint="@color/agence_blue"/>
+
+                    <TextView
+                        android:id="@+id/tv_attach_label"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:text="@string/attach_file_or_photo"
+                        android:fontFamily="@font/somar_regular"
+                        android:textColor="@color/agence_blue"
+                        android:textSize="@dimen/_12ssp"/>
+
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_send_to_all"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_44sdp"
+                    android:backgroundTint="@color/agence_blue"
+                    android:fontFamily="@font/somar_bold"
+                    android:text="@string/send_to_all"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13ssp"
+                    app:cornerRadius="999dp"/>
+
+            </LinearLayout>
 
         </ScrollView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

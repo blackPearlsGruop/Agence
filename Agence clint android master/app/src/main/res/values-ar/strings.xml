@@ -202,4 +202,68 @@
   <string name="in_progress">جاري التنفيذ</string>
   <string name="delivered">تم التسليم</string>
   <string name="canceled">ملغي</string>
+
+  <!-- Support screen live chat widget -->
+  <string name="start_chat">ابدأ الدردشة</string>
+  <string name="agence_support_name">دعم أجينس</string>
+  <string name="support_online_status">● متصل · يرد خلال دقيقتين تقريباً</string>
+  <string name="type_your_question">اكتب سؤالك...</string>
+  <string name="support_greeting">أهلاً! كيف نقدر نساعدك اليوم؟</string>
+
+  <!-- Provider profile + Featured member profile -->
+  <string name="past_work">أعمال سابقة</string>
+  <string name="get_offer">احصل على عرض</string>
+  <string name="verified">موثّق</string>
+  <string name="verified_desc">تم التحقق من الهوية بواسطة أجينس</string>
+  <string name="certified_skill">مهارة معتمدة</string>
+  <string name="certified_desc">اجتاز اختبار تقييم المهارة</string>
+  <string name="top_performer">الأفضل أداءً</string>
+  <string name="top_desc">تقييمات عالية باستمرار من العملاء</string>
+  <string name="provider_profile">ملف المزود</string>
+  <string name="about">نبذة</string>
+  <string name="rating_label">التقييم</string>
+  <string name="reviews_label">التقييمات</string>
+  <string name="top_match_label">أفضل تطابق</string>
+  <string name="get_in_touch">تواصل الآن</string>
+
+  <!-- Order preview (Get Offer) screen -->
+  <string name="accept_offer">قبول العرض</string>
+  <string name="start_date">تاريخ البدء</string>
+  <string name="location">الموقع</string>
+  <string name="order_hash"># الطلب</string>
+  <string name="duration">المدة</string>
+  <string name="total_price">السعر الإجمالي</string>
+  <string name="fixed_price">سعر ثابت</string>
+  <string name="evaluation">التقييم</string>
+  <string name="step_1">مكالمة استكشافية وجلسة إحاطة بالمشروع</string>
+  <string name="step_2">مرحلة البحث وتحليل المنافسين</string>
+  <string name="step_3">عرض المفاهيم الأولية (اتجاهين)</string>
+  <string name="step_4">جولات التعديل (حتى جولتين)</string>
+  <string name="step_5">التسليم النهائي مع ملف إرشادات العلامة</string>
+
+  <!-- Featured Ad screen -->
+  <string name="featured_ad">إعلان مميز</string>
+  <string name="ad_spend_label">إنفاق إعلاني</string>
+  <string name="view_full_profile">عرض الملف الكامل</string>
+  <string name="what_is_featured_ad">ما هو الإعلان المميز؟</string>
+  <string name="featured_ad_explanation">الإعلانات المميزة هي مساحات مدفوعة تُتيح لمزودي الخدمات المتحقق منهم الظهور بالصدارة أمام العملاء المحتملين. لا تُعرض إلا على حسابات الأعضاء المدفوعة.</string>
+  <string name="najm_agency_name">وكالة نجم</string>
+  <string name="najm_agency_tagline">شريك الإعلانات المدفوعة الأول</string>
+  <string name="najm_agency_description">وكالة نجم هي الوكالة المرتبة الأولى في الإعلانات المدفوعة في المملكة العربية السعودية. متخصصون في حملات Google وMeta وSnapchat لتحقيق أقصى عائد استثمار.</string>
+
+  <!-- Quick Order (redesigned) -->
+  <string name="quick_order_desc">اطلبي خدمة مخصصة مو موجودة بالقائمة، ووصفيها بكلماتك</string>
+  <string name="service_type">نوع الخدمة</string>
+  <string name="order_title_hint">مثال: تصميم شعار لمتجر إلكتروني</string>
+  <string name="approx_budget">الميزانية التقريبية</string>
+  <string name="budget_low">&lt; 1,000</string>
+  <string name="budget_mid">1,000-5,000</string>
+  <string name="budget_high">&gt; 5,000</string>
+  <string name="duration_hint">مثال: أسبوع واحد</string>
+  <string name="order_details_hint">اشرحي طلبك بالتفصيل...</string>
+
+  <!-- Quick Order: attachment + numeric budget -->
+  <string name="attachments">المرفقات</string>
+  <string name="attach_file_or_photo">إرفاق ملف أو صورة</string>
+  <string name="budget_hint">أدخلي مبلغ تقريبي</string>
 </resources>

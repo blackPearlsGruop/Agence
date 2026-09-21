@@ -2,28 +2,22 @@ package com.ksa.agence.ui.fragment.setting
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.view.animation.RotateAnimation
+import android.widget.EditText
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.lifecycle.Observer
 import com.ksa.agence.R
 import com.ksa.agence.base.BaseFragment
-import com.ksa.agence.common.CODE200
-import com.ksa.agence.common.CODE422
-import com.ksa.agence.common.Resource
-import com.ksa.agence.common.util.Utilities
 import com.ksa.agence.databinding.FragmentContacUsBinding
 import com.ksa.agence.ui.activity.MainActivity
-import com.ksa.agence.viewModels.InfoViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ContactUsFragment : BaseFragment<FragmentContacUsBinding>() {
 
     override fun getLayoutId(): Int = R.layout.fragment_contac_us
-    private val viewModel: InfoViewModel by viewModel()
-
 
     private lateinit var mainActivity: MainActivity
 
@@ -127,82 +121,62 @@ class ContactUsFragment : BaseFragment<FragmentContacUsBinding>() {
     }
 
     private fun onClick() {
+        mViewDataBinding.btnStartChat.setOnClickListener {
+            mViewDataBinding.btnStartChat.visibility = View.GONE
+            mViewDataBinding.layoutChatWidget.visibility = View.VISIBLE
 
-        mViewDataBinding.btnSend.setOnClickListener {
-
-            val titleMessage=mViewDataBinding.tvTitle.text.toString()
-            val dicMessage=mViewDataBinding.tvMessageContent.text.toString()
-
-            if (titleMessage.isEmpty())
-            {
-                mViewDataBinding.tvTitle.error=getString(R.string.this_item_is_required)
+            // Same as the Figma reference: the widget opens with one greeting
+            // bubble from support already in it.
+            if (mViewDataBinding.chatMessagesContainer.childCount == 0) {
+                addChatBubble(getString(R.string.support_greeting), fromMe = false)
             }
-            else     if (dicMessage.isEmpty())
-            {
-                mViewDataBinding.tvMessageContent.error=getString(R.string.this_item_is_required)
-            }
-            else{
-                viewModel.contactUs(titleMessage,dicMessage)
+        }
 
-            }
+        mViewDataBinding.btnSendChat.setOnClickListener { sendChatMessage() }
 
+        mViewDataBinding.etChatMessage.setOnEditorActionListener { _, _, _ ->
+            sendChatMessage()
+            true
         }
     }
 
-
-    private fun initResponse() {
-        // resend response
-        viewModel.contactUsResponse.observe(viewLifecycleOwner, Observer { result ->
-            when (result) {
-                is Resource.Success -> {
-                    showProgress(false)
-                    result.data?.let { it ->
-                        when (it.code) {
-                            // dismiss loading
-                            CODE200 -> {
-                                Utilities.showToastSuccess(requireActivity(), it.message!!)
-                                mainActivity.navController!!.popBackStack()
-                            }
-
-                            CODE422 -> {
-                                Utilities.showToastError(requireActivity(), it.message!!)
-                            }
-
-                            else -> {
-                                showProgress(false)
-                                Utilities.showToastError(requireActivity(), it.message!!)
-
-                            }
-                        }
-                    }
-                }
-
-                is Resource.Error -> {
-                    // dismiss loading
-                    showProgress(false)
-                    Log.i("TestVerification", "error")
-
-                }
-
-                is Resource.Loading -> {
-                    // show loading
-                    Log.i("TestVerification", "loading")
-                    showProgress(true)
-
-                }
-            }
-        })
-
+    private fun sendChatMessage() {
+        val text = mViewDataBinding.etChatMessage.text.toString().trim()
+        if (text.isEmpty()) return
+        addChatBubble(text, fromMe = true)
+        mViewDataBinding.etChatMessage.text.clear()
     }
+
+    // Local-only widget for now (matches the Figma reference exactly, which
+    // is also local state with no real backend) — swap in a real support
+    // conversation later without changing the layout.
+    private fun addChatBubble(text: String, fromMe: Boolean) {
+        val row = LinearLayout(requireActivity())
+        row.orientation = LinearLayout.HORIZONTAL
+        row.gravity = if (fromMe) Gravity.END else Gravity.START
+        val rowParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        rowParams.bottomMargin = dp(8)
+        row.layoutParams = rowParams
+
+        val bubble = TextView(requireActivity())
+        bubble.text = text
+        bubble.setTextColor(resources.getColor(if (fromMe) R.color.white else R.color.agence_black))
+        bubble.textSize = 12f
+        bubble.typeface = androidx.core.content.res.ResourcesCompat.getFont(requireActivity(), R.font.somar_regular)
+        bubble.setPadding(dp(12), dp(9), dp(12), dp(9))
+        bubble.setBackgroundResource(if (fromMe) R.drawable.message_background else R.drawable.message_background_dark)
+        val bubbleParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        bubble.layoutParams = bubbleParams
+
+        row.addView(bubble)
+        mViewDataBinding.chatMessagesContainer.addView(row)
+    }
+
     override fun onNetworkConnectionChanged(isConnected: Boolean) {
-        // يتم استدعاء هذه الدالة عندما يتغير حالة الاتصال
-        if (isConnected) {
-            // يمكنك إجراء أي إجراءات إضافية هنا عند الاتصال بالإنترنت
-            initResponse()
-
-        } else {
-        }
-
     }
 
 }

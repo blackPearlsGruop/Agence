@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:padding="@dimen/_12sdp"
+        android:background="@drawable/bg_budget_option_default">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_service_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/somar_semi_bold"
+                android:textColor="@color/agence_black"
+                android:textSize="@dimen/_13ssp"
+                tools:text="تدقيق العلامة التجارية والتموضع"/>
+
+            <TextView
+                android:id="@+id/tv_service_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:drawableStart="@drawable/icon_clock_small"
+                android:drawablePadding="@dimen/_4sdp"
+                app:drawableTint="@color/agence_muted"
+                android:fontFamily="@font/somar_regular"
+                android:textColor="@color/agence_muted"
+                android:textSize="@dimen/_10ssp"
+                tools:text="أسبوعان"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_service_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_6sdp"
+                android:fontFamily="@font/somar_bold"
+                android:textColor="@color/agence_orange"
+                android:textSize="@dimen/_14ssp"
+                tools:text="﷼ 5,000"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_get_offer"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_26sdp"
+                android:backgroundTint="@color/agence_blue"
+                android:fontFamily="@font/somar_semi_bold"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:paddingHorizontal="@dimen/_12sdp"
+                android:text="@string/get_offer"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_9ssp"
+                app:cornerRadius="999dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

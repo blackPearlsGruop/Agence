@@ -18,7 +18,8 @@ data class PromoBanner(
 
 class PromoBannerAdapter(
     private val banners: List<PromoBanner>,
-    private val isArabic: Boolean
+    private val isArabic: Boolean,
+    private val onClick: (PromoBanner) -> Unit = {}
 ) : RecyclerView.Adapter<PromoBannerAdapter.PromoViewHolder>() {
 
     class PromoViewHolder(val binding: ItemPromoBannerBinding) : RecyclerView.ViewHolder(binding.root)
@@ -35,6 +36,14 @@ class PromoBannerAdapter(
         holder.binding.tvPromoSubtitle.text = if (isArabic) banner.subtitleAr else banner.subtitleEn
         holder.binding.layoutPromoBg.setBackgroundResource(banner.backgroundRes)
         holder.binding.tvPromoAdBadge.visibility = if (banner.isAd) View.VISIBLE else View.GONE
+
+        // Matches the Figma reference exactly: only the sponsored ("paid")
+        // banner is tappable — the others are purely decorative.
+        if (banner.isAd) {
+            holder.itemView.setOnClickListener { onClick(banner) }
+        } else {
+            holder.itemView.setOnClickListener(null)
+        }
     }
 
     override fun getItemCount(): Int = banners.size

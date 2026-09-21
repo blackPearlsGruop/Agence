@@ -204,4 +204,68 @@
     <string name="in_progress">in Progress</string>
     <string name="delivered">Delivered</string>
     <string name="canceled">Canceled</string>
+
+    <!-- Support screen live chat widget -->
+    <string name="start_chat">Start Chat</string>
+    <string name="agence_support_name">Agence Support</string>
+    <string name="support_online_status">● Online · Typically replies in 2 min</string>
+    <string name="type_your_question">Type your question…</string>
+    <string name="support_greeting">Hello! How can we help you today?</string>
+
+    <!-- Provider profile + Featured member profile -->
+    <string name="past_work">Past Work</string>
+    <string name="get_offer">Get Offer</string>
+    <string name="verified">Verified</string>
+    <string name="verified_desc">Identity confirmed by Agence</string>
+    <string name="certified_skill">Certified Skill</string>
+    <string name="certified_desc">Passed a skill assessment</string>
+    <string name="top_performer">Top Performer</string>
+    <string name="top_desc">Consistently rated highly by clients</string>
+    <string name="provider_profile">Provider Profile</string>
+    <string name="about">About</string>
+    <string name="rating_label">Rating</string>
+    <string name="reviews_label">Reviews</string>
+    <string name="top_match_label">Top Match</string>
+    <string name="get_in_touch">Get in Touch</string>
+
+    <!-- Order preview (Get Offer) screen -->
+    <string name="accept_offer">Accept Offer</string>
+    <string name="start_date">Start Date</string>
+    <string name="location">Location</string>
+    <string name="order_hash">Order #</string>
+    <string name="duration">Duration</string>
+    <string name="total_price">Total Price</string>
+    <string name="fixed_price">Fixed Price</string>
+    <string name="evaluation">Evaluation</string>
+    <string name="step_1">Discovery call and briefing session</string>
+    <string name="step_2">Research phase and competitive analysis</string>
+    <string name="step_3">Initial concepts presented (2 directions)</string>
+    <string name="step_4">Revision rounds (up to 2 rounds)</string>
+    <string name="step_5">Final deliverables and brand guidelines file</string>
+
+    <!-- Featured Ad screen -->
+    <string name="featured_ad">Featured Ad</string>
+    <string name="ad_spend_label">Ad Spend</string>
+    <string name="view_full_profile">View Full Profile</string>
+    <string name="what_is_featured_ad">What is a Featured Ad?</string>
+    <string name="featured_ad_explanation">Featured ads are paid placements that give verified service providers extra visibility at the top of prospective clients\' feeds. They only appear on paying members\' accounts.</string>
+    <string name="najm_agency_name">Najm Agency</string>
+    <string name="najm_agency_tagline">Your #1 Paid Ads Partner</string>
+    <string name="najm_agency_description">Najm Agency is the top-ranked agency for paid advertising in Saudi Arabia. We specialize in Google, Meta and Snapchat campaigns to maximize your return on investment.</string>
+
+    <!-- Quick Order (redesigned) -->
+    <string name="quick_order_desc">Request a custom service that\'s not in the list, and describe it in your own words</string>
+    <string name="service_type">Service Type</string>
+    <string name="order_title_hint">e.g. Logo design for an online store</string>
+    <string name="approx_budget">Approximate Budget</string>
+    <string name="budget_low">&lt; 1,000</string>
+    <string name="budget_mid">1,000-5,000</string>
+    <string name="budget_high">&gt; 5,000</string>
+    <string name="duration_hint">e.g. One week</string>
+    <string name="order_details_hint">Describe your request in detail...</string>
+
+    <!-- Quick Order: attachment + numeric budget -->
+    <string name="attachments">Attachments</string>
+    <string name="attach_file_or_photo">Attach a file or photo</string>
+    <string name="budget_hint">Enter an approximate amount</string>
 </resources>

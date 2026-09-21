@@ -11,7 +11,16 @@ data class FeaturedMember(
     val nameAr: String,
     val nameEn: String,
     val specialtyAr: String,
-    val specialtyEn: String
+    val specialtyEn: String,
+    val locationAr: String = "",
+    val locationEn: String = "",
+    val rating: Float = 0f,
+    val reviews: Int = 0,
+    val matchPct: Int = 0,
+    val bioAr: String = "",
+    val bioEn: String = "",
+    val servicesAr: List<String> = emptyList(),
+    val servicesEn: List<String> = emptyList()
 )
 
 class FeaturedMembersAdapter(
@@ -39,3 +48,4 @@ class FeaturedMembersAdapter(
 
     override fun getItemCount(): Int = members.size
 }
+

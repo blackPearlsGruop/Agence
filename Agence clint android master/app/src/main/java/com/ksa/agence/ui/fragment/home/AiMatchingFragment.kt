@@ -63,8 +63,26 @@ class AiMatchingFragment : BaseFragment<FragmentAiMatchingBinding>() {
         MatchedProvider(10, "Nova Creative", "﷼ 3,200", 4.1f, "10 days", 62, "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&auto=format")
     )
 
+    override fun onResume() {
+        super.onResume()
+        try {
+            (requireActivity() as com.ksa.agence.ui.activity.MainActivity)
+                .mViewDataBinding.constraintLayout2.visibility = View.GONE
+        } catch (e: Exception) {
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // This screen has its own header (back + title). Hide the old shared
+        // toolbar explicitly instead of assuming it's already hidden — it can
+        // come back visible depending on which screen was open before this one.
+        try {
+            (requireActivity() as com.ksa.agence.ui.activity.MainActivity)
+                .mViewDataBinding.constraintLayout2.visibility = View.GONE
+        } catch (e: Exception) {
+        }
 
         updateServiceTypeText()
         updateBudgetSelectionUi()
