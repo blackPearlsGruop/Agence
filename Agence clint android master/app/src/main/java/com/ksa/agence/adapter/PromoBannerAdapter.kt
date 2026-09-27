@@ -39,11 +39,7 @@ class PromoBannerAdapter(
 
         // Matches the Figma reference exactly: only the sponsored ("paid")
         // banner is tappable — the others are purely decorative.
-        if (banner.isAd) {
-            holder.itemView.setOnClickListener { onClick(banner) }
-        } else {
-            holder.itemView.setOnClickListener(null)
-        }
+        holder.itemView.setOnClickListener { onClick(banner) }
     }
 
     override fun getItemCount(): Int = banners.size

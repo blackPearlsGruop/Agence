@@ -141,6 +141,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), Company {
         mViewDataBinding.sliderViewPager2.adapter = PromoBannerAdapter(promoBanners, isArabic) { banner ->
             if (banner.isAd) {
                 mViewDataBinding.root.findNavController().navigate(R.id.action_menuHome_to_paidAdViewFragment)
+            } else {
+                // البانر الأزرق: فتح صفحة تسجيل مقدم الخدمة
+                val intent = android.content.Intent(
+                    requireActivity(),
+                    com.ksa.agence.ui.activity.AuthActivity::class.java
+                )
+                intent.putExtra("start_at", "provider_signup")
+                startActivity(intent)
             }
         }
         mViewDataBinding.constraintLayout5.visibility = View.VISIBLE
@@ -668,7 +676,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), Company {
         mViewDataBinding.btnFilter.setOnClickListener {
             mViewDataBinding.root.findNavController().navigate(R.id.allComanyFragment)
         }
-
 
     }
 

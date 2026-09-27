@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/onBoardingFragment">
+    app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.ksa.agence.ui.fragment.auth.LoginFragment"
@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_bottomSheetCategoriesFragment2"
+            app:destination="@id/bottomSheetCategoriesFragment2" />
     </fragment>
     <fragment
         android:id="@+id/confirmOtpFragment"
@@ -65,7 +68,35 @@
         <action
             android:id="@+id/action_choosePageFragment2_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_choosePageFragment2_to_providerSignupFragment"
+            app:destination="@id/providerSignupFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/providerSignupFragment"
+        android:name="com.ksa.agence.ui.fragment.auth.ProviderSignupFragment"
+        android:label="ProviderSignupFragment"
+        tools:layout="@layout/fragment_provider_signup">
+        <action
+            android:id="@+id/action_providerSignupFragment_to_choosePageFragment2"
+            app:destination="@id/choosePageFragment2" />
+        <action
+            android:id="@+id/action_providerSignupFragment_to_providerSuccessFragment"
+            app:destination="@id/providerSuccessFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/providerSuccessFragment"
+        android:name="com.ksa.agence.ui.fragment.auth.ProviderSuccessFragment"
+        android:label="ProviderSuccessFragment"
+        tools:layout="@layout/fragment_provider_success" />
+    <dialog
+        android:id="@+id/bottomSheetCategoriesFragment2"
+        android:name="com.ksa.agence.ui.dialog.BottomSheetCategoriesFragment"
+        android:label="BottomSheetCategoriesFragment" >
+        <action
+            android:id="@+id/action_bottomSheetCategoriesFragment2_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </dialog>
 
 
 </navigation>

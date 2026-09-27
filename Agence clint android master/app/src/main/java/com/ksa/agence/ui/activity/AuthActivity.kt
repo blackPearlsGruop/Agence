@@ -34,6 +34,19 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        // Check for start_at intent extra to navigate to a specific fragment
+        // (used when launching auth flow from Home banner to open Provider Signup)
+        val startAt = intent.getStringExtra("start_at")
+        if (startAt == "provider_signup") {
+            try {
+                navHostFragment = supportFragmentManager
+                    .findFragmentById(R.id.nav_host_auth) as NavHostFragment
+                navController = navHostFragment.navController
+                navController?.navigate(R.id.providerSignupFragment)
+            } catch (e: Exception) {
+                android.util.Log.e("AuthActivity", "Failed to navigate to provider signup", e)
+            }
+        }
     }
 
     fun enableEdgeToEdge() {

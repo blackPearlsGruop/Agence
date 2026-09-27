@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <!-- Success Icon -->
+        <TextView
+            android:id="@+id/tv_success_icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="✓"
+            android:textSize="@dimen/_80ssp"
+            android:textColor="@color/primary"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_50sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Success Title -->
+        <TextView
+            android:id="@+id/tv_success_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="تم بنجاح!"
+            android:fontFamily="@font/somar_bold"
+            android:textSize="@dimen/_24ssp"
+            android:textColor="@color/text"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_24sdp"
+            android:layout_marginEnd="@dimen/_24sdp"
+            android:layout_marginStart="@dimen/_24sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_success_icon" />
+
+        <!-- Success Message -->
+        <TextView
+            android:id="@+id/tv_success_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="تم إنشاء حسابك بنجاح\nسيتم التحقق من بيانات حسابك قريباً"
+            android:fontFamily="@font/somar_regular"
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/gray"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.5"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_32sdp"
+            android:layout_marginStart="@dimen/_32sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_success_title" />
+
+        <!-- Details Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_marginEnd="@dimen/_24sdp"
+            android:layout_marginStart="@dimen/_24sdp"
+            app:cardCornerRadius="@dimen/_12sdp"
+            app:cardBackgroundColor="#f9f9f9"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_success_message">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_16sdp">
+
+                <!-- Detail Item 1 -->
+                <TextView
+                    android:id="@+id/tv_detail_label_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="الاسم الكامل"
+                    android:fontFamily="@font/somar_semi_bold"
+                    android:textSize="@dimen/_12ssp"
+                    android:textColor="@color/primary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_detail_value_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="أحمد محمد"
+                    android:fontFamily="@font/somar_regular"
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/text"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_detail_label_1" />
+
+                <!-- Detail Item 2 -->
+                <TextView
+                    android:id="@+id/tv_detail_label_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="البريد الإلكتروني"
+                    android:fontFamily="@font/somar_semi_bold"
+                    android:textSize="@dimen/_12ssp"
+                    android:textColor="@color/primary"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_detail_value_1" />
+
+                <TextView
+                    android:id="@+id/tv_detail_value_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="ahmad@agence.com"
+                    android:fontFamily="@font/somar_regular"
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/text"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_detail_label_2" />
+
+                <!-- Detail Item 3 -->
+                <TextView
+                    android:id="@+id/tv_detail_label_3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="اسم المستخدم"
+                    android:fontFamily="@font/somar_semi_bold"
+                    android:textSize="@dimen/_12ssp"
+                    android:textColor="@color/primary"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_detail_value_2" />
+
+                <TextView
+                    android:id="@+id/tv_detail_value_3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="ahmad_design"
+                    android:fontFamily="@font/somar_regular"
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/text"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_detail_label_3" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Continue Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_continue"
+            style="@style/bottom"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_50sdp"
+            android:text="@string/continue_btn"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_marginEnd="@dimen/_24sdp"
+            android:layout_marginStart="@dimen/_24sdp"
+            android:layout_marginBottom="@dimen/_24sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cv_details"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
