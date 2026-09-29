@@ -100,7 +100,7 @@
   <string name="faq_q4">هل يمكنني إلغاء طلب؟</string>
   <string name="faq_a4">نعم — يمكن إلغاء الطلبات خلال 24 ساعة من قبولها لاسترداد كامل. بعد 24 ساعة، تعتمد شروط الإلغاء على مرحلة المشروع.</string>
   <string name="faq_q5">كيف أدفع؟</string>
-  <string name="faq_a5">يمكنك الدفع عبر مدى، Apple Pay، أو بطاقة ائتمان/خصم. البطاقات المحفوظة مدعومة للدفع السريع.</string>
+  <string name="faq_a5">يمكنك الدفع عبر مدى، Apple Pay، بطاقة ائتمان/خصم، تابي (قسّم على 4 دفعات)، أو تمارا (اشترِ الآن وادفع لاحقاً). البطاقات المحفوظة مدعومة للدفع السريع.</string>
   <string name="faq_q6">كيف أتواصل مع مزود الخدمة؟</string>
   <string name="faq_a6">بمجرد تقديم الطلب يمكنك مراسلة مزود الخدمة مباشرة عبر المحادثة داخل التطبيق في أي وقت.</string>
   <string name="no_messages_yet">لا توجد رسائل بعد</string>
@@ -336,7 +336,7 @@
   <string name="attach_file_or_photo">أرفق ملف أو صورة</string>
   <string name="riyal">ريال</string>
   <string name="past_work">الأعمال السابقة</string>
-  <string name="get_offer">احصل على عرض</string>
+  <string name="get_offer">ادفع</string>
   <string name="match_label">تطابق</string>
   <string name="best_badge">الأفضل</string>
   <string name="Cancel">إلغاء</string>

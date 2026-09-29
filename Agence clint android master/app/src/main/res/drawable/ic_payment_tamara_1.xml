@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="28dp"
+    android:height="28dp"
+    android:viewportWidth="28"
+    android:viewportHeight="28">
+    <!-- Peach gradient-like background -->
+    <path
+        android:pathData="M4,7 L24,7 A3,3 0 0 1 27,10 L27,18 A3,3 0 0 1 24,21 L4,21 A3,3 0 0 1 1,18 L1,10 A3,3 0 0 1 4,7 Z"
+        android:fillColor="#FDB7C0"/>
+    <!-- 't' -->
+    <path android:pathData="M3,10 L7,10 L7,11.5 L5.5,11.5 L5.5,18 L4.5,18 L4.5,11.5 L3,11.5 Z" android:fillColor="#000000"/>
+    <!-- 'a' -->
+    <path android:pathData="M8,13 L10,13 L10,18 L8.5,18 L8.5,17 L8,17 Z M8.5,14 L9,14 L9,15.5 L8.5,15.5 Z" android:fillColor="#000000"/>
+    <!-- 'm' -->
+    <path android:pathData="M11,13 L15,13 L15,18 L14,18 L14,14.5 L13.5,14.5 L13.5,18 L12.5,18 L12.5,14.5 L12,14.5 L12,18 L11,18 Z" android:fillColor="#000000"/>
+    <!-- 'a' -->
+    <path android:pathData="M16,13 L18,13 L18,18 L16.5,18 L16.5,17 L16,17 Z M16.5,14 L17,14 L17,15.5 L16.5,15.5 Z" android:fillColor="#000000"/>
+    <!-- 'r' -->
+    <path android:pathData="M19,13 L20,13 L20,13.5 L21,13.5 L21,15 L20,15 L20,18 L19,18 Z" android:fillColor="#000000"/>
+    <!-- 'a' -->
+    <path android:pathData="M22,13 L24,13 L24,18 L22.5,18 L22.5,17 L22,17 Z M22.5,14 L23,14 L23,15.5 L22.5,15.5 Z" android:fillColor="#000000"/>
+</vector>

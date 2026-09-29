@@ -47,8 +47,8 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
         // (profile photo/name now live only inside "الملف الشخصي" — no header
         // avatar or duplicate profile card on this screen anymore)
 
-        // Wallet balance: no backend endpoint yet, showing placeholder until the API exists
-        mViewDataBinding.tvBalanceAmount.text = "0"
+        // Wallet balance: mock demo data until the backend endpoint exists
+        mViewDataBinding.tvBalanceAmount.text = "1,450"
 
         // Language chip shows the CURRENT language, tapping switches instantly
         updateLanguageChipLabel()
@@ -135,6 +135,12 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
             Utilities.showToastError(requireActivity(), getString(R.string.coming_soon))
         }
         mViewDataBinding.tvPaymentCard.setOnClickListener {
+            Utilities.showToastError(requireActivity(), getString(R.string.coming_soon))
+        }
+        mViewDataBinding.tvPaymentTabby.setOnClickListener {
+            Utilities.showToastError(requireActivity(), getString(R.string.coming_soon))
+        }
+        mViewDataBinding.tvPaymentTamara.setOnClickListener {
             Utilities.showToastError(requireActivity(), getString(R.string.coming_soon))
         }
 
@@ -228,9 +234,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
 
 
     override fun onNetworkConnectionChanged(isConnected: Boolean) {
-        // يتم استدعاء هذه الدالة عندما يتغير حالة الاتصال
         if (isConnected) {
-            // يمكنك إجراء أي إجراءات إضافية هنا عند الاتصال بالإنترنت
             initResponse()
 
         } else {

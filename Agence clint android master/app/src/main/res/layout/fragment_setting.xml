@@ -269,6 +269,103 @@
                         android:drawableEnd="@drawable/ic_row_chevron"
                         android:drawablePadding="@dimen/_10sdp"/>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/_46sdp"
+                        android:background="@color/agence_border"/>
+
+                    <!-- Tabby row — rebuilt as LinearLayout so the pill lands
+                         on the same side as the other rows' icons (start
+                         side = right in RTL, left in LTR) instead of drifting
+                         next to the chevron -->
+                    <LinearLayout
+                        android:id="@+id/tv_payment_tabby"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="@dimen/_14sdp"
+                        android:paddingVertical="@dimen/_13sdp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/shape_tabby_pill"
+                            android:fontFamily="@font/somar_bold"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            android:paddingVertical="@dimen/_4sdp"
+                            android:text="tabby"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/_10ssp"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:text="تابي"
+                            android:fontFamily="@font/somar_semi_bold"
+                            android:textSize="@dimen/_13ssp"
+                            android:textColor="@color/agence_black"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_row_chevron"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/_46sdp"
+                        android:background="@color/agence_border"/>
+
+                    <!-- Tamara row — same structure as Tabby -->
+                    <LinearLayout
+                        android:id="@+id/tv_payment_tamara"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="@dimen/_14sdp"
+                        android:paddingVertical="@dimen/_13sdp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/shape_tamara_pill"
+                            android:fontFamily="@font/somar_bold"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            android:paddingVertical="@dimen/_4sdp"
+                            android:text="tamara"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/_10ssp"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:text="تمارا"
+                            android:fontFamily="@font/somar_semi_bold"
+                            android:textSize="@dimen/_13ssp"
+                            android:textColor="@color/agence_black"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_row_chevron"/>
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <!-- Language row with chip: tapping switches the app language

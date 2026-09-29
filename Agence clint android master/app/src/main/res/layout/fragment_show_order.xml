@@ -10,11 +10,13 @@
     <ScrollView
         android:fillViewport="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/_80sdp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -344,9 +346,7 @@
                 android:layout_width="0dp"
                 android:text="@string/company_chat"
                 android:visibility="gone"
-                android:layout_marginTop="@dimen/_32sdp"
-                android:layout_marginBottom="@dimen/_32sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="@dimen/_24sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rv_offers" />
@@ -355,7 +355,9 @@
                 android:id="@+id/linearLayoutAction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_32sdp"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:layout_marginBottom="@dimen/_24sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_company_chat">
@@ -374,14 +376,7 @@
                     android:text="@string/reorder"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_16ssp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/view6"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_address_company" />
-
-
-
+                    android:textSize="@dimen/_16ssp" />
 
 
                 <com.google.android.material.button.MaterialButton
@@ -399,13 +394,7 @@
                     android:text="@string/rating"
                     android:textAllCaps="false"
                     android:textColor="@color/primary"
-                    android:textSize="@dimen/_16ssp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/view6"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_address_company" />
-
-
+                    android:textSize="@dimen/_16ssp" />
 
 
             </LinearLayout>

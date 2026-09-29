@@ -100,7 +100,7 @@
     <string name="faq_q4">Can I cancel an order?</string>
     <string name="faq_a4">Yes — orders can be cancelled within 24 hours of acceptance for a full refund. After 24 hours, cancellation terms depend on project stage.</string>
     <string name="faq_q5">How do I pay?</string>
-    <string name="faq_a5">You can pay via Mada, Apple Pay, or credit/debit card. Saved cards are supported for faster checkout.</string>
+    <string name="faq_a5">You can pay via Mada, Apple Pay, credit/debit card, Tabby (split into 4 payments), or Tamara (buy now, pay later). Saved cards are supported for faster checkout.</string>
     <string name="faq_q6">How do I contact my provider?</string>
     <string name="faq_a6">Once an order is placed you can message the provider directly through the in-app chat at any time.</string>
     <string name="no_messages_yet">No messages yet</string>
@@ -336,7 +336,7 @@
     <string name="attach_file_or_photo">Attach file or photo</string>
     <string name="riyal">SAR</string>
     <string name="past_work">Past Work</string>
-    <string name="get_offer">Get Offer</string>
+    <string name="get_offer">Pay</string>
     <string name="match_label">Match</string>
     <string name="best_badge">BEST</string>
     <string name="Cancel">Cancel</string>

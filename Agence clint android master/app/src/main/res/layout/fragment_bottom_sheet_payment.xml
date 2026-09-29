@@ -18,32 +18,30 @@
             android:layout_height="match_parent">
 
 
+            <ImageView
+                android:id="@+id/imageClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_close"
+                android:layout_marginStart="@dimen/_16sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView5"
+                app:tint="@color/secondary" />
 
 
-        <ImageView
-            android:id="@+id/imageClose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_close"
-            android:layout_marginStart="@dimen/_16sdp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView5"
-            app:tint="@color/secondary" />
-
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:fontFamily="@font/somar_bold"
-            android:text="@string/paying_off"
-            android:textColor="@color/secondary"
-            android:textSize="@dimen/_22ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:fontFamily="@font/somar_bold"
+                android:text="@string/paying_off"
+                android:textColor="@color/secondary"
+                android:textSize="@dimen/_22ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -200,15 +198,127 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout6" />
 
 
+            <!-- ==================== MADA (NEW) ==================== -->
             <LinearLayout
-                android:id="@+id/linear_credit_card"
+                android:id="@+id/linear_mada"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_16sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_12sdp"
                 android:background="@drawable/shape_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title_choose_the_payment_method">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/somar_bold"
+                        android:text="مدى"
+                        android:textColor="@color/grey_bold"
+                        android:textSize="@dimen/_16ssp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:fontFamily="@font/somar_regular"
+                        android:text="ادفع مباشرة من حسابك البنكي السعودي"
+                        android:textColor="@color/grey_bold"
+                        android:textSize="@dimen/_10ssp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_mada_pill"
+                    android:fontFamily="@font/somar_bold"
+                    android:paddingHorizontal="@dimen/_14sdp"
+                    android:paddingVertical="@dimen/_6sdp"
+                    android:text="mada"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/_12ssp" />
+
+            </LinearLayout>
+
+
+            <!-- ==================== APPLE PAY (NEW) ==================== -->
+            <LinearLayout
+                android:id="@+id/linear_apple_pay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_12sdp"
+                android:background="@drawable/shape_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear_mada">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/somar_bold"
+                        android:text="أبل باي"
+                        android:textColor="@color/grey_bold"
+                        android:textSize="@dimen/_16ssp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:fontFamily="@font/somar_regular"
+                        android:text="ادفع بلمسة واحدة من جهازك"
+                        android:textColor="@color/grey_bold"
+                        android:textSize="@dimen/_10ssp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_apple_pill"
+                    android:fontFamily="@font/somar_bold"
+                    android:paddingHorizontal="@dimen/_12sdp"
+                    android:paddingVertical="@dimen/_6sdp"
+                    android:text="  Pay"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/_12ssp"
+                    android:drawableStart="@drawable/ic_payment_apple"
+                    android:drawablePadding="@dimen/_2sdp" />
+
+            </LinearLayout>
+
+
+            <!-- Credit Card option -->
+            <LinearLayout
+                android:id="@+id/linear_credit_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/shape_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear_apple_pay">
 
 
                 <TextView
@@ -227,6 +337,155 @@
             </LinearLayout>
 
 
+            <!-- ==================== TABBY ==================== -->
+            <LinearLayout
+                android:id="@+id/linear_tabby"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_12sdp"
+                android:background="@drawable/shape_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear_credit_card">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/somar_bold"
+                            android:text="تابي"
+                            android:textColor="@color/grey_bold"
+                            android:textSize="@dimen/_16ssp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_6sdp"
+                            android:background="@drawable/shape_new_badge"
+                            android:fontFamily="@font/somar_bold"
+                            android:paddingHorizontal="@dimen/_6sdp"
+                            android:paddingVertical="@dimen/_2sdp"
+                            android:text="جديد"
+                            android:textColor="@color/text"
+                            android:textSize="@dimen/_8ssp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:fontFamily="@font/somar_regular"
+                        android:text="قسّم فاتورتك على 4 دفعات · بدون فوائد"
+                        android:textColor="@color/grey_bold"
+                        android:textSize="@dimen/_10ssp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_tabby_pill"
+                    android:fontFamily="@font/somar_bold"
+                    android:paddingHorizontal="@dimen/_12sdp"
+                    android:paddingVertical="@dimen/_6sdp"
+                    android:text="tabby"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/_12ssp" />
+
+            </LinearLayout>
+
+
+            <!-- ==================== TAMARA ==================== -->
+            <LinearLayout
+                android:id="@+id/linear_tamara"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_12sdp"
+                android:background="@drawable/shape_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear_tabby">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/somar_bold"
+                            android:text="تمارا"
+                            android:textColor="@color/grey_bold"
+                            android:textSize="@dimen/_16ssp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_6sdp"
+                            android:background="@drawable/shape_new_badge"
+                            android:fontFamily="@font/somar_bold"
+                            android:paddingHorizontal="@dimen/_6sdp"
+                            android:paddingVertical="@dimen/_2sdp"
+                            android:text="جديد"
+                            android:textColor="@color/text"
+                            android:textSize="@dimen/_8ssp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:fontFamily="@font/somar_regular"
+                        android:text="اشترِ الآن وادفع لاحقاً · حتى 3 دفعات"
+                        android:textColor="@color/grey_bold"
+                        android:textSize="@dimen/_10ssp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_tamara_pill"
+                    android:fontFamily="@font/somar_bold"
+                    android:paddingHorizontal="@dimen/_12sdp"
+                    android:paddingVertical="@dimen/_6sdp"
+                    android:text="tamara"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/_12ssp" />
+
+            </LinearLayout>
+
+
+            <!-- Wallet (hidden) -->
             <LinearLayout
                 android:visibility="gone"
                 android:id="@+id/linear_wallet"
@@ -236,7 +495,7 @@
                 android:background="@drawable/shape_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear_credit_card">
+                app:layout_constraintTop_toBottomOf="@+id/linear_tamara">
 
 
                 <TextView
@@ -260,13 +519,14 @@
                 style="@style/bottom"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_32sdp"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"
                 android:text="@string/to_push"
-                android:layout_marginBottom="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_16sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear_wallet" />
+                app:layout_constraintTop_toBottomOf="@+id/linear_tamara" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

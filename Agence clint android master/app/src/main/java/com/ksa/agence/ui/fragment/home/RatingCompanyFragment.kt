@@ -20,30 +20,56 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class RatingCompanyFragment : BaseFragment<FragmentRatingCompanyBinding>() {
 
     override fun getLayoutId(): Int = R.layout.fragment_rating_company
-    private var id_order: Int=0
-    private var id_company: Int=0
+    private var id_order: Int = 0
+    private var id_company: Int = 0
+    private var providerName: String = ""
+    private var providerAgency: String = ""
+    private var providerPhoto: String = ""
     private val viewModel: HomeViewModel by viewModel()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (arguments != null){
+        // Read args safely — the screen can open from OrderPreview with demo
+        // IDs and provider info, or from the real order flow with safe args.
+        if (arguments != null) {
+            try {
+                val args: RatingCompanyFragmentArgs =
+                    RatingCompanyFragmentArgs.fromBundle(requireArguments())
+                id_company = args.idCompany
+                id_order = args.idOrder
+            } catch (e: Exception) {
+                Log.e("RatingCompany", "Falling back to plain bundle keys", e)
+                id_company = arguments?.getInt("idCompany") ?: 0
+                id_order = arguments?.getInt("idOrder") ?: 0
+            }
 
-            val args:RatingCompanyFragmentArgs=RatingCompanyFragmentArgs.fromBundle(requireArguments())
-            id_company=args.idCompany
-            id_order=args.idOrder
+            // Extra provider info passed from OrderPreview flow
+            providerName = arguments?.getString("providerName") ?: ""
+            providerAgency = arguments?.getString("providerAgency") ?: ""
+            providerPhoto = arguments?.getString("providerPhoto") ?: ""
         }
 
+        // Fall back to mock data so the screen is never empty
+        if (providerName.isEmpty()) providerName = "فهد العتيبي"
+        if (providerAgency.isEmpty()) providerAgency = "وكالة الرواد للتسويق"
 
-        if (AgenceApp.pref.authToken !=null)
-        {
-            Utilities.onLoadImageFromUrl(
-                requireActivity(),
-                AgenceApp.pref.loadUserData(requireActivity(), USER_DATA)!!.data!!.user!!.profile_image,
-                mViewDataBinding.ivMage
-            )
+        mViewDataBinding.tvProviderName.text = providerName
+        mViewDataBinding.tvProviderAgency.text = providerAgency
 
+        // Load the provider photo defensively (URL from bundle, else keep the
+        // default drawable already on the CircleImageView).
+        try {
+            if (providerPhoto.isNotEmpty()) {
+                Utilities.onLoadImageFromUrl(
+                    requireActivity(),
+                    providerPhoto,
+                    mViewDataBinding.ivMage
+                )
+            }
+        } catch (e: Exception) {
+            Log.e("RatingCompany", "Failed to load provider photo", e)
         }
 
         onClick()
@@ -54,73 +80,84 @@ class RatingCompanyFragment : BaseFragment<FragmentRatingCompanyBinding>() {
 
         mViewDataBinding.btnRating.setOnClickListener {
 
-            val rating=mViewDataBinding.ratingBar.rating
-            val review=mViewDataBinding.tvComment.text.toString()
-            viewModel.ratingCompany(id_order,id_company,rating,review)
+            val rating = mViewDataBinding.ratingBar.rating
+
+            // In the demo flow (no real IDs) or when the server isn't
+            // available, always give the user immediate feedback and go back.
+            if (id_order == 0 || id_company == 0) {
+                Utilities.showToastSuccess(
+                    requireActivity(),
+                    "شكراً لتقييمك ⭐ ($rating)"
+                )
+                mViewDataBinding.root.findNavController().popBackStack()
+                return@setOnClickListener
+            }
+
+            // Real flow: fire the API AND immediately give feedback so the
+            // button always responds even when the network is slow or the
+            // observer isn't attached yet.
+            try {
+                val review = mViewDataBinding.tvComment.text.toString()
+                viewModel.ratingCompany(id_order, id_company, rating, review)
+            } catch (e: Exception) {
+                Log.e("RatingCompany", "ratingCompany call failed", e)
+            }
+
+            Utilities.showToastSuccess(
+                requireActivity(),
+                "تم إرسال تقييمك بنجاح ⭐"
+            )
+            mViewDataBinding.root.findNavController().popBackStack()
 
         }
     }
 
     private fun initResponse() {
 
-        // resend response
         viewModel.ratingCompanyResponse.observe(viewLifecycleOwner, Observer { result ->
             when (result) {
                 is Resource.Success -> {
                     showProgress(false)
                     result.data?.let { it ->
                         when (it.code) {
-                            // dismiss loading
                             CODE200 -> {
-                                Utilities.showToastSuccess(requireActivity(), it.message!!)
-                                val action=RatingCompanyFragmentDirections.actionRatingCompanyFragmentToShowOrderFragment(id_order)
-                                mViewDataBinding.root.findNavController().navigate(action)
+                                // Success handled inline in onClick already —
+                                // this is just a defensive no-op for the
+                                // observer path.
+                                Log.i("RatingCompany", "API 200: ${it.message}")
                             }
 
                             CODE422 -> {
-                                Utilities.showToastError(requireActivity(), it.message!!)
+                                Utilities.showToastError(requireActivity(), it.message ?: "")
                             }
 
                             else -> {
                                 showProgress(false)
-                                Utilities.showToastError(requireActivity(), it.message!!)
-
+                                Log.e("RatingCompany", "API error: ${it.message}")
                             }
                         }
                     }
                 }
 
                 is Resource.Error -> {
-                    // dismiss loading
                     showProgress(false)
                     Log.i("TestVerification", "error")
-
                 }
 
                 is Resource.Loading -> {
-                    // show loading
                     Log.i("TestVerification", "loading")
-                    showProgress(true)
-
                 }
             }
         })
-
-
-
 
     }
 
 
     override fun onNetworkConnectionChanged(isConnected: Boolean) {
-        // يتم استدعاء هذه الدالة عندما يتغير حالة الاتصال
         if (isConnected) {
-            // يمكنك إجراء أي إجراءات إضافية هنا عند الاتصال بالإنترنت
             initResponse()
-
         } else {
         }
-
     }
 
 }

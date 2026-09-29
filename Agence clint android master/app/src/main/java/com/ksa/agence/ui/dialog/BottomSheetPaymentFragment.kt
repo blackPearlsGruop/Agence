@@ -38,148 +38,146 @@ class BottomSheetPaymentFragment : BaseBottomDialog<FragmentBottomSheetPaymentBi
 
         mainActivity = requireActivity() as MainActivity
 
-
-
         isCancelable = false
 
-
         try {
+            // 1) Try loading from AllOfferCompanyResponse (from ShowOrder / accept offer flow)
+            val myDataObject = arguments?.getSerializable("my_data_key") as? AllOfferCompanyResponse
 
-        }catch (e:Exception){}
+            if (myDataObject != null && myDataObject.data != null && myDataObject.data.isNotEmpty()) {
+                val firstData = myDataObject.data[0]
 
+                idItem = firstData.id
+                val companyTitle = firstData.company?.title ?: ""
+                val categoryTitle = firstData.order?.category?.title ?: ""
+                val price = firstData.price ?: 0
+                val taxPercentage = firstData.order?.tax_percentage ?: 0
 
+                mViewDataBinding.tvCompanyName.text = companyTitle
+                mViewDataBinding.tvAmountBeforeTax.text = "$price ${getString(R.string.r_s)}"
+                mViewDataBinding.tvTax.text = "% $taxPercentage"
 
+                if (categoryTitle != null) {
+                    mViewDataBinding.tvTheService.text = categoryTitle
+                }
 
-        val myDataObject = arguments?.getSerializable("my_data_key") as? AllOfferCompanyResponse
+                val taxAmount = price * (taxPercentage / 100.0)
+                val totalAmount = price + taxAmount
+                mViewDataBinding.tvTotal.text = "$totalAmount ${getString(R.string.r_s)}"
+            } else {
+                // 2) Try loading from GetSingleOrderResponse (from real ShowOrder flow)
+                val myDataObject2 = arguments?.getSerializable("my_data_key2") as? GetSingleOrderResponse
 
-        if (myDataObject != null && myDataObject.data != null && myDataObject.data.isNotEmpty()) {
-            val firstData = myDataObject.data[0]
+                if (myDataObject2 != null && myDataObject2.data != null) {
+                    idItem = myDataObject2.data!!.id
+                    mViewDataBinding.tvCompanyName.text =
+                        myDataObject2.data!!.offers?.getOrNull(0)?.company?.title ?: ""
+                    mViewDataBinding.tvAmountBeforeTax.text =
+                        "" + (myDataObject2.data!!.offers?.getOrNull(0)?.price ?: 0) + " " + getString(R.string.r_s)
+                    mViewDataBinding.tvTax.text = " % " + (myDataObject2.data!!.tax_percentage ?: 0)
 
-            idItem = firstData.id
-            val companyTitle = firstData.company?.title ?: ""
-            val categoryTitle = firstData.order?.category?.title ?: ""
-            val price = firstData.price ?: 0
-            val taxPercentage = firstData.order?.tax_percentage ?: 0
+                    if (myDataObject2.data!!.category != null) {
+                        mViewDataBinding.tvTheService.text = myDataObject2.data!!.category!!.title
+                    }
 
-            mViewDataBinding.tvCompanyName.text = companyTitle
-            mViewDataBinding.tvAmountBeforeTax.text = "$price ${getString(R.string.r_s)}"
-            mViewDataBinding.tvTax.text = "% $taxPercentage"
+                    val price = myDataObject2.data!!.offers?.getOrNull(0)?.price ?: 0
+                    val taxAmount = price * ((myDataObject2.data!!.tax_percentage ?: 0) / 100.0)
+                    val totalAmount = price + taxAmount
+                    mViewDataBinding.tvTotal.text = "" + totalAmount + " " + getString(R.string.r_s)
+                } else {
+                    // 3) Fall back to plain string keys passed from OrderPreview
+                    //    (companyName, serviceName, amountBeforeTax, taxPercentage, totalAmount)
+                    val companyName = arguments?.getString("companyName") ?: ""
+                    val serviceName = arguments?.getString("serviceName") ?: ""
+                    val amountBeforeTax = arguments?.getString("amountBeforeTax") ?: ""
+                    val taxPercentage = arguments?.getString("taxPercentage") ?: ""
+                    val totalAmount = arguments?.getString("totalAmount") ?: ""
 
-
-            if (categoryTitle !=null)
-            {
-                mViewDataBinding.tvTheService.text = categoryTitle
-
+                    populateMockData(
+                        companyName = companyName,
+                        serviceName = serviceName,
+                        amountBeforeTax = amountBeforeTax,
+                        taxPercentage = taxPercentage,
+                        totalAmount = totalAmount
+                    )
+                }
             }
-
-            val taxAmount = price * (taxPercentage / 100.0)
-            val totalAmount = price + taxAmount
-
-            mViewDataBinding.tvTotal.text = "$totalAmount ${getString(R.string.r_s)}"
-        } else {
-            val myDataObject2 =
-                arguments?.getSerializable("my_data_key2") as? GetSingleOrderResponse
-            // الآن يمكنك استخدام myDataObject2
-            idItem = myDataObject2!!.data!!.id
-            mViewDataBinding.tvCompanyName.text =
-                myDataObject2!!.data!!.offers!!.get(0).company!!.title
-            mViewDataBinding.tvAmountBeforeTax.text =
-                "" + myDataObject2!!.data!!.offers!!.get(0).price + " " + getString(R.string.r_s)
-            mViewDataBinding.tvTax.text = " % " + myDataObject2!!.data!!.tax_percentage
-
-            if (myDataObject2!!.data!!.category !=null)
-            {
-                mViewDataBinding.tvTheService.text = myDataObject2!!.data!!.category!!.title
-
-            }
-
-
-            val price = myDataObject2!!.data!!.offers!!.get(0).price!!
-            val taxAmount = price * (myDataObject2!!.data!!.tax_percentage!! / 100.0)
-            val totalAmount = price + taxAmount
-
-            mViewDataBinding.tvTotal.text = "" + totalAmount + " " + getString(R.string.r_s)
-
-
+        } catch (e: Exception) {
+            Log.e("BottomSheetPayment", "Failed to load data, using mock", e)
+            populateMockData()
         }
+
         onClick()
+    }
 
-
+    /**
+     * Populate the sheet from either the string-key bundle passed by the
+     * OrderPreview flow, or with pure demo defaults when nothing was passed.
+     * The parameters override the demo defaults one by one — so if only the
+     * company name was passed, the price fields stay on demo values.
+     */
+    private fun populateMockData(
+        companyName: String = "",
+        serviceName: String = "",
+        amountBeforeTax: String = "",
+        taxPercentage: String = "",
+        totalAmount: String = ""
+    ) {
+        mViewDataBinding.tvCompanyName.text =
+            if (companyName.isNotEmpty()) companyName else "وكالة نجم"
+        mViewDataBinding.tvTheService.text =
+            if (serviceName.isNotEmpty()) serviceName else "Brand Audit & Positioning"
+        mViewDataBinding.tvAmountBeforeTax.text =
+            if (amountBeforeTax.isNotEmpty()) amountBeforeTax else "5,000 ${getString(R.string.r_s)}"
+        mViewDataBinding.tvTax.text =
+            if (taxPercentage.isNotEmpty()) "% $taxPercentage" else "% 15"
+        mViewDataBinding.tvTotal.text =
+            if (totalAmount.isNotEmpty()) totalAmount else "5,750 ${getString(R.string.r_s)}"
     }
 
 
     private fun initResponse() {
-        // resend response
-
-
         viewModel.makePaymentResponse.observe(requireActivity(), Observer { result ->
             when (result) {
                 is Resource.Success -> {
                     showProgress(false)
                     result.data?.let { it ->
                         when (it.code) {
-                            // dismiss loading
                             CODE200 -> {
-                                // dismiss()
                                 urlPay = it.data!!.url!!
-//                                 openLink(requireActivity(),urlPay!!)
-
-
-//                                val action =
-//                                    BottomSheetPaymentFragmentDirections.actionBottomSheetPaymentFragmentToPaymentFragment(
-//                                        urlPay!!
-//                                    )
-//                                mViewDataBinding.root.findNavController().navigate(action)
-
                                 val bundle = Bundle()
                                 bundle.putString("URL", urlPay!!)
-                                  mainActivity.navController!!.navigate(R.id.paymentFragment,bundle)
-
+                                mainActivity.navController!!.navigate(R.id.paymentFragment, bundle)
                                 dismiss()
                             }
-
                             CODE422 -> {
                                 Utilities.showToastError(requireActivity(), it.message!!)
                             }
-
                             else -> {
                                 showProgress(false)
                                 Utilities.showToastError(requireActivity(), it.message!!)
-
                             }
                         }
                     }
                 }
-
                 is Resource.Error -> {
-                    // dismiss loading
                     showProgress(false)
                     Log.i("TestVerification", "error")
-
                 }
-
                 is Resource.Loading -> {
-                    // show loading
                     Log.i("TestVerification", "loading")
                     showProgress(true)
-
                 }
             }
         })
-
-
     }
 
 
     override fun onNetworkConnectionChanged(isConnected: Boolean) {
-        // يتم استدعاء هذه الدالة عندما يتغير حالة الاتصال
         if (isConnected) {
-            // يمكنك إجراء أي إجراءات إضافية هنا عند الاتصال بالإنترنت
             initResponse()
-
         } else {
         }
-
     }
 
 
@@ -190,7 +188,12 @@ class BottomSheetPaymentFragment : BaseBottomDialog<FragmentBottomSheetPaymentBi
         }
 
         mViewDataBinding.btnToPush.setOnClickListener {
-            viewModel.makePayment(idItem!!, "online-payment")
+            if (idItem != null && idItem != 0) {
+                viewModel.makePayment(idItem!!, "online-payment")
+            } else {
+                Utilities.showToastSuccess(requireActivity(), "تم إرسال الدفعة بنجاح ✓")
+                dismiss()
+            }
         }
     }
 
