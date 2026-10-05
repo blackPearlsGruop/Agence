@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.PopupMenu
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ksa.agenceCompany.R
@@ -20,6 +21,9 @@ import com.ksa.agenceCompany.adapter.TeamMemberAdapter
 import com.ksa.agenceCompany.adapter.TeamTaskAdapter
 import com.ksa.agenceCompany.base.BaseFragment
 import com.ksa.agenceCompany.databinding.FragmentTeamProjectBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -28,7 +32,6 @@ class TeamProjectFragment : BaseFragment<FragmentTeamProjectBinding>() {
 
     override fun getLayoutId(): Int = R.layout.fragment_team_project
 
-    // ── Mock data (local, matches the reviewed Figma spec) ─────────────────────
     private val avatarColorRes = listOf(R.color.primary, R.color.secondary, R.color.green)
 
     private val members = mutableListOf(
@@ -62,12 +65,22 @@ class TeamProjectFragment : BaseFragment<FragmentTeamProjectBinding>() {
 
         setupCalendarDefaults()
         setupHeader()
-        setupMemberAvatarsRow()
         setupQuickActions()
-        setupMembersList()
-        setupTasksList()
-        updateProgress()
-        updateDateLabels()
+
+        lifecycleScope.launch {
+            try {
+                withContext(Dispatchers.Default) {
+                    setupMemberAvatarsRowBackground()
+                    setupMembersListBackground()
+                    setupTasksListBackground()
+                }
+
+                updateProgress()
+                updateDateLabels()
+            } catch (e: Exception) {
+                Log.e("TeamProject", "Error during setup", e)
+            }
+        }
     }
 
     private fun setupCalendarDefaults() {
@@ -86,22 +99,45 @@ class TeamProjectFragment : BaseFragment<FragmentTeamProjectBinding>() {
         }
 
         mViewDataBinding.btnTeamMenu.setOnClickListener {
-            val popup = PopupMenu(requireContext(), it)
-            popup.menuInflater.inflate(R.menu.menu_team_project_options, popup.menu)
-            popup.setOnMenuItemClickListener { item ->
-                when (item.itemId) {
-                    R.id.action_edit_project -> {
-                        showEditProjectNameDialog()
-                        true
+            try {
+                val popup = PopupMenu(requireContext(), it)
+                popup.menuInflater.inflate(R.menu.menu_team_project_options, popup.menu)
+
+                val isCurrentUserLead = true
+                popup.menu.findItem(R.id.action_team_leader_panel)?.isVisible = isCurrentUserLead
+
+                popup.setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        R.id.action_team_leader_panel -> {
+                            try {
+                                mViewDataBinding.root.findNavController()
+                                    .navigate(R.id.teamLeaderPanelFragment)
+                            } catch (e: Exception) {
+                                Log.e("TeamProject", "Failed to open leader panel", e)
+                                Toast.makeText(
+                                    requireContext(),
+                                    "خطأ: ${e.message}",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                            true
+                        }
+                        R.id.action_edit_project -> {
+                            showEditProjectNameDialog()
+                            true
+                        }
+                        R.id.action_delete_project -> {
+                            showDeleteProjectConfirm()
+                            true
+                        }
+                        else -> false
                     }
-                    R.id.action_delete_project -> {
-                        showDeleteProjectConfirm()
-                        true
-                    }
-                    else -> false
                 }
+                popup.show()
+            } catch (e: Exception) {
+                Log.e("TeamProject", "Error creating menu", e)
+                Toast.makeText(requireContext(), "خطأ في القائمة", Toast.LENGTH_SHORT).show()
             }
-            popup.show()
         }
     }
 
@@ -132,45 +168,50 @@ class TeamProjectFragment : BaseFragment<FragmentTeamProjectBinding>() {
     private fun dpToPx(dp: Int): Int =
         (dp * resources.displayMetrics.density).toInt()
 
-    private fun setupMemberAvatarsRow() {
-        mViewDataBinding.layoutMemberAvatars.removeAllViews()
-        members.forEachIndexed { index, member ->
-            val avatar = android.widget.TextView(requireContext())
-            val size = dpToPx(28)
-            val params = android.widget.LinearLayout.LayoutParams(size, size)
-            params.marginEnd = dpToPx(4)
-            avatar.layoutParams = params
-            avatar.gravity = android.view.Gravity.CENTER
-            avatar.text = member.initials
-            avatar.setTextColor(resources.getColor(R.color.white, null))
-            avatar.textSize = 9f
-            avatar.setBackgroundResource(R.drawable.bg_avatar_circle)
-            avatar.backgroundTintList = android.content.res.ColorStateList.valueOf(
-                resources.getColor(avatarColorRes[index % avatarColorRes.size], null)
-            )
-            avatar.setOnClickListener { showMemberProfile(member) }
-            mViewDataBinding.layoutMemberAvatars.addView(avatar)
-        }
+    private fun setupMemberAvatarsRowBackground() {
+        try {
+            mViewDataBinding.layoutMemberAvatars.removeAllViews()
+            members.forEachIndexed { index, member ->
+                val avatar = android.widget.TextView(requireContext())
+                val size = dpToPx(28)
+                val params = android.widget.LinearLayout.LayoutParams(size, size)
+                params.marginEnd = dpToPx(4)
+                avatar.layoutParams = params
+                avatar.gravity = android.view.Gravity.CENTER
+                avatar.text = member.initials
+                avatar.setTextColor(resources.getColor(R.color.white, null))
+                avatar.textSize = 9f
+                avatar.setBackgroundResource(R.drawable.bg_avatar_circle)
+                avatar.backgroundTintList = android.content.res.ColorStateList.valueOf(
+                    resources.getColor(avatarColorRes[index % avatarColorRes.size], null)
+                )
+                avatar.setOnClickListener { showMemberProfile(member) }
+                mViewDataBinding.layoutMemberAvatars.addView(avatar)
+            }
 
-        val countLabel = android.widget.TextView(requireContext())
-        countLabel.text = "${members.size} ${getString(R.string.members_count_suffix)}"
-        countLabel.setTextColor(resources.getColor(R.color.white, null))
-        countLabel.textSize = 10f
-        countLabel.alpha = 0.75f
-        val params = android.widget.LinearLayout.LayoutParams(
-            android.widget.LinearLayout.LayoutParams.WRAP_CONTENT,
-            android.widget.LinearLayout.LayoutParams.WRAP_CONTENT
-        )
-        params.marginStart = dpToPx(6)
-        countLabel.layoutParams = params
-        mViewDataBinding.layoutMemberAvatars.addView(countLabel)
+            val countLabel = android.widget.TextView(requireContext())
+            countLabel.text = "${members.size} ${getString(R.string.members_count_suffix)}"
+            countLabel.setTextColor(resources.getColor(R.color.black, null))
+            countLabel.textSize = 10f
+            val params = android.widget.LinearLayout.LayoutParams(
+                android.widget.LinearLayout.LayoutParams.WRAP_CONTENT,
+                android.widget.LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            params.marginStart = dpToPx(6)
+            countLabel.layoutParams = params
+            mViewDataBinding.layoutMemberAvatars.addView(countLabel)
+        } catch (e: Exception) {
+            Log.e("TeamProject", "Error setting avatars", e)
+        }
     }
 
     private fun setupQuickActions() {
         val comingSoon = View.OnClickListener {
             Toast.makeText(requireContext(), getString(R.string.coming_soon), Toast.LENGTH_SHORT).show()
         }
-        mViewDataBinding.btnPaymentDistribution.setOnClickListener(comingSoon)
+        mViewDataBinding.btnPaymentDistribution.setOnClickListener {
+            mViewDataBinding.root.findNavController().navigate(R.id.paymentDistributionFragment)
+        }
         mViewDataBinding.btnProjectFiles.setOnClickListener(comingSoon)
         mViewDataBinding.btnTeamChat.setOnClickListener {
             mViewDataBinding.root.findNavController().navigate(R.id.menuChat)
@@ -204,72 +245,88 @@ class TeamProjectFragment : BaseFragment<FragmentTeamProjectBinding>() {
         mViewDataBinding.tvDeliveryDate.text = formatter.format(deliveryDateMillis)
     }
 
-    private fun setupMembersList() {
-        memberAdapter = TeamMemberAdapter(
-            items = members,
-            onMenuClick = { _, position, anchor ->
-                val popup = PopupMenu(requireContext(), anchor)
-                popup.menuInflater.inflate(R.menu.menu_member_options, popup.menu)
-                popup.setOnMenuItemClickListener { item ->
-                    if (item.itemId == R.id.action_set_team_lead) {
-                        members.forEachIndexed { i, m -> m.isLead = (i == position) }
-                        memberAdapter.notifyDataSetChanged()
-                        true
-                    } else false
-                }
-                popup.show()
-            },
-            onDeleteClick = { position ->
-                members.removeAt(position)
-                memberAdapter.notifyDataSetChanged()
-                mViewDataBinding.rvTeamMembers.post { mViewDataBinding.rvTeamMembers.requestLayout() }
-                setupMemberAvatarsRow()
-            },
-            onAvatarClick = { member -> showMemberProfile(member) }
-        )
-        mViewDataBinding.rvTeamMembers.layoutManager = LinearLayoutManager(requireContext())
-        mViewDataBinding.rvTeamMembers.adapter = memberAdapter
-
-        mViewDataBinding.btnAddMember.setOnClickListener {
-            val available = candidatePool.filter { c -> members.none { it.name == c.name } }
-            if (available.isEmpty()) {
-                Toast.makeText(requireContext(), getString(R.string.coming_soon), Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-            val names = available.map { "${it.name} — ${it.specialty}" }.toTypedArray()
-            AlertDialog.Builder(requireContext())
-                .setTitle(getString(R.string.add_member))
-                .setItems(names) { _, which ->
-                    members.add(available[which])
+    private fun setupMembersListBackground() {
+        try {
+            memberAdapter = TeamMemberAdapter(
+                items = members,
+                onMenuClick = { _, position, anchor ->
+                    val popup = PopupMenu(requireContext(), anchor)
+                    popup.menuInflater.inflate(R.menu.menu_member_options, popup.menu)
+                    popup.setOnMenuItemClickListener { item ->
+                        if (item.itemId == R.id.action_set_team_lead) {
+                            members.forEachIndexed { i, m -> m.isLead = (i == position) }
+                            memberAdapter.notifyDataSetChanged()
+                            true
+                        } else false
+                    }
+                    popup.show()
+                },
+                onDeleteClick = { position ->
+                    members.removeAt(position)
                     memberAdapter.notifyDataSetChanged()
                     mViewDataBinding.rvTeamMembers.post { mViewDataBinding.rvTeamMembers.requestLayout() }
-                    setupMemberAvatarsRow()
+                    lifecycleScope.launch {
+                        withContext(Dispatchers.Default) {
+                            setupMemberAvatarsRowBackground()
+                        }
+                    }
+                },
+                onAvatarClick = { member -> showMemberProfile(member) }
+            )
+            mViewDataBinding.rvTeamMembers.layoutManager = LinearLayoutManager(requireContext())
+            mViewDataBinding.rvTeamMembers.adapter = memberAdapter
+
+            mViewDataBinding.btnAddMember.setOnClickListener {
+                val available = candidatePool.filter { c -> members.none { it.name == c.name } }
+                if (available.isEmpty()) {
+                    Toast.makeText(requireContext(), getString(R.string.coming_soon), Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
                 }
-                .setNegativeButton(getString(R.string.cancel), null)
-                .show()
+                val names = available.map { "${it.name} — ${it.specialty}" }.toTypedArray()
+                AlertDialog.Builder(requireContext())
+                    .setTitle(getString(R.string.add_member))
+                    .setItems(names) { _, which ->
+                        members.add(available[which])
+                        memberAdapter.notifyDataSetChanged()
+                        mViewDataBinding.rvTeamMembers.post { mViewDataBinding.rvTeamMembers.requestLayout() }
+                        lifecycleScope.launch {
+                            withContext(Dispatchers.Default) {
+                                setupMemberAvatarsRowBackground()
+                            }
+                        }
+                    }
+                    .setNegativeButton(getString(R.string.cancel), null)
+                    .show()
+            }
+        } catch (e: Exception) {
+            Log.e("TeamProject", "Error setting up members list", e)
         }
     }
 
-    private fun setupTasksList() {
-        taskAdapter = TeamTaskAdapter(
-            items = tasks,
-            onToggle = { position ->
-                tasks[position].done = !tasks[position].done
-                taskAdapter.notifyItemChanged(position)
-                updateProgress()
-            },
-            onEdit = { position -> showEditTaskDialog(position) },
-            onDelete = { position ->
-                tasks.removeAt(position)
-                taskAdapter.notifyDataSetChanged()
-                mViewDataBinding.rvProjectTasks.post { mViewDataBinding.rvProjectTasks.requestLayout() }
-                updateProgress()
-            }
-        )
-        mViewDataBinding.rvProjectTasks.layoutManager = LinearLayoutManager(requireContext())
-        mViewDataBinding.rvProjectTasks.adapter = taskAdapter
+    private fun setupTasksListBackground() {
+        try {
+            taskAdapter = TeamTaskAdapter(
+                items = tasks,
+                onToggle = { position ->
+                    tasks[position].done = !tasks[position].done
+                    taskAdapter.notifyItemChanged(position)
+                    updateProgress()
+                },
+                onEdit = { position -> showEditTaskDialog(position) },
+                onDelete = { position ->
+                    tasks.removeAt(position)
+                    taskAdapter.notifyDataSetChanged()
+                    mViewDataBinding.rvProjectTasks.post { mViewDataBinding.rvProjectTasks.requestLayout() }
+                    updateProgress()
+                }
+            )
+            mViewDataBinding.rvProjectTasks.layoutManager = LinearLayoutManager(requireContext())
+            mViewDataBinding.rvProjectTasks.adapter = taskAdapter
 
-        mViewDataBinding.btnAddTask.setOnClickListener { showAddTaskDialog() }
+            mViewDataBinding.btnAddTask.setOnClickListener { showAddTaskDialog() }
+        } catch (e: Exception) {
+            Log.e("TeamProject", "Error setting up tasks list", e)
+        }
     }
 
     private fun showEditTaskDialog(position: Int) {
@@ -340,6 +397,5 @@ class TeamProjectFragment : BaseFragment<FragmentTeamProjectBinding>() {
     }
 
     override fun onNetworkConnectionChanged(isConnected: Boolean) {
-        // No server dependency for this screen yet; local mock data only.
     }
 }

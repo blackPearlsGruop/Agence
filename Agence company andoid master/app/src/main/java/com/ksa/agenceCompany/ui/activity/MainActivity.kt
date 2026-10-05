@@ -22,18 +22,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private lateinit var navHostFragment: NavHostFragment
 
-    // lateinit var type: String
     var navController: NavController? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //   enableEdgeToEdge()
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-//            insets
-//        }
 
         navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_main) as NavHostFragment
@@ -44,7 +37,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             mViewDataBinding.constraintLayout2.visibility =
-                if (destination.id == R.id.menuHome || destination.id == R.id.settingFragment || destination.id == R.id.teamProjectFragment || destination.id == R.id.contacUsFragment || destination.id == R.id.menuChat || destination.id == R.id.menuOrders) View.GONE else View.VISIBLE
+                if (destination.id == R.id.menuHome || destination.id == R.id.settingFragment || destination.id == R.id.teamProjectFragment || destination.id == R.id.contacUsFragment || destination.id == R.id.menuChat || destination.id == R.id.menuOrders || destination.id == R.id.paymentDistributionFragment) View.GONE else View.VISIBLE
         }
 
 
@@ -60,7 +53,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 R.id.menuOrders -> {
                     navController.navigate(R.id.menuOrders)
                     mViewDataBinding.tvTitleToolBar.setText(R.string.orders)
-                    // mViewDataBinding.ivUser.visibility=View.VISIBLE
 
                     true
                 }
@@ -75,7 +67,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 R.id.menuChat -> {
                     navController.navigate(R.id.menuChat)
                     mViewDataBinding.tvTitleToolBar.setText(R.string.chat)
-                    //   mViewDataBinding.ivUser.visibility=View.VISIBLE
 
                     true
                 }
@@ -115,8 +106,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
 
         mViewDataBinding.ivBackPage.setOnClickListener {
-            // navController.popBackStack()
-            //showHomeToolbar()
             onBackPressed()
         }
         mViewDataBinding.ivNotification.setOnClickListener {
@@ -160,7 +149,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     fun hideHomeToolbar() {
         mViewDataBinding.bottomNav.visibility = View.GONE
-//        mViewDataBinding.tvSearch.visibility = View.VISIBLE
         mViewDataBinding.fmIvUser.visibility = View.GONE
         mViewDataBinding.ivBackPage.visibility = View.VISIBLE
 
@@ -169,7 +157,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     fun showHomeToolbar() {
         mViewDataBinding.bottomNav.visibility = View.VISIBLE
-//        mViewDataBinding.tvSearch.visibility = View.VISIBLE
         mViewDataBinding.ivBackPage.visibility = View.GONE
         mViewDataBinding.fmIvUser.visibility = View.VISIBLE
 

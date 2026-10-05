@@ -1,67 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
-    android:gravity="center_vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingVertical="@dimen/_6sdp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <FrameLayout
-        android:id="@+id/btn_task_toggle"
-        android:layout_width="@dimen/_22sdp"
-        android:layout_height="@dimen/_22sdp"
-        android:background="@drawable/bg_task_checkbox_border">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:background="@drawable/bg_team_task_card"
+        android:paddingHorizontal="@dimen/_12sdp"
+        android:paddingVertical="@dimen/_10sdp">
 
         <ImageView
             android:id="@+id/iv_task_check"
-            android:layout_width="@dimen/_12sdp"
-            android:layout_height="@dimen/_12sdp"
-            android:layout_gravity="center"
-            android:src="@drawable/icon_check_white_small"
-            android:visibility="gone"/>
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:background="@drawable/bg_task_checkbox_border"
+            android:padding="@dimen/_2sdp"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-    </FrameLayout>
+        <TextView
+            android:id="@+id/tv_task_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:fontFamily="@font/somar_semi_bold"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/agence_black"
+            android:textSize="@dimen/_12ssp"
+            android:text="Finalize logo concept directions"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_task_assignee"
+            app:layout_constraintEnd_toStartOf="@+id/iv_task_check" />
 
-    <TextView
-        android:id="@+id/tv_task_avatar"
-        android:layout_width="@dimen/_24sdp"
-        android:layout_height="@dimen/_24sdp"
-        android:layout_marginStart="@dimen/_8sdp"
-        android:gravity="center"
-        android:background="@drawable/bg_avatar_circle"
-        android:fontFamily="@font/somar_bold"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_8ssp"
-        tools:text="FA"/>
+        <TextView
+            android:id="@+id/tv_task_assignee"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:background="@drawable/bg_avatar_circle"
+            android:backgroundTint="@color/primary"
+            android:fontFamily="@font/somar_bold"
+            android:gravity="center"
+            android:text="FA"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_9ssp"
+            app:layout_constraintStart_toEndOf="@+id/iv_task_edit"
+            android:layout_marginStart="@dimen/_6sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_task_text"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_8sdp"
-        android:fontFamily="@font/somar_regular"
-        android:textColor="@color/agence_black"
-        android:textSize="@dimen/_12ssp"
-        tools:text="Finalize logo concept directions"/>
+        <ImageView
+            android:id="@+id/iv_task_edit"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:src="@android:drawable/ic_menu_edit"
+            android:padding="@dimen/_2sdp"
+            app:tint="@color/agence_muted"
+            app:layout_constraintStart_toEndOf="@+id/iv_task_delete"
+            android:layout_marginStart="@dimen/_6sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-    <ImageView
-        android:id="@+id/btn_task_edit"
-        android:layout_width="@dimen/_22sdp"
-        android:layout_height="@dimen/_22sdp"
-        android:padding="@dimen/_5sdp"
-        android:background="@drawable/bg_circle_blue_light"
-        android:src="@drawable/icon_edit_pencil"/>
+        <ImageView
+            android:id="@+id/iv_task_delete"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:src="@android:drawable/ic_menu_delete"
+            android:padding="@dimen/_2sdp"
+            app:tint="#E63946"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-    <ImageView
-        android:id="@+id/btn_task_delete"
-        android:layout_width="@dimen/_22sdp"
-        android:layout_height="@dimen/_22sdp"
-        android:layout_marginStart="@dimen/_6sdp"
-        android:padding="@dimen/_5sdp"
-        android:background="@drawable/bg_circle_delete"
-        android:src="@drawable/icon_trash_small"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</LinearLayout>
+</layout>

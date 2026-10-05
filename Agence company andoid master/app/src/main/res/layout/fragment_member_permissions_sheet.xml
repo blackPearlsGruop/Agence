@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_new_task_sheet"
+        android:padding="@dimen/_16sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_4sdp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:background="@drawable/bg_sheet_handle" />
+
+            <TextView
+                android:id="@+id/tv_sheet_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/somar_bold"
+                android:text="صلاحيات فهد العتيبي"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/agence_black"
+                android:textSize="@dimen/_15ssp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_14sdp"
+                android:fontFamily="@font/somar_regular"
+                android:text="اختر ما يستطيع هذا العضو فعله في المشروع"
+                android:textAlignment="viewEnd"
+                android:textColor="#7B7B85"
+                android:textSize="@dimen/_11ssp" />
+
+            <!-- Row: Create tasks -->
+            <LinearLayout
+                android:id="@+id/row_create_tasks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="@dimen/_12sdp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/somar_semi_bold"
+                    android:text="إنشاء مهام"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/agence_black"
+                    android:textSize="@dimen/_12ssp" />
+
+                <View
+                    android:id="@+id/toggle_create_tasks"
+                    android:layout_width="@dimen/_38sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:background="@drawable/bg_toggle_on" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#F0F0F4" />
+
+            <!-- Row: Edit tasks -->
+            <LinearLayout
+                android:id="@+id/row_edit_tasks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="@dimen/_12sdp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/somar_semi_bold"
+                    android:text="تعديل المهام"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/agence_black"
+                    android:textSize="@dimen/_12ssp" />
+
+                <View
+                    android:id="@+id/toggle_edit_tasks"
+                    android:layout_width="@dimen/_38sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:background="@drawable/bg_toggle_on" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#F0F0F4" />
+
+            <!-- Row: Delete tasks -->
+            <LinearLayout
+                android:id="@+id/row_delete_tasks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="@dimen/_12sdp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/somar_semi_bold"
+                    android:text="حذف المهام"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/agence_black"
+                    android:textSize="@dimen/_12ssp" />
+
+                <View
+                    android:id="@+id/toggle_delete_tasks"
+                    android:layout_width="@dimen/_38sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:background="@drawable/bg_toggle_off" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#F0F0F4" />
+
+            <!-- Row: Distribute payments -->
+            <LinearLayout
+                android:id="@+id/row_distribute_payments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="@dimen/_12sdp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/somar_semi_bold"
+                    android:text="توزيع المدفوعات"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/agence_black"
+                    android:textSize="@dimen/_12ssp" />
+
+                <View
+                    android:id="@+id/toggle_distribute_payments"
+                    android:layout_width="@dimen/_38sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:background="@drawable/bg_toggle_on" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#F0F0F4" />
+
+            <!-- Row: Invite members -->
+            <LinearLayout
+                android:id="@+id/row_invite_members"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="@dimen/_12sdp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/somar_semi_bold"
+                    android:text="دعوة أعضاء جدد"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/agence_black"
+                    android:textSize="@dimen/_12ssp" />
+
+                <View
+                    android:id="@+id/toggle_invite_members"
+                    android:layout_width="@dimen/_38sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:background="@drawable/bg_toggle_off" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#F0F0F4" />
+
+            <!-- Row: Upload files -->
+            <LinearLayout
+                android:id="@+id/row_upload_files"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="@dimen/_12sdp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/somar_semi_bold"
+                    android:text="رفع ملفات"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/agence_black"
+                    android:textSize="@dimen/_12ssp" />
+
+                <View
+                    android:id="@+id/toggle_upload_files"
+                    android:layout_width="@dimen/_38sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:background="@drawable/bg_toggle_on" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_save_perms"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_46sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/bg_team_fab"
+                android:fontFamily="@font/somar_bold"
+                android:text="حفظ التغييرات"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13ssp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

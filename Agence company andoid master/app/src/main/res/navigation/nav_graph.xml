@@ -48,6 +48,21 @@
         android:label="TeamProjectFragment"
         tools:layout="@layout/fragment_team_project" />
     <fragment
+        android:id="@+id/teamLeaderPanelFragment"
+        android:name="com.ksa.agenceCompany.ui.fragment.team.TeamLeaderPanelFragment"
+        android:label="TeamLeaderPanelFragment"
+        tools:layout="@layout/fragment_team_leader_panel" />
+    <fragment
+        android:id="@+id/memberPermissionsFragment"
+        android:name="com.ksa.agenceCompany.ui.fragment.team.MemberPermissionsFragment"
+        android:label="MemberPermissionsFragment"
+        tools:layout="@layout/fragment_member_permissions" />
+    <fragment
+        android:id="@+id/paymentDistributionFragment"
+        android:name="com.ksa.agenceCompany.ui.fragment.payment.PaymentDistributionFragment"
+        android:label="PaymentDistributionFragment"
+        tools:layout="@layout/fragment_payment_distribution" />
+    <fragment
         android:id="@+id/settingFragment"
         android:name="com.ksa.agenceCompany.ui.fragment.home.SettingFragment"
         android:label="SettingFragment"

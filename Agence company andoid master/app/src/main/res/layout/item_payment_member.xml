@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layoutDirection="rtl"
+    android:gravity="center_vertical"
+    android:padding="12dp"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/bg_input_field">
+
+    <TextView
+        android:id="@+id/tvAvatarBg"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="AA"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:background="@drawable/bg_avatar_circle"
+        android:layout_marginEnd="12dp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvMemberName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="اسم العضو"
+            android:textSize="13sp"
+            android:textColor="@color/agence_black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSpecialty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="التخصص"
+            android:textSize="11sp"
+            android:textColor="@color/gray"
+            android:layout_marginTop="2dp" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/tvCalculatedAmount"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:inputType="numberDecimal"
+        android:text="0.00"
+        android:textSize="14sp"
+        android:textColor="@color/agence_black"
+        android:textAlignment="center"
+        android:background="@drawable/bg_input_field"
+        android:padding="8dp"
+        android:layout_marginEnd="12dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginEnd="8dp">
+
+        <TextView
+            android:id="@+id/etPercentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0%"
+            android:textSize="16sp"
+            android:textColor="@color/agence_blue"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="النسبة"
+            android:textSize="10sp"
+            android:textColor="@color/gray" />
+
+    </LinearLayout>
+
+</LinearLayout>
