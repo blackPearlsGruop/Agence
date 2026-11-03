@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_4sdp"
+        android:background="@drawable/bg_profile_work_card"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_84sdp"
+            android:background="@drawable/bg_profile_work_thumb">
+
+            <ImageView
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_profile_image" />
+
+            <ImageView
+                android:id="@+id/iv_work"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/btn_delete"
+                android:layout_width="@dimen/_26sdp"
+                android:layout_height="@dimen/_26sdp"
+                android:layout_gravity="top|end"
+                android:layout_margin="@dimen/_6sdp"
+                android:background="@drawable/bg_works_delete_btn"
+                android:clickable="true"
+                android:contentDescription="@string/works_delete_desc"
+                android:focusable="true"
+                android:padding="@dimen/_6sdp"
+                android:src="@drawable/ic_works_trash" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_work_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/somar_bold"
+            android:maxLines="1"
+            android:paddingStart="@dimen/_9sdp"
+            android:paddingTop="@dimen/_7sdp"
+            android:paddingEnd="@dimen/_9sdp"
+            android:textColor="@color/text"
+            android:textSize="@dimen/_11ssp"
+            tools:text="هوية مقهى بُن" />
+
+        <TextView
+            android:id="@+id/tv_work_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/somar_regular"
+            android:lineSpacingExtra="@dimen/_1sdp"
+            android:maxLines="2"
+            android:minLines="2"
+            android:paddingStart="@dimen/_9sdp"
+            android:paddingTop="@dimen/_2sdp"
+            android:paddingEnd="@dimen/_9sdp"
+            android:paddingBottom="@dimen/_9sdp"
+            android:textColor="#5F5F5F"
+            android:textSize="@dimen/_9ssp"
+            tools:text="شعار وألوان وتغليف كامل للمقهى" />
+    </LinearLayout>
+</layout>

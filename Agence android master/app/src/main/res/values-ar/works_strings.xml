@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="works_gallery_title">معرض الأعمال</string>
+    <string name="works_subtitle">أعمالك تظهر للعملاء في صفحتك</string>
+    <plurals name="works_count">
+        <item quantity="zero">لا توجد أعمال</item>
+        <item quantity="one">عمل واحد</item>
+        <item quantity="two">عملان</item>
+        <item quantity="few">%d أعمال</item>
+        <item quantity="many">%d عملًا</item>
+        <item quantity="other">%d عمل</item>
+    </plurals>
+    <string name="works_empty">لم تضف أي عمل حتى الآن</string>
+    <string name="works_add">إضافة عمل</string>
+    <string name="works_delete_desc">حذف العمل</string>
+    <string name="works_delete_title">هل تريد حذف هذا العمل؟</string>
+    <string name="works_delete_body">لا يمكن التراجع عن هذا الإجراء.</string>
+    <string name="works_delete_confirm">حذف</string>
+    <string name="works_cancel">إلغاء</string>
+    <string name="works_add_title">إضافة عمل</string>
+    <string name="works_image_section">صورة العمل</string>
+    <string name="works_upload_title">اضغط لرفع صورة العمل</string>
+    <string name="works_upload_hint">صورة واضحة بصيغة PNG أو JPG</string>
+    <string name="works_change_image">تغيير الصورة</string>
+    <string name="works_details_section">تفاصيل العمل</string>
+    <string name="works_title_label">عنوان العمل</string>
+    <string name="works_title_hint">مثال: هوية بصرية لمقهى</string>
+    <string name="works_desc_label">وصف العمل</string>
+    <string name="works_desc_hint">اكتب نبذة عن العمل والخدمة التي قدمتها للعميل</string>
+    <string name="works_submit">إضافة العمل</string>
+    <string name="works_image_required">يرجى اختيار صورة العمل</string>
+    <string name="works_added">تمت إضافة العمل بنجاح</string>
+</resources>

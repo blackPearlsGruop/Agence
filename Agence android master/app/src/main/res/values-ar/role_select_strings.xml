@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="role_select_welcome">أهلاً بك في Agence</string>
+    <string name="role_select_subtitle">كيف تريد استخدام التطبيق؟</string>
+    <string name="role_select_client_title">أنا عميل</string>
+    <string name="role_select_client_desc">أبحث عن مزودي خدمات وأطلب مشاريع</string>
+    <string name="role_select_member_title">أنا مزوّد خدمة</string>
+    <string name="role_select_member_desc">أقدّم خدماتي وأستقبل الطلبات والفرص</string>
+    <string name="role_select_hint">يمكنك تغيير نوع الحساب في أي وقت من خلال تسجيل الخروج</string>
+    <string name="role_select_lang_switch">English</string>
+    <string name="role_select_lang_desc">تغيير اللغة</string>
+</resources>

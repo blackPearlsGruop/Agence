@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="msg_connection_failed">فشل الاتصال بالخادم. تحقق من اتصالك بالإنترنت وحاول مرة أخرى.</string>
+    <string name="msg_no_connection">لا يوجد اتصال</string>
+    <string name="msg_open_failed">تعذر فتح هذه الصفحة</string>
+    <string name="msg_open_chat_failed">تعذر فتح المحادثة</string>
+    <string name="msg_payment_success">تمت عملية الدفع بنجاح</string>
+    <string name="msg_payment_sent">تم إرسال الدفعة بنجاح</string>
+    <string name="msg_offer_accepted">تم قبول العرض بنجاح</string>
+    <string name="msg_choose_service_again">يمكنك إعادة اختيار الخدمة</string>
+    <string name="msg_thanks_rating">شكرًا لتقييمك</string>
+    <string name="msg_recording_too_short">التسجيل قصير جدًا ولم يتم إرساله.</string>
+    <string name="msg_applied">تم التقديم</string>
+    <string name="msg_task_options">خيارات المهمة</string>
+    <string name="msg_task_title">المهمة: %1$s</string>
+    <string name="msg_permissions_of">صلاحيات %1$s</string>
+    <string name="msg_exporting_pdf">جارٍ تصدير PDF</string>
+    <string name="msg_split_equally">تم التوزيع بالتساوي</string>
+    <string name="msg_confirm_distribution">تأكيد التوزيع</string>
+    <string name="msg_distribution_saved">تم حفظ التوزيع</string>
+    <string name="msg_sar_amount">%1$s ر.س</string>
+    <string name="msg_set_as_leader">تم تعيين %1$s قائدًا للفريق</string>
+    <string name="msg_member_removed">تم حذف %1$s</string>
+    <string name="msg_no_candidates">لا يوجد مرشحون متاحون</string>
+    <string name="msg_add_member_failed">تعذرت إضافة العضو</string>
+    <string name="msg_something_wrong">حدث خطأ، حاول مرة أخرى</string>
+    <string name="status_in_progress">قيد التنفيذ</string>
+    <string name="status_completed">مكتملة</string>
+    <string name="status_late">متأخرة</string>
+    <string name="role_team_leader">قائد الفريق</string>
+    <string name="role_editor">محرر</string>
+    <string name="role_viewer">مشاهد</string>
+    <string name="lang_name_ar">عربي</string>
+    <string name="lang_name_en">English</string>
+    <string name="menu_team_leader_panel">لوحة قائد الفريق</string>
+    <string name="menu_activity_log">سجل النشاط</string>
+    <string name="menu_rename_project">تعديل اسم المشروع</string>
+    <string name="menu_delete_project">حذف المشروع</string>
+    <string name="menu_set_as_leader">تعيين كقائد فريق</string>
+    <string name="menu_view_profile">عرض الملف الشخصي</string>
+    <string name="menu_remove_member">حذف العضو</string>
+    <string name="msg_member_added">تمت إضافة %1$s للفريق</string>
+    <string name="msg_confirm_distribution_body">هل أنت متأكد من توزيع المدفوعات؟</string>
+    <string name="action_confirm">تأكيد</string>
+    <string name="action_cancel">إلغاء</string>
+</resources>

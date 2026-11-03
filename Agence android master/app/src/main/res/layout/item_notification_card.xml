@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/layout_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginBottom="@dimen/_4sdp"
+        android:background="@drawable/bg_notif_card"
+        android:orientation="horizontal"
+        android:padding="@dimen/_10sdp">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/_34sdp"
+            android:layout_height="@dimen/_34sdp"
+            android:background="@drawable/bg_notif_tile_blue"
+            android:importantForAccessibility="no"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_notif_bell" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/somar_bold"
+                    android:maxLines="1"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/_11ssp"
+                    tools:text="طلب جديد" />
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:fontFamily="@font/somar_regular"
+                    android:textColor="#6B6B6B"
+                    android:textSize="@dimen/_8ssp"
+                    tools:text="قبل 5 دقائق" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:ellipsize="end"
+                android:fontFamily="@font/somar_regular"
+                android:lineSpacingExtra="@dimen/_2sdp"
+                android:maxLines="3"
+                android:textColor="#4F4F4F"
+                android:textSize="@dimen/_10ssp"
+                tools:text="وصلك طلب جديد من فهد العتيبي على خدمة تصميم الهوية البصرية" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_unread_dot"
+            android:layout_width="@dimen/_6sdp"
+            android:layout_height="@dimen/_6sdp"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/bg_notif_unread_dot"
+            android:contentDescription="@string/notif_unread_desc" />
+    </LinearLayout>
+</layout>

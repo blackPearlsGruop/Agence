@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layoutDirection="rtl"
+        android:background="@color/agence_bg">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/_40sdp"
+            android:paddingBottom="@dimen/_12sdp"
+            android:paddingHorizontal="@dimen/_16sdp">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:padding="@dimen/_8sdp"
+                android:background="@drawable/bg_opp_circle_light"
+                android:src="@drawable/ic_back"
+                android:tint="@color/agence_black"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="@string/ui_back" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/opportunity_details"
+                android:fontFamily="@font/somar_bold"
+                android:textSize="@dimen/_16ssp"
+                android:textColor="@color/agence_black"
+                android:gravity="center" />
+
+            <View
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp" />
+
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/_16sdp"
+                android:paddingBottom="@dimen/_16sdp">
+
+                <!-- Company + title card -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_opp_card"
+                    android:padding="@dimen/_16sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="@dimen/_52sdp"
+                            android:layout_height="@dimen/_52sdp"
+                            android:background="@drawable/bg_opp_logo_box">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/iv_logo"
+                                android:layout_width="@dimen/_38sdp"
+                                android:layout_height="@dimen/_38sdp"
+                                android:src="@drawable/image_1"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="@dimen/_12sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/ui_requested_by"
+                                android:fontFamily="@font/somar_regular"
+                                android:textSize="@dimen/_10ssp"
+                                android:textColor="@color/agence_muted" />
+
+                            <TextView
+                                android:id="@+id/tv_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:text="@string/ui_al_madina_pharmacy"
+                                android:fontFamily="@font/somar_bold"
+                                android:textSize="@dimen/_14ssp"
+                                android:textColor="@color/agence_black" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_14sdp"
+                        android:text="@string/ui_set_up_a_google_ads_campaign"
+                        android:fontFamily="@font/somar_bold"
+                        android:textSize="@dimen/_17ssp"
+                        android:textColor="@color/agence_black"
+                        android:lineSpacingExtra="@dimen/_2sdp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/_12sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Google Ads"
+                            android:fontFamily="@font/somar_semi_bold"
+                            android:textSize="@dimen/_10ssp"
+                            android:textColor="@color/secondary"
+                            android:background="@drawable/bg_opp_tag_orange"
+                            android:paddingHorizontal="@dimen/_12sdp"
+                            android:paddingVertical="@dimen/_5sdp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_6sdp"
+                            android:text="PPC"
+                            android:fontFamily="@font/somar_semi_bold"
+                            android:textSize="@dimen/_10ssp"
+                            android:textColor="@color/primary"
+                            android:background="@drawable/bg_opp_tag_blue"
+                            android:paddingHorizontal="@dimen/_12sdp"
+                            android:paddingVertical="@dimen/_5sdp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Price card -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_opp_price_card"
+                    android:padding="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_12sdp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ui_opportunity_value"
+                        android:fontFamily="@font/somar_regular"
+                        android:textSize="@dimen/_10ssp"
+                        android:textColor="@color/white"
+                        android:alpha="0.8" />
+
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:text="@string/ui_negotiable"
+                        android:fontFamily="@font/somar_bold"
+                        android:textSize="@dimen/_20ssp"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <!-- Info chips -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/bg_opp_card"
+                        android:paddingVertical="@dimen/_14sdp"
+                        android:layout_marginEnd="@dimen/_5sdp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/icon_calendar" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:text="@string/ui_deadline"
+                            android:fontFamily="@font/somar_regular"
+                            android:textSize="@dimen/_8ssp"
+                            android:textColor="@color/agence_muted" />
+
+                        <TextView
+                            android:id="@+id/tv_end_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:text="@string/ui_15_august"
+                            android:fontFamily="@font/somar_bold"
+                            android:textSize="@dimen/_10ssp"
+                            android:textColor="@color/agence_black" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/bg_opp_card"
+                        android:paddingVertical="@dimen/_14sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/ic_opp_clock" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:text="@string/ui_duration"
+                            android:fontFamily="@font/somar_regular"
+                            android:textSize="@dimen/_8ssp"
+                            android:textColor="@color/agence_muted" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:text="@string/ui_4_weeks"
+                            android:fontFamily="@font/somar_bold"
+                            android:textSize="@dimen/_10ssp"
+                            android:textColor="@color/agence_black" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/bg_opp_card"
+                        android:paddingVertical="@dimen/_14sdp"
+                        android:layout_marginStart="@dimen/_5sdp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/ic_opp_location" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:text="@string/ui_type"
+                            android:fontFamily="@font/somar_regular"
+                            android:textSize="@dimen/_8ssp"
+                            android:textColor="@color/agence_muted" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:text="@string/ui_remote"
+                            android:fontFamily="@font/somar_bold"
+                            android:textSize="@dimen/_10ssp"
+                            android:textColor="@color/agence_black" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Description -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_opp_card"
+                    android:padding="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_12sdp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ui_about_the_opportunity"
+                        android:fontFamily="@font/somar_bold"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/agence_black" />
+
+                    <TextView
+                        android:id="@+id/tv_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/ui_we_are_looking_for_a_google_ads_specia"
+                        android:fontFamily="@font/somar_regular"
+                        android:textSize="@dimen/_11ssp"
+                        android:textColor="@color/agence_muted"
+                        android:lineSpacingExtra="@dimen/_4sdp"
+                        android:textAlignment="viewStart" />
+
+                </LinearLayout>
+
+                <!-- Requirements -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_opp_card"
+                    android:padding="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_12sdp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ui_requirements"
+                        android:fontFamily="@font/somar_bold"
+                        android:textSize="@dimen/_13ssp"
+                        android:textColor="@color/agence_black" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="@dimen/_12sdp">
+
+                        <FrameLayout
+                            android:layout_width="@dimen/_22sdp"
+                            android:layout_height="@dimen/_22sdp"
+                            android:background="@drawable/bg_opp_check_box">
+
+                            <ImageView
+                                android:layout_width="@dimen/_13sdp"
+                                android:layout_height="@dimen/_13sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_opp_check" />
+
+                        </FrameLayout>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/ui_two_years_of_experience_in_google_ads"
+                            android:fontFamily="@font/somar_regular"
+                            android:textSize="@dimen/_11ssp"
+                            android:textColor="@color/agence_muted" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="@dimen/_12sdp">
+
+                        <FrameLayout
+                            android:layout_width="@dimen/_22sdp"
+                            android:layout_height="@dimen/_22sdp"
+                            android:background="@drawable/bg_opp_check_box">
+
+                            <ImageView
+                                android:layout_width="@dimen/_13sdp"
+                                android:layout_height="@dimen/_13sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_opp_check" />
+
+                        </FrameLayout>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/ui_able_to_prepare_regular_performance_re"
+                            android:fontFamily="@font/somar_regular"
+                            android:textSize="@dimen/_11ssp"
+                            android:textColor="@color/agence_muted" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="@dimen/_12sdp">
+
+                        <FrameLayout
+                            android:layout_width="@dimen/_22sdp"
+                            android:layout_height="@dimen/_22sdp"
+                            android:background="@drawable/bg_opp_check_box">
+
+                            <ImageView
+                                android:layout_width="@dimen/_13sdp"
+                                android:layout_height="@dimen/_13sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_opp_check" />
+
+                        </FrameLayout>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/ui_a_google_certification_is_preferred"
+                            android:fontFamily="@font/somar_regular"
+                            android:textSize="@dimen/_11ssp"
+                            android:textColor="@color/agence_muted" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <!-- Bottom join button -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/_16sdp"
+            android:background="@color/agence_bg">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_send_to_all"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_48sdp"
+                android:text="@string/ui_join_now"
+                android:fontFamily="@font/somar_bold"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:background="@drawable/bg_opp_price_card"
+                android:backgroundTint="@null"
+                android:stateListAnimator="@null"
+                android:insetTop="0dp"
+                android:insetBottom="0dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

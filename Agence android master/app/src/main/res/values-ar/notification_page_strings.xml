@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notif_page_title">الإشعارات</string>
+    <string name="notif_tab_all">الكل</string>
+    <string name="notif_tab_unread">غير المقروءة</string>
+    <string name="notif_group_today">اليوم</string>
+    <string name="notif_group_earlier">سابقًا</string>
+    <string name="notif_unread_desc">غير مقروء</string>
+    <string name="notif_empty_title">لا توجد إشعارات حتى الآن</string>
+    <string name="notif_empty_desc">ستظهر هنا تحديثات طلباتك والعروض والرسائل الجديدة</string>
+    <string name="notif_empty_unread_title">لا توجد إشعارات غير مقروءة</string>
+    <string name="notif_empty_unread_desc">اطلعت على كل إشعاراتك</string>
+    <string name="notif_open_desc">الإشعارات</string>
+</resources>

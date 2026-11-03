@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_screen_title">الملف الشخصي</string>
+    <string name="profile_back">رجوع</string>
+    <string name="profile_change_photo">تغيير الصورة</string>
+    <string name="profile_account_client">حساب عميل</string>
+    <string name="profile_section_personal">المعلومات الشخصية</string>
+    <string name="profile_section_contact">معلومات التواصل</string>
+    <string name="profile_section_about">عن نفسك</string>
+    <string name="profile_full_name">الاسم الكامل</string>
+    <string name="profile_username">اسم المستخدم</string>
+    <string name="profile_birth_date">تاريخ الميلاد</string>
+    <string name="profile_email">البريد الإلكتروني</string>
+    <string name="profile_phone">رقم الجوال</string>
+    <string name="profile_field">المجال المهني</string>
+    <string name="profile_bio">النبذة</string>
+    <string name="profile_bio_hint">اكتب نبذة مختصرة عن نفسك</string>
+    <string name="profile_choose_field">اختر مجالك</string>
+    <string name="profile_choose_birth_date">اختر التاريخ</string>
+    <string name="profile_save_changes">حفظ التغييرات</string>
+    <string name="profile_invalid_email">الرجاء إدخال بريد إلكتروني صحيح</string>
+    <string name="profile_account_member">مزوّد خدمة</string>
+    <string name="profile_type_individual">فرد</string>
+    <string name="profile_type_company">شركة</string>
+    <string name="profile_section_basic">المعلومات الأساسية</string>
+    <string name="profile_account_type">نوع الحساب</string>
+    <string name="profile_account_type_locked">نوع الحساب يتحدد عند التسجيل</string>
+    <string name="profile_org_name">اسم الجهة</string>
+    <string name="profile_address">العنوان</string>
+    <string name="profile_address_hint">اختر موقعك من الخريطة</string>
+    <string name="profile_nationality_id">رقم الهوية</string>
+    <string name="profile_section_about_org">عن الجهة</string>
+    <string name="profile_description_hint">اكتب نبذة مختصرة عن عملك</string>
+    <string name="profile_services">الخدمات</string>
+    <string name="profile_edit">تعديل</string>
+    <string name="profile_add_service">+ إضافة خدمة</string>
+    <string name="profile_choose_services">اختر خدماتك</string>
+    <string name="profile_done">تم</string>
+    <string name="profile_select_service_required">اختر خدمة واحدة على الأقل</string>
+    <string name="profile_section_consult">الاستشارات</string>
+    <string name="profile_consult_price">سعر الاستشارة</string>
+    <string name="profile_per_hour">ريال / ساعة</string>
+    <string name="profile_section_works">معرض الأعمال</string>
+    <string name="profile_view_all">عرض الكل</string>
+    <string name="profile_add_work">إضافة عمل</string>
+    <string name="profile_works_count">%d أعمال</string>
+    <string name="profile_verify_title">توثيق الحساب</string>
+    <string name="profile_verify_desc">وثّق حسابك لتظهر علامة الموثوق وتزيد ثقة العملاء فيك</string>
+    <string name="profile_verify_btn">طلب التوثيق</string>
+    <string name="profile_change_cover">تغيير الغلاف</string>
+    <string name="profile_rating_count">(%d تقييم)</string>
+    <string-array name="profile_fields">
+        <item>تصميم جرافيك</item>
+        <item>تسويق رقمي</item>
+        <item>كتابة المحتوى</item>
+        <item>برمجة وتطوير</item>
+        <item>إدارة مشاريع</item>
+        <item>تصوير وإنتاج فيديو</item>
+        <item>أخرى</item>
+    </string-array>
+</resources>

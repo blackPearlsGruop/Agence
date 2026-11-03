@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_screen_title">Profile</string>
+    <string name="profile_back">Back</string>
+    <string name="profile_change_photo">Change photo</string>
+    <string name="profile_account_client">Client account</string>
+    <string name="profile_section_personal">Personal information</string>
+    <string name="profile_section_contact">Contact information</string>
+    <string name="profile_section_about">About you</string>
+    <string name="profile_full_name">Full name</string>
+    <string name="profile_username">Username</string>
+    <string name="profile_birth_date">Date of birth</string>
+    <string name="profile_email">Email</string>
+    <string name="profile_phone">Mobile number</string>
+    <string name="profile_field">Professional field</string>
+    <string name="profile_bio">Bio</string>
+    <string name="profile_bio_hint">Write a short introduction about yourself</string>
+    <string name="profile_choose_field">Choose your field</string>
+    <string name="profile_choose_birth_date">Choose date</string>
+    <string name="profile_save_changes">Save changes</string>
+    <string name="profile_invalid_email">Please enter a valid email</string>
+    <string name="profile_account_member">Service provider</string>
+    <string name="profile_type_individual">Individual</string>
+    <string name="profile_type_company">Company</string>
+    <string name="profile_section_basic">Basic information</string>
+    <string name="profile_account_type">Account type</string>
+    <string name="profile_account_type_locked">The account type is set when you register</string>
+    <string name="profile_org_name">Organization name</string>
+    <string name="profile_address">Address</string>
+    <string name="profile_address_hint">Choose your location on the map</string>
+    <string name="profile_nationality_id">National ID</string>
+    <string name="profile_section_about_org">About</string>
+    <string name="profile_description_hint">Write a short introduction about your work</string>
+    <string name="profile_services">Services</string>
+    <string name="profile_edit">Edit</string>
+    <string name="profile_add_service">+ Add service</string>
+    <string name="profile_choose_services">Choose your services</string>
+    <string name="profile_done">Done</string>
+    <string name="profile_select_service_required">Choose at least one service</string>
+    <string name="profile_section_consult">Consultations</string>
+    <string name="profile_consult_price">Consultation price</string>
+    <string name="profile_per_hour">SAR / hour</string>
+    <string name="profile_section_works">Portfolio</string>
+    <string name="profile_view_all">View all</string>
+    <string name="profile_add_work">Add work</string>
+    <string name="profile_works_count">%d works</string>
+    <string name="profile_verify_title">Account verification</string>
+    <string name="profile_verify_desc">Verify your account to get the verified badge and earn more trust from clients</string>
+    <string name="profile_verify_btn">Request verification</string>
+    <string name="profile_change_cover">Change cover</string>
+    <string name="profile_rating_count">(%d reviews)</string>
+    <string-array name="profile_fields">
+        <item>Graphic design</item>
+        <item>Digital marketing</item>
+        <item>Content writing</item>
+        <item>Software development</item>
+        <item>Project management</item>
+        <item>Photography and video</item>
+        <item>Other</item>
+    </string-array>
+</resources>

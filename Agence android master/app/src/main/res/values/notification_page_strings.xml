@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notif_page_title">Notifications</string>
+    <string name="notif_tab_all">All</string>
+    <string name="notif_tab_unread">Unread</string>
+    <string name="notif_group_today">Today</string>
+    <string name="notif_group_earlier">Earlier</string>
+    <string name="notif_unread_desc">Unread</string>
+    <string name="notif_empty_title">No notifications yet</string>
+    <string name="notif_empty_desc">Updates about your orders, offers and new messages will appear here</string>
+    <string name="notif_empty_unread_title">You are all caught up</string>
+    <string name="notif_empty_unread_desc">You have no unread notifications</string>
+    <string name="notif_open_desc">Notifications</string>
+</resources>

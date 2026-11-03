@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="works_gallery_title">Portfolio</string>
+    <string name="works_subtitle">Your works appear to clients on your page</string>
+    <plurals name="works_count">
+        <item quantity="one">%d work</item>
+        <item quantity="other">%d works</item>
+    </plurals>
+    <string name="works_empty">You have not added any works yet</string>
+    <string name="works_add">Add work</string>
+    <string name="works_delete_desc">Delete work</string>
+    <string name="works_delete_title">Delete this work?</string>
+    <string name="works_delete_body">This action cannot be undone.</string>
+    <string name="works_delete_confirm">Delete</string>
+    <string name="works_cancel">Cancel</string>
+    <string name="works_add_title">Add work</string>
+    <string name="works_image_section">Work image</string>
+    <string name="works_upload_title">Tap to upload the work image</string>
+    <string name="works_upload_hint">A clear image in PNG or JPG format</string>
+    <string name="works_change_image">Change image</string>
+    <string name="works_details_section">Work details</string>
+    <string name="works_title_label">Work title</string>
+    <string name="works_title_hint">Example: Brand identity for a cafe</string>
+    <string name="works_desc_label">Work description</string>
+    <string name="works_desc_hint">Write a brief about the work and the service you provided to the client</string>
+    <string name="works_submit">Add the work</string>
+    <string name="works_image_required">Please choose the work image</string>
+    <string name="works_added">Work added successfully</string>
+</resources>

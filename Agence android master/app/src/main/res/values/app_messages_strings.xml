@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- User facing messages that used to be written in Arabic inside the Kotlin code -->
+<resources>
+    <string name="msg_connection_failed">Could not reach the server. Check your internet connection and try again.</string>
+    <string name="msg_no_connection">No connection</string>
+    <string name="msg_open_failed">Could not open this page</string>
+    <string name="msg_open_chat_failed">Could not open the chat</string>
+    <string name="msg_payment_success">Payment completed successfully</string>
+    <string name="msg_payment_sent">Payment sent successfully</string>
+    <string name="msg_offer_accepted">Offer accepted successfully</string>
+    <string name="msg_choose_service_again">You can choose the service again</string>
+    <string name="msg_thanks_rating">Thank you for your rating</string>
+    <string name="msg_recording_too_short">The recording is too short and was not sent.</string>
+    <string name="msg_applied">Application sent</string>
+    <string name="msg_task_options">Task options</string>
+    <string name="msg_task_title">Task: %1$s</string>
+    <string name="msg_permissions_of">%1$s permissions</string>
+    <string name="msg_exporting_pdf">Exporting PDF</string>
+    <string name="msg_split_equally">Split equally</string>
+    <string name="msg_confirm_distribution">Confirm distribution</string>
+    <string name="msg_distribution_saved">Distribution saved</string>
+    <string name="msg_sar_amount">SAR %1$s</string>
+    <string name="msg_set_as_leader">%1$s is now the team leader</string>
+    <string name="msg_member_removed">%1$s was removed</string>
+    <string name="msg_no_candidates">No candidates available</string>
+    <string name="msg_add_member_failed">Could not add the member</string>
+    <string name="msg_something_wrong">Something went wrong, please try again</string>
+    <string name="status_in_progress">In progress</string>
+    <string name="status_completed">Completed</string>
+    <string name="status_late">Late</string>
+    <string name="role_team_leader">Team leader</string>
+    <string name="role_editor">Editor</string>
+    <string name="role_viewer">Viewer</string>
+    <string name="lang_name_ar">Arabic</string>
+    <string name="lang_name_en">English</string>
+    <string name="menu_team_leader_panel">Team leader panel</string>
+    <string name="menu_activity_log">Activity log</string>
+    <string name="menu_rename_project">Rename project</string>
+    <string name="menu_delete_project">Delete project</string>
+    <string name="menu_set_as_leader">Set as team leader</string>
+    <string name="menu_view_profile">View profile</string>
+    <string name="menu_remove_member">Remove member</string>
+    <string name="msg_member_added">%1$s was added to the team</string>
+    <string name="msg_confirm_distribution_body">Are you sure you want to distribute the payments?</string>
+    <string name="action_confirm">Confirm</string>
+    <string name="action_cancel">Cancel</string>
+</resources>
